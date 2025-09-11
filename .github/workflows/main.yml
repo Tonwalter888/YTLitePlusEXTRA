@@ -66,7 +66,7 @@ jobs:
         id: theos
         uses: actions/cache@v4
         env:
-          cache-name: theos_cache_67db2ab
+          cache-name: theos_cache_8ae109d
         with:
           path: theos/
           key: ${{ env.cache-name }}
@@ -77,7 +77,7 @@ jobs:
         uses: actions/checkout@v4.1.7
         with:
           repository: theos/theos
-          ref: 67db2ab8d950910161730de77c322658ea3e6b44
+          ref: 8ae109d91df472dce495c1652183ff40d9fbef24
           path: ${{ github.workspace }}/theos
           submodules: recursive
 
@@ -314,7 +314,19 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
           fi
-          
+
+      - name: Clone YouSlider
+        run: |
+         if [ -d "${{ github.workspace }}/YouSlider" ]; then
+            echo "YouSlider exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouSlider
+            git pull
+          else
+            echo "YouSlider does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
+          fi
+
       - name: Build YouPiP
         run: |
           cd ${{ github.workspace }}/YouPiP
@@ -424,6 +436,14 @@ jobs:
           cd ${{ github.workspace }}/DontEatMyContent
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/demc.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouSlider
+        run: |
+          cd ${{ github.workspace }}/YouSlider
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/youslide.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
