@@ -162,6 +162,11 @@ jobs:
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
 
+      - name: Clone YouSlider
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
+
       - name: Clone YouGroupSettings
         run: |
           cd ${{ github.workspace }}
@@ -242,6 +247,15 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/ytnopromo.deb
         env:
           THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouSlider
+        run: |
+          cd ${{ github.workspace }}/YouSlider
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/youslide.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
 
       - name: Build YouMute
         run: |
