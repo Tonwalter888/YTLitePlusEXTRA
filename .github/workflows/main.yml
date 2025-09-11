@@ -142,7 +142,7 @@ jobs:
 
       - name: Clone YouPiP
         run: |
-         if [ -d "${{ github.workspace }}" ]; then
+         if [ -d "${{ github.workspace }}/YouPiP" ]; then
             echo "YouPiP exists. Pulling latest changes..."
             cd ${{ github.workspace }}/YouPiP
             git pull
