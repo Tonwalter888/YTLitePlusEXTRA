@@ -71,7 +71,7 @@ jobs:
         id: theos
         uses: actions/cache@v4
         env:
-          cache-name: theos_cache_67db2ab
+          cache-name: theos_cache_latest
         with:
           path: theos/
           key: ${{ env.cache-name }}
@@ -79,7 +79,7 @@ jobs:
 
       - name: Setup Theos
         run: |
-           if [ -d "${{ github.workspace }}/theos ]; then
+           if [ -d "${{ github.workspace }}/theos" ]; then
              echo "Theos already installed. Pulling latest changes..."
              cd ${{ github.workspace }}/theos
              git pull
