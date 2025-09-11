@@ -73,13 +73,17 @@ jobs:
           restore-keys: ${{ env.cache-name }}
 
       - name: Setup Theos
-        if: ${{ steps.theos.outputs.cache-hit != 'true' }}
-        uses: actions/checkout@v4.1.7
-        with:
-          repository: theos/theos
-          ref: 67db2ab8d950910161730de77c322658ea3e6b44
-          path: ${{ github.workspace }}/theos
-          submodules: recursive
+         run: |
+          if [ -d "${{ github.workspace }}/theos" ]; then
+            echo "Theos already installed. Pulling latest changes..."
+            cd ${{ github.workspace }}/theos
+            git pull
+          else
+            echo "Theos isn't install yet. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/theos/theos.git
+          fi
+
 
       - name: Download iOS SDK
         if: ${{ steps.theos.outputs.cache-hit != 'true' }}
