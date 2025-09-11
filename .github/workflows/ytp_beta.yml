@@ -69,6 +69,7 @@ jobs:
           cache-name: theos_cache_8ae109d
         with:
           path: theos/theos
+          key: ${{ env.cache-name }}
           restore-keys: ${{ env.cache-name }}
 
       - name: Setup Theos
