@@ -3,7 +3,7 @@ This is a fork repo from YTLite,but add more tweaks (from PoomSmart) similar to 
 This is just an another alternative for who can't build IPA in YTLitePlus.
 
 ## Main Features
-- YTLite (eg. Dowonload Videos,No ads,Background playback)
+- YTLite (eg. Download Videos,No ads,Background Playback)
 - NoYTPremium(Remove Premium alerts)
 - YouMute(Mute the video faster)
 - YouSpeed(Change video speeds in video overlay)
