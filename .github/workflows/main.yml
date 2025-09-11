@@ -142,17 +142,15 @@ jobs:
 
       - name: Clone YouPiP
         run: |
-         if [ -d "$THEOS/include/YouPiP" ]; then
+         if [ -d "${{ github.workspace }}" ]; then
             echo "YouPiP exists. Pulling latest changes..."
-            cd $THEOS/include/YouPiP
+            cd ${{ github.workspace }}/YouPiP
             git pull
           else
             echo "YouPiP does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Clone YTUHD
         uses: actions/checkout@v4.1.7
