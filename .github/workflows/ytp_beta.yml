@@ -145,11 +145,9 @@ jobs:
           git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
 
       - name: Clone YTUHD
-        uses: actions/checkout@v4.1.7
-        with:
-          repository: PoomSmart/YTUHD
-          ref: 0f59b38817d554ab692a0053456319847a6ab1a1
-          path: ${{ github.workspace }}/YTUHD
+         run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git
           
       - name: Clone Return-YouTube-Dislikes
         run: |
