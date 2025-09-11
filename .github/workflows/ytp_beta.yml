@@ -1,7 +1,7 @@
 name: Create YTLitePlusEXTRA IPA [For Testing]
 
 on:
-workflow_dispatch:
+  workflow_dispatch:
     inputs:
       ipa_url:
         description: "URL to the decrypted IPA file"
