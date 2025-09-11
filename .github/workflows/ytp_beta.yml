@@ -177,11 +177,6 @@ jobs:
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/NoYTPremium.git
 
-      - name: Clone YTClassicVideoQuality
-        run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/YTClassicVideoQuality.git
-
       - name: Clone YTNoPaidPromo
         run: |
           cd ${{ github.workspace }}
@@ -239,15 +234,7 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/nopremium.deb
         env:
           THEOS: ${{ github.workspace }}/theos
-
-      - name: Build YTClassicVideoQuality
-        run: |
-          cd ${{ github.workspace }}/YTClassicVideoQuality
-          make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/ytcvq.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
+          
       - name: Build YTNoPaidPromo
         run: |
           cd ${{ github.workspace }}/YTNoPaidPromo
