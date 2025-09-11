@@ -100,8 +100,8 @@ jobs:
 
       - name: Install Theos packaging tools
         run: |
-          git clone https://github.com/theos/meta.git
-          sudo cp meta/packages/* /usr/local/bin/
+          cd ${{ github.workspace }}/theos
+          git clone git clone https://github.com/theos/dm.pl.git
  
       - name: Download YouTube Plus
         id: download_ytp
