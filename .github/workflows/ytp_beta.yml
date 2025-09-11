@@ -100,7 +100,8 @@ jobs:
 
       - name: Install Theos packaging tools
         run: |
-          cd ${{ github.workspace }}/theos
+          cd ${{ github.workspace }}
+          cd theos
           git clone git clone https://github.com/theos/dm.pl.git
  
       - name: Download YouTube Plus
