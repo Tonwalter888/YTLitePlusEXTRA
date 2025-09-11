@@ -161,184 +161,159 @@ jobs:
           
       - name: Clone Return-YouTube-Dislikes
         run: |
-         if [ -d "$THEOS/include/Return-YouTube-Dislikes" ]; then
+         if [ -d "${{ github.workspace }}/Return-YouTube-Dislikes" ]; then
             echo "Return-YouTube-Dislikes exists. Pulling latest changes..."
             cd $THEOS/include/Return-YouTube-Dislikes
             git pull
           else
             echo "Return-YouTube-Dislikes does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Clone YouGroupSettings
         run: |
-         if [ -d "$THEOS/include/YouGroupSettings" ]; then
+         if [ -d "${{ github.workspace }}/YouGroupSettings" ]; then
             echo "YouGroupSettings exists. Pulling latest changes..."
-            cd $THEOS/include/YouGroupSettings
+            cd ${{ github.workspace }}/YouGroupSettings
             git pull
           else
             echo "YouGroupSettings does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Clone YTVideoOverlay
         run: |
-         if [ -d "$THEOS/include/YTVideoOverlay" ]; then
+         if [ -d "${{ github.workspace }}/YTVideoOverlay" ]; then
             echo "YTVideoOverlay exists. Pulling latest changes..."
-            cd $THEOS/include/YTVideoOverlay
+            cd ${{ github.workspace }}/YTVideoOverlay
             git pull
           else
             echo "YTVideoOverlay does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoOverlay.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Clone NoYTPremium
         run: |
-         if [ -d "$THEOS/include/NoYTPremium" ]; then
+         if [ -d "${{ github.workspace }}/NoYTPremium" ]; then
             echo "NoYTPremium exists. Pulling latest changes..."
-            cd $THEOS/include/NoYTPremium
+            cd ${{ github.workspace }}/NoYTPremium
             git pull
           else
             echo "NoYTPremium does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/NoYTPremium.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Clone YTClassicVideoQuality
         run: |
-         if [ -d "$THEOS/include/YTClassicVideoQuality" ]; then
+         if [ -d "${{ github.workspace }}/YTClassicVideoQuality" ]; then
             echo "YTClassicVideoQuality exists. Pulling latest changes..."
-            cd $THEOS/include/YTClassicVideoQuality
+            cd ${{ github.workspace }}/YTClassicVideoQuality
             git pull
           else
             echo "YTClassicVideoQuality does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YTClassicVideoQuality.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
           
       - name: Clone YTNoPaidPromo
         run: |
-         if [ -d "$THEOS/include/YTNoPaidPromo" ]; then
+         if [ -d "${{ github.workspace }}/YTNoPaidPromo" ]; then
             echo "YTNoPaidPromo exists. Pulling latest changes..."
-            cd $THEOS/include/YTNoPaidPromo
+            cd ${{ github.workspace }}/YTNoPaidPromo
             git pull
           else
             echo "YTNoPaidPromo does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YTNoPaidPromo.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
           
       - name: Clone YouMute
         run: |
-         if [ -d "$THEOS/include/YouMute" ]; then
+         if [ -d "${{ github.workspace }}/YouMute" ]; then
             echo "YouMute exists. Pulling latest changes..."
-            cd $THEOS/include/YouMute
+            cd ${{ github.workspace }}/YouMute
             git pull
           else
             echo "YouMute does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Clone YTABConfig
         run: |
-         if [ -d "$THEOS/include/YTABConfig" ]; then
+         if [ -d "${{ github.workspace }}/YTABConfig" ]; then
             echo "YTABConfig exists. Pulling latest changes..."
-            cd $THEOS/include/YTABConfig
+            cd ${{ github.workspace }}/YTABConfig
             git pull
           else
             echo "YTABConfig does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YTABConfig.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
           
       - name: Clone YTClassicVideoQuality
         run: |
-         if [ -d "$THEOS/include/YTClassicVideoQuality" ]; then
+         if [ -d "${{ github.workspace }}/YTClassicVideoQuality" ]; then
             echo "YTClassicVideoQuality exists. Pulling latest changes..."
-            cd $THEOS/include/YTClassicVideoQuality
+            cd ${{ github.workspace }}/YTClassicVideoQuality
             git pull
           else
             echo "YTClassicVideoQuality does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YTClassicVideoQuality.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
           
       - name: Clone YouChooseQuality
         run: |
-         if [ -d "$THEOS/include/YouChooseQuality" ]; then
+         if [ -d "${{ github.workspace }}/YouChooseQuality" ]; then
             echo "YouChooseQuality exists. Pulling latest changes..."
-            cd $THEOS/include/YouChooseQuality
+            cd ${{ github.workspace }}/YouChooseQuality
             git pull
           else
             echo "YouChooseQuality does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouChooseQuality.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
+        
       - name: Clone YouHideTabs
         run: |
-         if [ -d "$THEOS/include/YouHideTabs" ]; then
+         if [ -d "${{ github.workspace }}/YouHideTabs" ]; then
             echo "YouHideTabs exists. Pulling latest changes..."
-            cd $THEOS/include/YouHideTabs
+            cd ${{ github.workspace }}/YouHideTabs
             git pull
           else
             echo "YouHideTabs does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouHideTabs.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Clone YouQuality
         run: |
-         if [ -d "$THEOS/include/YouQuality" ]; then
+         if [ -d "${{ github.workspace }}/YouQuality" ]; then
             echo "YouQuality exists. Pulling latest changes..."
-            cd $THEOS/include/YouQuality
+            cd ${{ github.workspace }}/YouQuality
             git pull
           else
             echo "YouQuality does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouQuality.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Clone YouSpeed
         run: |
-         if [ -d "$THEOS/include/YouSpeed" ]; then
+         if [ -d "${{ github.workspace }}/YouSpeed" ]; then
             echo "YouSpeed exists. Pulling latest changes..."
-            cd $THEOS/include/YouSpeed
+            cd ${{ github.workspace }}/YouSpeed
             git pull
           else
             echo "YouSpeed does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
           fi
-        env:
-          THEOS: ${{ github.workspace }}/theos
           
       - name: Build YouPiP
         run: |
