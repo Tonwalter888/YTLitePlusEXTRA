@@ -308,6 +308,8 @@ jobs:
           cd ${{ github.workspace }}/YouPiP
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/youpip.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
 
       - name: Build YTUHD
         run: |
