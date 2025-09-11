@@ -8,7 +8,7 @@ This is just an another alternative for who can't build IPA in YTLitePlus.
 - YouMute(Mute bideo sound faster)
 - YouSpeed(Change video speeds in video overlay)
 - YouQuality(Change video quality in video overlay)
-And Much more...
+- And Much more...
 
 ## FAQ
 - [🇺🇸 English FAQ](FAQs/FAQ_EN.md)
