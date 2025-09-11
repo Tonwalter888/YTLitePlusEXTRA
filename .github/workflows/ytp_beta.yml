@@ -78,7 +78,6 @@ jobs:
           restore-keys: ${{ env.cache-name }}
 
       - name: Setup Theos
-        if: ${{ steps.theos.outputs.cache-hit != 'true' }}
         uses: actions/checkout@v4.1.7
         with:
           repository: theos/theos
