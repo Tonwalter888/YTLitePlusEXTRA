@@ -1,4 +1,4 @@
-name: Create YouTube Plus IPA
+name: Create YTLitePlusEXTRA IPA
 
 on:
   workflow_dispatch:
