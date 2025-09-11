@@ -93,6 +93,17 @@ jobs:
 
       - name: Install cyan
         run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
+
+      - name: Clone libundirect
+        run: |
+          git clone https://github.com/opa334/libundirect ${{ github.workspace }}/libundirect
+
+      - name: Build libundirect
+        run: |
+          cd ${{ github.workspace }}/libundirect
+          make package
+          mkdir -p ${{ github.workspace }}/theos/lib
+          cp .theos/obj/debug/arm64/libundirect.dylib ${{ github.workspace }}/theos/lib/
  
       - name: Download YouTube Plus
         id: download_ytp
