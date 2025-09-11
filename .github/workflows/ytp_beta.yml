@@ -66,24 +66,20 @@ jobs:
         id: theos
         uses: actions/cache@v4
         env:
-          cache-name: theos_cache_latest
+          cache-name: theos_cache_4f06bb9
         with:
           path: theos/
           key: ${{ env.cache-name }}
           restore-keys: ${{ env.cache-name }}
 
       - name: Setup Theos
-        run: |
-           if [ -d "${{ github.workspace }}/theos" ]; then
-             echo "Theos already installed. Pulling latest changes..."
-             cd ${{ github.workspace }}/theos
-             git pull
-           else
-             echo "Theos isn't installed yet. Cloning repository..."
-             cd ${{ github.workspace }}
-             git clone --quiet --depth=1 https://github.com/theos/theos.git
-           fi
-
+        uses: actions/checkout@v4.1.7
+        with:
+          repository: theos/theos
+          ref: 4f06bb95bc34e382055baea2fa3214a722b13296
+          path: ${{ github.workspace }}/theos
+          submodules: recursive
+          
       - name: Download iOS SDK
         if: ${{ steps.theos.outputs.cache-hit != 'true' }}
         run: |
@@ -97,12 +93,6 @@ jobs:
 
       - name: Install cyan
         run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
-
-      - name: Install Theos packaging tools
-        run: |
-          cd ${{ github.workspace }}
-          cd theos
-          git clone https://github.com/theos/dm.pl.git
  
       - name: Download YouTube Plus
         id: download_ytp
