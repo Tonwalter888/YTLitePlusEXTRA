@@ -45,11 +45,6 @@ jobs:
           path: main
           submodules: recursive
 
-      - name: Hide sensitive inputs
-        uses: levibostian/action-hide-sensitive-inputs@v1
-        with:
-          exclude_inputs: bundle_id,display_name,enable_demc,enable_ryd,enable_youpip,enable_yq,enable_ytuhd,info_note,tweak_version
-
       - name: Download and validate IPA
         run: |
           wget "${{ inputs.ipa_url }}" --no-verbose -O ${{ github.workspace }}/youtube.ipa
@@ -102,6 +97,11 @@ jobs:
 
       - name: Install cyan
         run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
+
+      - name: Install dpkg
+        run: |
+          sudo apt-get update 
+          sudo apt-get install -y dpkg-dev perl
 
       - name: Download YouTube Plus
         id: download_ytp
