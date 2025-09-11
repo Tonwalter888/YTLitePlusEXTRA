@@ -148,7 +148,7 @@ jobs:
         uses: actions/checkout@v4.1.7
         with:
           repository: PoomSmart/YTUHD
-          ref: 0f59b38817d554ab692a0053456319847a6ab1a1
+          ref: 61fb68dbb4de4707d6ca1a7c18565c76f91a6943
           path: ${{ github.workspace }}/YTUHD
           submodules: recursive
           
