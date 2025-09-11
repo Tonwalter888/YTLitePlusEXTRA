@@ -66,23 +66,19 @@ jobs:
         id: theos
         uses: actions/cache@v4
         env:
-          cache-name: theos_cache_4f06bb9
+          cache-name: theos_cache_8ae109d
         with:
           path: theos/
           key: ${{ env.cache-name }}
           restore-keys: ${{ env.cache-name }}
 
       - name: Setup Theos
-        run: |
-          if [ -d "${{ github.workspace }}/theos" ]; then
-            echo "Theos already installed. Pulling latest changes..."
-            cd ${{ github.workspace }}/theos
-            git pull
-          else
-            echo "Theos isn't install yet. Cloning repository..."
-            cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/theos/theos.git
-          fi
+        uses: actions/checkout@v4.1.7
+        with:
+          repository: theos/theos
+          ref: 8ae109d91df472dce495c1652183ff40d9fbef24
+          path: ${{ github.workspace }}/theos
+          submodules: recursive
           
       - name: Download iOS SDK
         if: ${{ steps.theos.outputs.cache-hit != 'true' }}
@@ -178,6 +174,11 @@ jobs:
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/NoYTPremium.git
 
+      - name: Clone YTNoHoverCards
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 https://github.com/level3tjg/YTNoHoverCards.git
+
       - name: Clone YTNoPaidPromo
         run: |
           cd ${{ github.workspace }}
@@ -209,6 +210,14 @@ jobs:
           cd ${{ github.workspace }}/Return-YouTube-Dislikes
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/ryd.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YTNoHoverCards
+        run: |
+          cd ${{ github.workspace }}/YTNoHoverCards
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/ytnocards.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
