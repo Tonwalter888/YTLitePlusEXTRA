@@ -302,6 +302,18 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
           fi
+
+      - name: Clone DontEatMyContent
+        run: |
+         if [ -d "${{ github.workspace }}/DontEatMyContent" ]; then
+            echo "DontEatMyContent exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/DontEatMyContent
+            git pull
+          else
+            echo "DontEatMyContent does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
+          fi
           
       - name: Build YouPiP
         run: |
@@ -404,6 +416,14 @@ jobs:
           cd ${{ github.workspace }}/YouSpeed
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/youspeed.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build DontEatMyContent
+        run: |
+          cd ${{ github.workspace }}/DontEatMyContent
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/demc.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
