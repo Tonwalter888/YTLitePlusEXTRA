@@ -178,10 +178,13 @@ jobs:
           git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/NoYTPremium.git
 
       - name: Clone YTNoHoverCards
-        run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/level3tjg/YTNoHoverCards.git
-
+        uses: actions/checkout@v4.1.7
+        with:
+          repository: level3tjg/YTNoHoverCards
+          ref: 8da84d97a917f3142a5d802b939374dca5d998cf
+          path: ${{ github.workspace }}/YTNoHoverCards
+          submodules: recursive
+          
       - name: Clone YTNoPaidPromo
         run: |
           cd ${{ github.workspace }}
