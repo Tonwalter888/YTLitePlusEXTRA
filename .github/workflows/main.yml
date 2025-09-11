@@ -191,6 +191,36 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/YouMute.git
+
+      - name: Clone YTABConfig
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/YTABConfig.git
+          
+      - name: Clone YTClassicVideoQuality
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/YTClassicVideoQuality.git
+          
+      - name: Clone YouChooseQuality
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/YouChooseQuality.git
+
+      - name: Clone YouHideTabs
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/YouHideTabs.git
+
+      - name: Clone YouQuality
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/YouQuality.git  
+
+      - name: Clone YouSpeed
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/YouSpeed.git    
           
       - name: Build YouPiP
         run: |
@@ -261,6 +291,54 @@ jobs:
           cd ${{ github.workspace }}/YouMute
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/ym.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YTABConfig
+        run: |
+          cd ${{ github.workspace }}/YTABConfig
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/abconfig.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YTClassicVideoQuality
+        run: |
+          cd ${{ github.workspace }}/YTClassicVideoQuality
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/ytclassic.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouChooseQuality
+        run: |
+          cd ${{ github.workspace }}/YouChooseQuality
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/youchoose.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouHideTabs
+        run: |
+          cd ${{ github.workspace }}/YouHideTabs
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/youhide.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouQuality
+        run: |
+          cd ${{ github.workspace }}/YouQuality
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/youqual.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouSpeed
+        run: |
+          cd ${{ github.workspace }}/YouSpeed
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/youspeed.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
