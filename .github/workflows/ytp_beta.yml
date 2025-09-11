@@ -102,9 +102,11 @@ jobs:
         run: |
           cd ${{ github.workspace }}/libundirect
           make package
-          mkdir -p ${{ github.workspace }}/theos/lib
-          cp .theos/obj/debug/arm64/libundirect.dylib ${{ github.workspace }}/theos/lib/
- 
+          mkdir -p $THEOS/lib
+          cp .theos/obj/debug/arm64/libundirect.dylib $THEOS/lib
+        env:
+          THEOS: ${{ github.workspace }}/theos
+        
       - name: Download YouTube Plus
         id: download_ytp
         run: |
