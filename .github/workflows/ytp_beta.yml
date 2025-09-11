@@ -98,9 +98,10 @@ jobs:
       - name: Install cyan
         run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
 
-      - name: Install dpkg
+      - name: Install Theos packaging tools
         run: |
-          brew install dpkg
+          git clone https://github.com/theos/meta.git
+          sudo cp meta/packages/* /usr/local/bin/
  
       - name: Download YouTube Plus
         id: download_ytp
