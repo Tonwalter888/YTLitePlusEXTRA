@@ -144,12 +144,13 @@ jobs:
         run: |
           if [ -d "${{ github.workspace }}" ]; then
             echo "YouPiP exists. Pulling latest changes..."
-            cd ${{ github.workspace }}
+            cd ${{ github.workspace }}/YouPiP
             git pull
           else
             echo "YouPiP does not exist. Cloning repository..."
             cd $THEOS/include
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
+            echo "Sucsessfully Clone YouPiP"
           fi
 
       - name: Clone YTUHD
