@@ -177,14 +177,6 @@ jobs:
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/NoYTPremium.git
 
-      - name: Clone YTNoHoverCards
-        uses: actions/checkout@v4.1.7
-        with:
-          repository: level3tjg/YTNoHoverCards
-          ref: 8da84d97a917f3142a5d802b939374dca5d998cf
-          path: ${{ github.workspace }}/YTNoHoverCards
-          submodules: recursive
-          
       - name: Clone YTNoPaidPromo
         run: |
           cd ${{ github.workspace }}
@@ -216,14 +208,6 @@ jobs:
           cd ${{ github.workspace }}/Return-YouTube-Dislikes
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/ryd.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
-      - name: Build YTNoHoverCards
-        run: |
-          cd ${{ github.workspace }}/YTNoHoverCards
-          make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/ytnocards.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
