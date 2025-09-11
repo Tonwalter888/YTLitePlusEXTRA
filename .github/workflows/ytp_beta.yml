@@ -68,8 +68,7 @@ jobs:
         env:
           cache-name: theos_cache_8ae109d
         with:
-          path: theos/
-          key: ${{ env.cache-name }}
+          path: theos/theos
           restore-keys: ${{ env.cache-name }}
 
       - name: Setup Theos
@@ -94,19 +93,6 @@ jobs:
       - name: Install cyan
         run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
 
-      - name: Clone libundirect
-        run: |
-          git clone https://github.com/opa334/libundirect ${{ github.workspace }}/libundirect
-
-      - name: Build libundirect
-        run: |
-          cd ${{ github.workspace }}/libundirect
-          make package
-          mkdir -p $THEOS/lib
-          cp .theos/obj/debug/arm64/libundirect.dylib $THEOS/lib
-        env:
-          THEOS: ${{ github.workspace }}/theos
-        
       - name: Download YouTube Plus
         id: download_ytp
         run: |
@@ -161,7 +147,7 @@ jobs:
         uses: actions/checkout@v4.1.7
         with:
           repository: PoomSmart/YTUHD
-          ref: ca7c21d866137112b6a8cf82c439e4c5325dc7ca
+          ref: 0f59b38817d554ab692a0053456319847a6ab1a1
           path: ${{ github.workspace }}/YTUHD
           submodules: recursive
           
