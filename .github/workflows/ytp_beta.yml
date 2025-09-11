@@ -159,9 +159,16 @@ jobs:
 
       - name: Clone YouSlider
         run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
-
+         if [ -d "${{ github.workspace }}/YouSlider" ]; then
+            echo "YouSldier exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouSlider
+            git pull
+          else
+            echo "YouSlider does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
+          fi
+          
       - name: Clone YouGroupSettings
         run: |
           cd ${{ github.workspace }}
