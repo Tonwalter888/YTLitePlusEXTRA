@@ -314,19 +314,7 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
           fi
-
-      - name: Clone YouSlider
-        run: |
-         if [ -d "${{ github.workspace }}/YouSlider" ]; then
-            echo "YouSlider exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/YouSlider
-            git pull
-          else
-            echo "YouSlider does not exist. Cloning repository..."
-            cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
-          fi
-
+          
       - name: Build YouPiP
         run: |
           cd ${{ github.workspace }}/YouPiP
@@ -436,14 +424,6 @@ jobs:
           cd ${{ github.workspace }}/DontEatMyContent
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/demc.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
-      - name: Build YouSlider
-        run: |
-          cd ${{ github.workspace }}/YouSlider
-          make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/youslide.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
