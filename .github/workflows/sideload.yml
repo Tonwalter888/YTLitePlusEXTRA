@@ -307,6 +307,42 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YTNoPaidPromo.git
           fi
+
+      - name: Clone YTClassicVideoQuality
+        run: |
+         if [ -d "${{ github.workspace }}/YTClassicVideoQuality" ]; then
+            echo "YTClassicVideoQuality exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTClassicVideoQuality
+            git pull
+          else
+            echo "YTClassicVideoQuality does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YTClassicVideoQuality.git
+          fi
+
+      - name: Clone YTClassicVideoQuality
+        run: |
+         if [ -d "${{ github.workspace }}/YTClassicVideoQuality" ]; then
+            echo "YTClassicVideoQuality exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTClassicVideoQuality
+            git pull
+          else
+            echo "YTClassicVideoQuality does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YTClassicVideoQuality.git
+          fi
+          
+      - name: Clone YouChooseQuality
+        run: |
+         if [ -d "${{ github.workspace }}/YouChooseQuality" ]; then
+            echo "YouChooseQuality exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouChooseQuality
+            git pull
+          else
+            echo "YouChooseQuality does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouChooseQuality.git
+          fi
         
       - name: Build YouPiP
         run: |
