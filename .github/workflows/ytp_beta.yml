@@ -144,7 +144,6 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Clone YouPiP
-        if: ${{ inputs.enable_youpip }}
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
@@ -155,13 +154,13 @@ jobs:
           git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
 
       - name: Clone YTUHD (For Sideload Devices)
-        if: ${{ inputs.enable_ytuhd || inputs.enable_sideload == 'true' }}
+        if: ${{ inputs.enable_sideload == 'true' }}
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git
 
       - name: Clone YTUHD (For Non-Sideload Devices)
-        if: ${{ inputs.enable_ytuhd || inputs.enable_sideload == 'false' }}
+        if: ${{ inputs.enable_sideload == 'false' }}
         uses: actions/checkout@v4.1.7
         with:
           repository: PoomSmart/YTUHD
@@ -181,7 +180,6 @@ jobs:
           fi
           
       - name: Clone Return-YouTube-Dislikes
-        if: ${{ inputs.enable_ryd }}
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
@@ -204,13 +202,11 @@ jobs:
           git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
 
       - name: Clone NoYTPremium
-        if: ${{ inputs.enable_noytpremium }}
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/NoYTPremium.git
 
       - name: Clone YTNoPaidPromo
-        if: ${{ inputs.enable_ytnopromo }}
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/YTNoPaidPromo.git
@@ -229,6 +225,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build YTUHD (For Sideload Devices)
+        if: ${{ inputs.enable_sideload == 'true' }}
         run: |
           cd ${{ github.workspace }}/YTUHD
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
@@ -236,10 +233,19 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
+      - name: Build YTUHD (For Non-Sideload Devices)
+        if: ${{ inputs.enable_sideload == 'false' }}
+        run: |
+          cd ${{ github.workspace }}/YTUHD
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/ytuhd.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
       - name: Build Return-YouTube-Dislikes
         run: |
           cd ${{ github.workspace }}/Return-YouTube-Dislikes
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/ryd.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -247,7 +253,7 @@ jobs:
       - name: Build Alderis
         run: |
           cd ${{ github.workspace }}/Alderis
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/adr.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -255,7 +261,7 @@ jobs:
       - name: Build YouGroupSettings
         run: |
           cd ${{ github.workspace }}/YouGroupSettings
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/ygs.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -263,7 +269,7 @@ jobs:
       - name: Build YTVideoOverlay
         run: |
           cd ${{ github.workspace }}/YTVideoOverlay
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/ytvo.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -271,7 +277,7 @@ jobs:
       - name: Build NoYTPremium
         run: |
           cd ${{ github.workspace }}/NoYTPremium
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/nopremium.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -279,7 +285,7 @@ jobs:
       - name: Build YTNoPaidPromo
         run: |
           cd ${{ github.workspace }}/YTNoPaidPromo
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/ytnopromo.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -287,7 +293,7 @@ jobs:
       - name: Build YouMute
         run: |
           cd ${{ github.workspace }}/YouMute
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/ym.deb
         env:
           THEOS: ${{ github.workspace }}/theos
