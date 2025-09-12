@@ -3,50 +3,8 @@ name: Create YTLitePlusEXTRA IPA [For Testing]
 on:
   workflow_dispatch:
     inputs:
-      enable_youpip:
-        description: "Integrate YouPiP"
-        type: boolean
-        required: true
-        default: false
-
-      enable_ytuhd:
-        description: "Integrate YTUHD"
-        type: boolean
-        required: true
-        default: false
-
-      enable_yq:
-        description: "Integrate YouQuality"
-        type: boolean
-        required: true
-        default: false
-
-      enable_ryd:
-        description: "Integrate Return YouTube Dislikes"
-        type: boolean
-        required: true
-        default: false
-        
-      enable_noytpremium:
-        description: "Integrate NoYTPremium"
-        type: boolean
-        required: true
-        default: false
-
-      enable_ytnopromo:
-        description: "Integrate YTNoPaidPromo"
-        type: boolean
-        required: true
-        default: false
-
-      enable_youmute:
-        description: "Integrate YouMute"
-        type: boolean
-        required: true
-        default: false
-
       enable_sideload:
-        description: "Are you using for Sideload (eg. AltStore,Sidestore,Sideloadly) devices? (IMPORTANT)"
+        description: "Are you using for Sideload (Non-JailBreak) device? (IMPORTANT)"
         type: boolean 
         required: true
         default: false  
