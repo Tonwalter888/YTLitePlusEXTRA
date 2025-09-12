@@ -13,9 +13,6 @@ This is just an another alternative for who can't build IPA in YTLitePlus.
 
 ## FAQ
 - [🇺🇸 English FAQ](FAQs/FAQ_EN.md)
-- [🇷🇺 ЧаВо на Русском](FAQs/FAQ_RU.md)
-- [🇮🇹 FAQ in Italiano](FAQs/FAQ_IT.md)
-- [🇵🇱 FAQ po polsku](FAQs/FAQ_PL.md)
 
 ## How to build a YTLitePlusEXTRA IPA using Github actions
 > [!NOTE]
