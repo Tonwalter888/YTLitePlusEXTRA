@@ -211,6 +211,14 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
+      - name: Build YouLoop
+        run: |
+          cd ${{ github.workspace }}/YouLoop
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/youloop.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
       - name: Build YTUHD
         run: |
           cd ${{ github.workspace }}/YTUHD
@@ -264,14 +272,6 @@ jobs:
           cd ${{ github.workspace }}/YouMute
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ym.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
-      - name: Build YouSlider
-        run: |
-          cd ${{ github.workspace }}/YouSlider
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
-          mv packages/*.deb ${{ github.workspace }}/youslide.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
