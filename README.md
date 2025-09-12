@@ -37,6 +37,6 @@ This is just an another alternative for who can't build IPA in YTLitePlus.
 ## Supported YouTube Version
 <ul>
    <li><strong>Latest confirmed:</strong> 20.31.6</li>
-   <li><strong>Date tested:</strong> Sep 11, 2025</li>
-   <li><strong>YTLite:</strong> 5.2 beta 3</li>
+   <li><strong>Date tested:</strong> Sep 12, 2025</li>
+   <li><strong>YTLite:</strong> 5.2 beta 2</li>
 </ul>
