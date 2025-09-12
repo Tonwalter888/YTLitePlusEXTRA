@@ -1,5 +1,4 @@
-name: Create YTLitePlusEXTRA IPA [For Testing]
-##If you found this file have an update, Please don't sync your fork.##
+name: Create YTLitePlusEXTRA IPA (Testing)
 on:
   workflow_dispatch:
     inputs:
@@ -10,7 +9,7 @@ on:
         type: string
 
       tweak_version:
-        description: "Tweak Version"
+        description: "Tweak Version (You can type manually from YTLite Releases)"
         default: "5.2b2"
         required: true
         type: string
@@ -44,7 +43,7 @@ jobs:
         with:
           path: main
           submodules: recursive
-
+          
       - name: Download and validate IPA
         run: |
           wget "${{ inputs.ipa_url }}" --no-verbose -O ${{ github.workspace }}/youtube.ipa
@@ -68,18 +67,19 @@ jobs:
         env:
           cache-name: theos_cache_8ae109d
         with:
-          path: theos/theos
+          path: theos/
           key: ${{ env.cache-name }}
           restore-keys: ${{ env.cache-name }}
 
       - name: Setup Theos
+        if: ${{ steps.theos.outputs.cache-hit != 'true' }}
         uses: actions/checkout@v4.1.7
         with:
           repository: theos/theos
           ref: 8ae109d91df472dce495c1652183ff40d9fbef24
           path: ${{ github.workspace }}/theos
           submodules: recursive
-          
+
       - name: Download iOS SDK
         if: ${{ steps.theos.outputs.cache-hit != 'true' }}
         run: |
@@ -98,11 +98,11 @@ jobs:
         id: download_ytp
         run: |
           deb_url="https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.tweak_version }}/com.dvntm.ytlite_${{ inputs.tweak_version }}_iphoneos-arm.deb"
-          wget "$deb_url" --no-verbose -O ${{ github.workspace }}/ytplus.deb
+          wget "$deb_url" --no-verbose -O ${{ github.workspace }}/ytlite.deb
 
       - name: Clone Open in YouTube (Safari Extension)
         run: |
-          git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/BillyCurtis/OpenYouTubeSafariExtension
+          git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/BillyCurtis/OpenYouTubeSafariExtension.git
           cd OpenYouTubeSafariExtension
           git sparse-checkout set --no-cone OpenYoutubeSafariExtension.appex
           git checkout
@@ -121,7 +121,6 @@ jobs:
             echo "Copying YouTubeHeader to YTHeaders..."
             rm -rf "$THEOS/include/YTHeaders"
             cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
-            cp -r "$THEOS/include/YouTubeHeader" "${{ github.workspace }}/YouTubeHeader"
           fi
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -142,23 +141,52 @@ jobs:
 
       - name: Clone YouPiP
         run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
-
-      - name: Clone Alderis
-        uses: actions/checkout@v4.1.7
-        with:
-          repository: hbang/Alderis
-          ref: 76a3722d375fdd4c95b3719962edff1f5eb3b0f1
-          path: ${{ github.workspace }}/Alderis
+         if [ -d "${{ github.workspace }}/YouPiP" ]; then
+            echo "YouPiP exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouPiP
+            git pull
+          else
+            echo "YouPiP does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
+          fi
 
       - name: Clone YTUHD
-        uses: actions/checkout@v4.1.7
-        with:
-          repository: PoomSmart/YTUHD
-          ref: 0f59b38817d554ab692a0053456319847a6ab1a1
-          path: ${{ github.workspace }}/YTUHD
-      
+        run: |
+         if [ -d "${{ github.workspace }}/YTUHD" ]; then
+            echo "YTUHD exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTUHD
+            git pull
+          else
+            echo "YTUHD does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git  
+          fi
+          
+      - name: Clone Return-YouTube-Dislikes
+        run: |
+         if [ -d "${{ github.workspace }}/Return-YouTube-Dislikes" ]; then
+            echo "Return-YouTube-Dislikes exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/Return-YouTube-Dislikes
+            git pull
+          else
+            echo "Return-YouTube-Dislikes does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
+          fi
+
+      - name: Clone YouGroupSettings
+        run: |
+         if [ -d "${{ github.workspace }}/YouGroupSettings" ]; then
+            echo "YouGroupSettings exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouGroupSettings
+            git pull
+          else
+            echo "YouGroupSettings does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
+          fi
+
       - name: Clone YTVideoOverlay
         run: |
          if [ -d "${{ github.workspace }}/YTVideoOverlay" ]; then
@@ -170,49 +198,107 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoOverlay.git
           fi
-          
-      - name: Clone Return-YouTube-Dislikes
-        run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
-
-      - name: Clone YouSlider
-        uses: actions/checkout@v4.1.7
-        with:
-          repository: PoomSmart/YouSlider
-          ref: 6950c7ccadf791d976d6a214f813c52f54cc71f4
-          path: ${{ github.workspace }}/YouSlider
-          
-      - name: Clone YouGroupSettings
-        run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
 
       - name: Clone NoYTPremium
         run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/NoYTPremium.git
+         if [ -d "${{ github.workspace }}/NoYTPremium" ]; then
+            echo "NoYTPremium exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/NoYTPremium
+            git pull
+          else
+            echo "NoYTPremium does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/NoYTPremium.git
+          fi
+          
+      - name: Clone YTABConfig
+        run: |
+         if [ -d "${{ github.workspace }}/YTABConfig" ]; then
+            echo "YTABConfig exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTABConfig
+            git pull
+          else
+            echo "YTABConfig does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YTABConfig.git
+          fi
+                  
+      - name: Clone YouQuality
+        run: |
+         if [ -d "${{ github.workspace }}/YouQuality" ]; then
+            echo "YouQuality exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouQuality
+            git pull
+          else
+            echo "YouQuality does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouQuality.git
+          fi
+
+      - name: Clone YouSpeed
+        run: |
+         if [ -d "${{ github.workspace }}/YouSpeed" ]; then
+            echo "YouSpeed exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouSpeed
+            git pull
+          else
+            echo "YouSpeed does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
+          fi
+
+      - name: Clone DontEatMyContent
+        run: |
+         if [ -d "${{ github.workspace }}/DontEatMyContent" ]; then
+            echo "DontEatMyContent exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/DontEatMyContent
+            git pull
+          else
+            echo "DontEatMyContent does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
+          fi
 
       - name: Clone YTHoldForSpeed
         run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 --recurse-submodules https://github.com/aricloverEXTRA/YTHoldForSpeed-Sideloaded.git
+         if [ -d "${{ github.workspace }}/YTHoldForSpeed" ]; then
+            echo "YTHoldForSpeed exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTHoldForSpeed
+            git pull
+          else
+            echo "DontEatMyContent does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/aricloverEXTRA/YTHoldForSpeed-Sideloaded.git
+          fi
 
+      - name: Clone YouTimeStamp
+        run: |
+         if [ -d "${{ github.workspace }}/YouTimeStamp" ]; then
+            echo "YouTimeStamp exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouTimeStamp
+            git pull
+          else
+            echo "YouTimeStamp does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/aricloverEXTRA/YouTimeStamp.git
+          fi
 
-      - name: Clone YTNoPaidPromo
+      - name: Clone IAmYouTube
         run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/YTNoPaidPromo.git
-          
-      - name: Clone YouMute
-        run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/YouMute.git
-          
+         if [ -d "${{ github.workspace }}/IAmYouTube" ]; then
+            echo "IAmYouTube exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/IAmYouTube
+            git pull
+          else
+            echo "IAmYouTube does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/IAmYouTube.git
+          fi   
+        
       - name: Build YouPiP
         run: |
           cd ${{ github.workspace }}/YouPiP
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/youpip.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -220,7 +306,7 @@ jobs:
       - name: Build YTUHD
         run: |
           cd ${{ github.workspace }}/YTUHD
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ytuhd.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -228,23 +314,15 @@ jobs:
       - name: Build Return-YouTube-Dislikes
         run: |
           cd ${{ github.workspace }}/Return-YouTube-Dislikes
-          make clean package DEBUG=0 FINALPACKAGE=1 
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ryd.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
-      - name: Build Alderis
-        run: |
-          cd ${{ github.workspace }}/Alderis
-          make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/adr.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouGroupSettings
         run: |
           cd ${{ github.workspace }}/YouGroupSettings
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ygs.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -252,7 +330,7 @@ jobs:
       - name: Build YTVideoOverlay
         run: |
           cd ${{ github.workspace }}/YTVideoOverlay
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ytvo.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -260,38 +338,70 @@ jobs:
       - name: Build NoYTPremium
         run: |
           cd ${{ github.workspace }}/NoYTPremium
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/nopremium.deb
         env:
           THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YTABConfig
+        run: |
+          cd ${{ github.workspace }}/YTABConfig
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/abconfig.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouQuality
+        run: |
+          cd ${{ github.workspace }}/YouQuality
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/youqual.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouSpeed
+        run: |
+          cd ${{ github.workspace }}/YouSpeed
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/youspeed.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build DontEatMyContent
+        run: |
+          cd ${{ github.workspace }}/DontEatMyContent
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/demc.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YTHoldForSpeed
+        run: |
+          cd ${{ github.workspace }}/YTHoldForSpeed
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/ytholdspeed.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
           
-      - name: Build YTNoPaidPromo
+      - name: Build YouTimeStamp
         run: |
-          cd ${{ github.workspace }}/YTNoPaidPromo
-          make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/ytnopromo.deb
+          cd ${{ github.workspace }}/YouTimeStamp
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/youtime.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
-      - name: Build YouMute
+      - name: Build IAmYouTube
         run: |
-          cd ${{ github.workspace }}/YouMute
-          make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/ym.deb
+          cd ${{ github.workspace }}/IAmYouTube
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/imyt.deb
         env:
           THEOS: ${{ github.workspace }}/theos
-
-      - name: Build YouSlider
-        run: |
-          cd ${{ github.workspace }}/YouSlider
-          make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/youslide.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
+     
       - name: Inject tweaks into IPA
         run: |
-          tweaks="ytplus.deb OpenYoutubeSafariExtension.appex"
+          tweaks="ytlite.deb OpenYoutubeSafariExtension.appex"
 
           for f in *.deb; do
             if [ -f "$f" ]; then
@@ -299,17 +409,17 @@ jobs:
             fi
           done
 
-          cyan -i youtube.ipa -o YouTubePlus_${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
+          cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
       - name: Upload to GitHub Releases
         uses: softprops/action-gh-release@v2.0.1
         with:
-          tag_name: ytp-${{ github.run_number }}
-          name: YouTubePlus v${{ inputs.tweak_version }} (${{ github.run_number }})
-          files: YouTubePlus_${{ inputs.tweak_version }}.ipa
+          tag_name: ytliteplusextra-${{ github.run_number }}
+          name: YTLitePlusEXTRA v${{ inputs.tweak_version }} (${{ github.run_number }})
+          files: YTLitePlusEXTRA_${{ inputs.tweak_version }}.ipa
           draft: true
 
       - name: Output Release URL
         run: |
           echo "::notice::Release available at: https://github.com/${{ github.repository }}/releases"
-  
+          
