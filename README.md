@@ -4,10 +4,10 @@ This is just an another alternative for who can't build IPA in YTLitePlus or The
 If you have any problem,feel free to open issues.
 ## Main Features
 - YTLite (eg. Download Videos,No ads,Background Playback)
-- NoYTPremium(Remove Premium alerts)
-- YouMute(Mute the video faster)
-- YouSpeed(Change video speeds in video overlay)
-- YouQuality(Change video quality in video overlay)
+- NoYTPremium (Remove Premium alerts)
+- YouMute (Mute the video faster)
+- YouSpeed (Change video speeds in video overlay)
+- YouQuality (Change video quality in video overlay)
 - And Much more...
 
 ## FAQ
