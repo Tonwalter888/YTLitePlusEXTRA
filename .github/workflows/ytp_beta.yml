@@ -186,16 +186,6 @@ jobs:
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
 
-      - name: Clone YTVideoOverlay
-        run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoOverlay.git
-
-      - name: Clone Alderis
-        run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
-
       - name: Clone NoYTPremium
         run: |
           cd ${{ github.workspace }}
@@ -267,28 +257,11 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
-      - name: Build YouSlider
-        run: |
-          cd ${{ github.workspace }}/YouSlider
-          make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/youslide.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
-
       - name: Build YouMute
         run: |
           cd ${{ github.workspace }}/YouMute
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/ym.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
-      - name: Build Alderis
-        run: |
-          cd ${{ github.workspace }}/Alderis
-          make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/adr.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
