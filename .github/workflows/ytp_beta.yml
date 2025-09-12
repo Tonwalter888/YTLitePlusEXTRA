@@ -386,6 +386,8 @@ jobs:
           
       - name: Build YouTimeStamp
         run: |
+          cd ${{ github.workspace }}
+          git clone https://github.com/PoomSmart/YouTubeHeader.git
           cd ${{ github.workspace }}/YouTimeStamp
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/youtime.deb
