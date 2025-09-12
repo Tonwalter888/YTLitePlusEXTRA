@@ -1,4 +1,4 @@
-name: Create YTLitePlusEXTRA IPA (For Non-Sideloading)
+name: Create YTLitePlusEXTRA IPA (For Not For Sideloading)
 on:
   workflow_dispatch:
     inputs:
