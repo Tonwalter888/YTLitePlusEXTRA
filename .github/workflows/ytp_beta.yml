@@ -275,7 +275,7 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
-       - name: Build YouSlider
+      - name: Build YouSlider
         run: |
           cd ${{ github.workspace }}/YouSlider
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
