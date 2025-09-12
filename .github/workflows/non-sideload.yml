@@ -466,14 +466,14 @@ jobs:
             fi
           done
 
-          cyan -i youtube.ipa -o YTLitePlusEXTRA_Non-Sideloading_${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
+          cyan -i youtube.ipa -o YTLitePlusEXTRA_Not-For-Sideloading_${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
       - name: Upload to GitHub Releases
         uses: softprops/action-gh-release@v2.0.1
         with:
-          tag_name: ytliteplusextra-nonsideloading${{ github.run_number }}
-          name: YTLitePlusEXTRA_Non-Sideloading v${{ inputs.tweak_version }} (${{ github.run_number }})
-          files: YTLitePlusEXTRA_Non-Sideloading_${{ inputs.tweak_version }}.ipa
+          tag_name: ytliteplusextra-notforsideloading${{ github.run_number }}
+          name: YTLitePlusEXTRA_Not-For-Sideloading v${{ inputs.tweak_version }} (${{ github.run_number }})
+          files: YTLitePlusEXTRA_Not-For-Sideloading_${{ inputs.tweak_version }}.ipa
           draft: true
 
       - name: Output Release URL
