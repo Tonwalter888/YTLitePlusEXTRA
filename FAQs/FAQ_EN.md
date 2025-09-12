@@ -2,8 +2,7 @@
 
 <details>
   <summary>What iOS versions does YTLitePlusEXTRA support?</summary>
-    <p>YouTube Plus supports iOS 14 and above. <strong>However</strong>, if you're sideloading it on a non-jailbroken device, you must also consider the YouTube app's compatibility with your iOS version. Below is a list of the latest supported YouTube versions per iOS:</p>
-    <li><strong>iOS 14</strong>: YouTube v19.20.2</li>
+    <p>YTLitePlusEXTRA supports iOS 15 and above. <strong>However</strong>, if you're sideloading it on a non-jailbroken device, you must also consider the YouTube app's compatibility with your iOS version. Below is a list of the latest supported YouTube versions per iOS:</p>
     <li><strong>iOS 15</strong>: YouTube v20.21.6</li>
     <li><strong>iOS 16+</strong>: Any version, as supported by YouTube(but recommend version 20.31.6 due to some shorts bugs in newer YT)</li>
 </details>
