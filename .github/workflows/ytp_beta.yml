@@ -157,13 +157,13 @@ jobs:
           git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
 
       - name: Clone YTUHD (For Sideload Devices)
-        if: ${{ inputs.enable_sideload == 'true' }}
+        if: ${{ inputs.enable_sideload = 'true' }}
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git
 
       - name: Clone YTUHD (For Non-Sideload Devices)
-        if: ${{ inputs.enable_sideload == 'false' }}
+        if: ${{ inputs.enable_sideload = 'false' }}
         uses: actions/checkout@v4.1.7
         with:
           repository: PoomSmart/YTUHD
@@ -228,7 +228,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build YTUHD (For Sideload Devices)
-        if: ${{ inputs.enable_sideload == 'true' }}
+        if: ${{ inputs.enable_sideload = 'true' }}
         run: |
           cd ${{ github.workspace }}/YTUHD
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
@@ -237,7 +237,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Build YTUHD (For Non-Sideload Devices)
-        if: ${{ inputs.enable_sideload == 'false' }}
+        if: ${{ inputs.enable_sideload = 'false' }}
         run: |
           cd ${{ github.workspace }}/YTUHD
           make clean package DEBUG=0 FINALPACKAGE=1
