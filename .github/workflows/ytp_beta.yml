@@ -152,18 +152,13 @@ jobs:
           git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
 
       - name: Clone Alderis
-        run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
+        uses: actions/checkout@v4.1.7
+        with:
+          repository: hbang/Alderis
+          ref: 76a3722d375fdd4c95b3719962edff1f5eb3b0f1
+          path: ${{ github.workspace }}/Alderis
 
-      - name: Clone YTUHD (For Sideload Devices)
-        if: ${{ inputs.enable_sideload == 'true' }}
-        run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git
-
-      - name: Clone YTUHD (For Non-Sideload Devices)
-        if: ${{ inputs.enable_sideload == 'false' }}
+      - name: Clone YTUHD
         uses: actions/checkout@v4.1.7
         with:
           repository: PoomSmart/YTUHD
@@ -188,16 +183,11 @@ jobs:
           git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
 
       - name: Clone YouSlider
-        run: |
-         if [ -d "${{ github.workspace }}/YouSlider" ]; then
-            echo "YouSldier exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/YouSlider
-            git pull
-          else
-            echo "YouSlider does not exist. Cloning repository..."
-            cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
-          fi
+        uses: actions/checkout@v4.1.7
+        with:
+          repository: PoomSmart/YouSlider
+          ref: 76a3722d375fdd4c95b3719962edff1f5eb3b0f1
+          path: ${{ github.workspace }}/YouSlider
           
       - name: Clone YouGroupSettings
         run: |
@@ -208,6 +198,12 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/NoYTPremium.git
+
+      - name: Clone YTHoldForSpeed
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 --recurse-submodules https://github.com/aricloverEXTRA/YTHoldForSpeed-Sideloaded.git
+
 
       - name: Clone YTNoPaidPromo
         run: |
@@ -222,22 +218,12 @@ jobs:
       - name: Build YouPiP
         run: |
           cd ${{ github.workspace }}/YouPiP
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/youpip.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
-      - name: Build YTUHD (For Sideload Devices)
-        if: ${{ inputs.enable_sideload == 'true' }}
-        run: |
-          cd ${{ github.workspace }}/YTUHD
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
-          mv packages/*.deb ${{ github.workspace }}/ytuhd.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
-      - name: Build YTUHD (For Non-Sideload Devices)
-        if: ${{ inputs.enable_sideload == 'false' }}
+      - name: Build YTUHD
         run: |
           cd ${{ github.workspace }}/YTUHD
           make clean package DEBUG=0 FINALPACKAGE=1
@@ -304,7 +290,7 @@ jobs:
       - name: Build YouSlider
         run: |
           cd ${{ github.workspace }}/YouSlider
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/youslide.deb
         env:
           THEOS: ${{ github.workspace }}/theos
