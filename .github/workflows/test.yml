@@ -152,6 +152,22 @@ jobs:
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
           fi
 
+      - name: Clone Alderis
+        uses: actions/checkout@v4.1.7
+        with:
+          repository: hbang/Alderis
+          ref: 92cfde8ee6e76fa28378c644b9be81a5dcf233b0
+          path: ${{ github.workspace }}/Alderis
+          submodules: recursive
+
+      - name: Build Alderis
+        run: |
+          cd ${{ github.workspace }}/Alderis
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/adr.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
       - name: Clone YTUHD
         uses: actions/checkout@v4.1.7
         with:
