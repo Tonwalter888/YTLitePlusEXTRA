@@ -45,8 +45,8 @@ on:
         required: true
         default: false
 
-      enable_test:
-        description: "Are you using for Sideload devices? (IMPORTANT)"
+      enable_sideload:
+        description: "Are you using for Sideload (eg. AltStore,Sidestore,Sideloadly) devices? (IMPORTANT)"
         type: boolean 
         required: true
         default: false  
@@ -196,12 +196,20 @@ jobs:
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
 
-      - name: Clone YTUHD
-        if: ${{ inputs.enable_ytuhd = 'true' }}
+      - name: Clone YTUHD (For Sideload Devices)
+        if: ${{ inputs.enable_ytuhd || inputs.enable_sideload == 'true' }}
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git
 
+      - name: Clone YTUHD (For Non-Sideload Devices)
+        if: ${{ inputs.enable_ytuhd || inputs.enable_sideload == 'false' }}
+        uses: actions/checkout@v4.1.7
+        with:
+          repository: PoomSmart/YTUHD
+          ref: 0f59b38817d554ab692a0053456319847a6ab1a1
+          path: ${{ github.workspace }}/YTUHD
+      
       - name: Clone YTVideoOverlay
         run: |
          if [ -d "${{ github.workspace }}/YTVideoOverlay" ]; then
@@ -262,7 +270,7 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
-      - name: Build YTUHD
+      - name: Build YTUHD (For Sideload Devices)
         run: |
           cd ${{ github.workspace }}/YTUHD
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
