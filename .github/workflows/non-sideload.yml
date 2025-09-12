@@ -158,18 +158,7 @@ jobs:
           repository: PoomSmart/YTUHD
           ref: 0f59b38817d554ab692a0053456319847a6ab1a1
           path: ${{ github.workspace }}/YTUHD
-          
-      - name: Clone Return-YouTube-Dislikes
-        run: |
-         if [ -d "${{ github.workspace }}/Return-YouTube-Dislikes" ]; then
-            echo "Return-YouTube-Dislikes exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/Return-YouTube-Dislikes
-            git pull
-          else
-            echo "Return-YouTube-Dislikes does not exist. Cloning repository..."
-            cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
-          fi
+          submodules: recursive
 
       - name: Clone YouGroupSettings
         run: |
@@ -277,7 +266,55 @@ jobs:
             echo "IAmYouTube does not exist. Cloning repository..."
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/IAmYouTube.git
-          fi   
+          fi 
+          
+      - name: Clone YTNoPaidPromo
+        run: |
+         if [ -d "${{ github.workspace }}/YTNoPaidPromo" ]; then
+            echo "YTNoPaidPromo exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTNoPaidPromo
+            git pull
+          else
+            echo "YTNoPaidPromo does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YTNoPaidPromo.git
+          fi
+
+      - name: Clone YTClassicVideoQuality
+        run: |
+         if [ -d "${{ github.workspace }}/YTClassicVideoQuality" ]; then
+            echo "YTClassicVideoQuality exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTClassicVideoQuality
+            git pull
+          else
+            echo "YTClassicVideoQuality does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YTClassicVideoQuality.git
+          fi
+          
+      - name: Clone YouChooseQuality
+        run: |
+         if [ -d "${{ github.workspace }}/YouChooseQuality" ]; then
+            echo "YouChooseQuality exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouChooseQuality
+            git pull
+          else
+            echo "YouChooseQuality does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouChooseQuality.git
+          fi
+
+      - name: Clone YouMute
+        run: |
+         if [ -d "${{ github.workspace }}/YouMute" ]; then
+            echo "YouMute exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouMute
+            git pull
+          else
+            echo "YouMute does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
+          fi
         
       - name: Build YouPiP
         run: |
@@ -285,7 +322,7 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/youpip.deb
         env:
-          THEOS: ${{ github.workspace }}/theos
+          THEOS: ${{ github.workspace }}/theos    
 
       - name: Build YTUHD
         run: |
@@ -354,7 +391,7 @@ jobs:
       - name: Build DontEatMyContent
         run: |
           cd ${{ github.workspace }}/DontEatMyContent
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/demc.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -362,7 +399,7 @@ jobs:
       - name: Build YTHoldForSpeed
         run: |
           cd ${{ github.workspace }}/YTHoldForSpeed
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/ytholdspeed.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -370,8 +407,40 @@ jobs:
       - name: Build IAmYouTube
         run: |
           cd ${{ github.workspace }}/IAmYouTube
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/imyt.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouChooseQuality
+        run: |
+          cd ${{ github.workspace }}/YouChooseQuality
+          make clean package DEBUG=0 FINALPACKAGE=1 
+          mv packages/*.deb ${{ github.workspace }}/youchoose.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos    
+
+      - name: Build YTClassicVideoQuality
+        run: |
+          cd ${{ github.workspace }}/YTClassicVideoQuality
+          make clean package DEBUG=0 FINALPACKAGE=1 
+          mv packages/*.deb ${{ github.workspace }}/ytcvq.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YTNoPaidPromo
+        run: |
+          cd ${{ github.workspace }}/YTNoPaidPromo
+          make clean package DEBUG=0 FINALPACKAGE=1 
+          mv packages/*.deb ${{ github.workspace }}/ytnopromo.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouMute
+        run: |
+          cd ${{ github.workspace }}/YouMute
+          make clean package DEBUG=0 FINALPACKAGE=1 
+          mv packages/*.deb ${{ github.workspace }}/ym.deb
         env:
           THEOS: ${{ github.workspace }}/theos
      
@@ -385,7 +454,7 @@ jobs:
             fi
           done
 
-          cyan -i youtube.ipa -o YTLitePlusEXTRA_Non-Sideloading_${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
+          cyan -i youtube.ipa -o YTLitePlusEXTRA_For-Non-Sideloading_${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
       - name: Upload to GitHub Releases
         uses: softprops/action-gh-release@v2.0.1
