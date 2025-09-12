@@ -1,5 +1,5 @@
 name: Create YTLitePlusEXTRA IPA [For Testing]
-
+##If you found this file have an update,
 on:
   workflow_dispatch:
     inputs:
@@ -153,9 +153,12 @@ jobs:
           submodules: recursive
 
       - name: Clone YouLoop
-        run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/bhackel/YouLoop.git
+        uses: actions/checkout@v4.1.7
+        with:
+          repository: bhackel/YouLoop
+          ref: 899a2fdd539ae308e5847bbb3d7212cfce30a3a6
+          path: ${{ github.workspace }}/YouLoop
+          submodules: recursive
 
       - name: Clone YTVideoOverlay
         run: |
