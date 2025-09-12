@@ -165,6 +165,18 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/bhackel/YouLoop.git
           fi
+
+      - name: Clone YTVideoOverlay
+        run: |
+         if [ -d "${{ github.workspace }}/YTVideoOverlay" ]; then
+            echo "YTVideoOverlay exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTVideoOverlay
+            git pull
+          else
+            echo "YTVideoOverlay does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoOverlay.git
+          fi
           
       - name: Clone Return-YouTube-Dislikes
         run: |
