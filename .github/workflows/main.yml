@@ -153,11 +153,16 @@ jobs:
           fi
 
       - name: Clone YTUHD
-        uses: actions/checkout@v4.1.7
-        with:
-          repository: PoomSmart/YTUHD
-          ref: 0f59b38817d554ab692a0053456319847a6ab1a1
-          path: ${{ github.workspace }}/YTUHD
+        run: |
+         if [ -d "${{ github.workspace }}/YTUHD" ]; then
+            echo "YTUHD exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTUHD
+            git pull
+          else
+            echo "YTUHD does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git  
+          fi
           
       - name: Clone Return-YouTube-Dislikes
         run: |
