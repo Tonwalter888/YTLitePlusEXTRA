@@ -145,13 +145,10 @@ jobs:
           git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
 
       - name: Clone YTUHD
-        uses: actions/checkout@v4.1.7
-        with:
-          repository: PoomSmart/YTUHD
-          ref: 61fb68dbb4de4707d6ca1a7c18565c76f91a6943
-          path: ${{ github.workspace }}/YTUHD
-          submodules: recursive
-
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git
+          
       - name: Clone YTVideoOverlay
         run: |
          if [ -d "${{ github.workspace }}/YTVideoOverlay" ]; then
