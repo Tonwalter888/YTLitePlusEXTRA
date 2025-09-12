@@ -3,12 +3,6 @@ name: Create YTLitePlusEXTRA IPA [For Testing]
 on:
   workflow_dispatch:
     inputs:
-      enable_sideload:
-        description: "Are you using for Sideload (Non-JailBreak) device? (IMPORTANT)"
-        type: boolean 
-        required: true
-        default: false  
-        
       ipa_url:
         description: "URL to the decrypted IPA file"
         default: ""
