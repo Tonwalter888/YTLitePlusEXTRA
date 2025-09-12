@@ -121,7 +121,6 @@ jobs:
             echo "Copying YouTubeHeader to YTHeaders..."
             rm -rf "$THEOS/include/YTHeaders"
             cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
-            cp -r "$THEOS/include/YouTubeHeader" "${{ github.workspace }}/YouTubeHeader"
           fi
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -151,22 +150,6 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
           fi
-
-      - name: Clone Alderis
-        uses: actions/checkout@v4.1.7
-        with:
-          repository: hbang/Alderis
-          ref: 92cfde8ee6e76fa28378c644b9be81a5dcf233b0
-          path: ${{ github.workspace }}/Alderis
-          submodules: recursive
-
-      - name: Build Alderis
-        run: |
-          cd ${{ github.workspace }}/Alderis
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
-          mv packages/*.deb ${{ github.workspace }}/adr.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Clone YTUHD
         uses: actions/checkout@v4.1.7
@@ -270,18 +253,6 @@ jobs:
             echo "DontEatMyContent does not exist. Cloning repository..."
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
-          fi
-
-      - name: Clone YTHoldForSpeed
-        run: |
-         if [ -d "${{ github.workspace }}/YTHoldForSpeed" ]; then
-            echo "YTHoldForSpeed exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/YTHoldForSpeed
-            git pull
-          else
-            echo "YTHoldForSpeed does not exist. Cloning repository..."
-            cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/Tonwalter888/YTHoldForSpeed.git
           fi
 
       - name: Clone IAmYouTube
@@ -421,14 +392,6 @@ jobs:
           cd ${{ github.workspace }}/DontEatMyContent
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/demc.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
-      - name: Build YTHoldForSpeed
-        run: |
-          cd ${{ github.workspace }}/YTHoldForSpeed
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
-          mv packages/*.deb ${{ github.workspace }}/ytholdspeed.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
