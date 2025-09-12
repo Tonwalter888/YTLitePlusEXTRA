@@ -99,7 +99,7 @@ jobs:
         id: download_ytp
         run: |
           deb_url="https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.tweak_version }}/com.dvntm.ytlite_${{ inputs.tweak_version }}_iphoneos-arm.deb"
-          wget "$deb_url" --no-verbose -O ${{ github.workspace }}/ytplus.deb
+          wget "$deb_url" --no-verbose -O ${{ github.workspace }}/ytlite.deb
 
       - name: Clone Open in YouTube (Safari Extension)
         run: |
@@ -434,7 +434,7 @@ jobs:
 
       - name: Inject tweaks into IPA
         run: |
-          tweaks="ytplus.deb OpenYoutubeSafariExtension.appex"
+          tweaks="ytlite.deb OpenYoutubeSafariExtension.appex"
 
           for f in *.deb; do
             if [ -f "$f" ]; then
