@@ -156,12 +156,10 @@ jobs:
         uses: actions/checkout@v4.1.7
         with:
           repository: theos/theos
-          ref: 8ae109d91df472dce495c1652183ff40d9fbef24
+          ref: a8adbfcd279f815c282d59be553be462759aab22
           path: ${{ github.workspace }}/theos
           submodules: recursive
-
-      
-          
+     
       - name: Clone Return-YouTube-Dislikes
         run: |
          if [ -d "${{ github.workspace }}/Return-YouTube-Dislikes" ]; then
