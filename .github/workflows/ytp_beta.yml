@@ -247,6 +247,14 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
+      - name: Build Alderis
+        run: |
+          cd ${{ github.workspace }}/Alderis
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/adr.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
       - name: Build YouGroupSettings
         run: |
           cd ${{ github.workspace }}/YouGroupSettings
