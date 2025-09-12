@@ -364,14 +364,6 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
-      - name: Build YTHoldForSpeed
-        run: |
-          cd ${{ github.workspace }}/YTHoldForSpeed
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
-          mv packages/*.deb ${{ github.workspace }}/ytholdspeed.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
       - name: Build IAmYouTube
         run: |
           cd ${{ github.workspace }}/IAmYouTube
