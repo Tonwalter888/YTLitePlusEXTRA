@@ -160,6 +160,18 @@ jobs:
           path: ${{ github.workspace }}/YTUHD
           submodules: recursive
 
+      - name: Clone Return-YouTube-Dislikes
+        run: |
+         if [ -d "${{ github.workspace }}/Return-YouTube-Dislikes" ]; then
+            echo "Return-YouTube-Dislikes exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/Return-YouTube-Dislikes
+            git pull
+          else
+            echo "Return-YouTube-Dislikes does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
+          fi
+
       - name: Clone YouGroupSettings
         run: |
          if [ -d "${{ github.workspace }}/YouGroupSettings" ]; then
