@@ -16,7 +16,7 @@ This is just an another alternative for who can't build IPA in YTLitePlus.
 - [🇮🇹 FAQ in Italiano](FAQs/FAQ_IT.md)
 - [🇵🇱 FAQ po polsku](FAQs/FAQ_PL.md)
 
-## How to build a YTLitePlusEXTRA app using Github actions
+## How to build a YTLitePlusEXTRA IPA using Github actions
 > [!NOTE]
 > If this your first time, complete following steps before starting:
 >
@@ -24,7 +24,7 @@ This is just an another alternative for who can't build IPA in YTLitePlus.
 > 2. On your forked repository, go to **Repository Settings** > **Actions**, enable **Read and Write** permissions.
 
 <details>
-  <summary>How to build the YTLitePlusEXTRA app</summary>
+  <summary>How to build the YTLitePlusEXTRA IPA</summary>
   <ol>
     <li>Click on <strong>Sync fork</strong>, and if your branch is out-of-date, click on <strong>Update branch</strong>.</li>
     <li>Navigate to the <strong>Actions tab</strong> in your forked repository and select <strong>Create YTLitePlusEXTRA IPA( DON'T USE FOR TESTING)</strong>.</li>
