@@ -1,5 +1,5 @@
 # YTLitePlusEXTRA
-This is a fork repo from YTLite,but add more tweaks (from PoomSmart) similar to YTLitePlus.
+This is a fork repo from YTLite,but add more tweaks similar to YTLitePlus.
 This is just an another alternative for who can't build IPA in YTLitePlus or The app is unusable.
 If you have any problem,feel free to open issues.
 ## Main Features
