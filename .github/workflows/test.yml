@@ -156,10 +156,10 @@ jobs:
         uses: actions/checkout@v4.1.7
         with:
           repository: PoomSmart/YTUHD
-          ref: ca7c21d866137112b6a8cf82c439e4c5325dc7ca
+          ref: 0f59b38817d554ab692a0053456319847a6ab1a1
           path: ${{ github.workspace }}/YTUHD
           submodules: recursive
-     
+
       - name: Clone Return-YouTube-Dislikes
         run: |
          if [ -d "${{ github.workspace }}/Return-YouTube-Dislikes" ]; then
@@ -278,7 +278,43 @@ jobs:
             echo "IAmYouTube does not exist. Cloning repository..."
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/IAmYouTube.git
-          fi   
+          fi 
+          
+      - name: Clone YTNoPaidPromo
+        run: |
+         if [ -d "${{ github.workspace }}/YTNoPaidPromo" ]; then
+            echo "YTNoPaidPromo exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTNoPaidPromo
+            git pull
+          else
+            echo "YTNoPaidPromo does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YTNoPaidPromo.git
+          fi
+
+      - name: Clone YTClassicVideoQuality
+        run: |
+         if [ -d "${{ github.workspace }}/YTClassicVideoQuality" ]; then
+            echo "YTClassicVideoQuality exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTClassicVideoQuality
+            git pull
+          else
+            echo "YTClassicVideoQuality does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YTClassicVideoQuality.git
+          fi
+          
+      - name: Clone YouChooseQuality
+        run: |
+         if [ -d "${{ github.workspace }}/YouChooseQuality" ]; then
+            echo "YouChooseQuality exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouChooseQuality
+            git pull
+          else
+            echo "YouChooseQuality does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouChooseQuality.git
+          fi
 
       - name: Clone YouMute
         run: |
@@ -298,7 +334,7 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/youpip.deb
         env:
-          THEOS: ${{ github.workspace }}/theos
+          THEOS: ${{ github.workspace }}/theos    
 
       - name: Build YTUHD
         run: |
@@ -379,12 +415,36 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/ytholdspeed.deb
         env:
           THEOS: ${{ github.workspace }}/theos
- 
+
       - name: Build IAmYouTube
         run: |
           cd ${{ github.workspace }}/IAmYouTube
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/imyt.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouChooseQuality
+        run: |
+          cd ${{ github.workspace }}/YouChooseQuality
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/youchoose.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos    
+
+      - name: Build YTClassicVideoQuality
+        run: |
+          cd ${{ github.workspace }}/YTClassicVideoQuality
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/ytcvq.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YTNoPaidPromo
+        run: |
+          cd ${{ github.workspace }}/YTNoPaidPromo
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/ytnopromo.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
@@ -406,14 +466,14 @@ jobs:
             fi
           done
 
-          cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
+          cyan -i youtube.ipa -o YTLitePlusEXTRA_Testing_${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
       - name: Upload to GitHub Releases
         uses: softprops/action-gh-release@v2.0.1
         with:
-          tag_name: ytliteplusextra-${{ github.run_number }}
-          name: YTLitePlusEXTRA v${{ inputs.tweak_version }} (${{ github.run_number }})
-          files: YTLitePlusEXTRA_${{ inputs.tweak_version }}.ipa
+          tag_name: ytliteplusextra-testing${{ github.run_number }}
+          name: YTLitePlusEXTRA_Testing v${{ inputs.tweak_version }} (${{ github.run_number }})
+          files: YTLitePlusEXTRA_Testing_${{ inputs.tweak_version }}.ipa
           draft: true
 
       - name: Output Release URL
