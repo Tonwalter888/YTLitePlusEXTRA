@@ -144,21 +144,26 @@ jobs:
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
 
+      - name: Clone Alderis
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 https://github.com/hbang/Alderis
+
       - name: Clone YTUHD
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git
           
-      - name: Clone YTVideoOverlay
+      - name: Clone YouLoop
         run: |
-         if [ -d "${{ github.workspace }}/YTVideoOverlay" ]; then
-            echo "YTVideoOverlay exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/YTVideoOverlay
+         if [ -d "${{ github.workspace }}/YouLoop" ]; then
+            echo "YouLoop exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouLoop
             git pull
           else
-            echo "YTVideoOverlay does not exist. Cloning repository..."
+            echo "YouLoop does not exist. Cloning repository..."
             cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoOverlay.git
+            git clone --quiet --depth=1 https://github.com/bhackel/YouLoop.git
           fi
           
       - name: Clone Return-YouTube-Dislikes
@@ -201,7 +206,7 @@ jobs:
       - name: Build YouPiP
         run: |
           cd ${{ github.workspace }}/YouPiP
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/youpip.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -217,7 +222,7 @@ jobs:
       - name: Build Return-YouTube-Dislikes
         run: |
           cd ${{ github.workspace }}/Return-YouTube-Dislikes
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ryd.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -225,7 +230,7 @@ jobs:
       - name: Build YouGroupSettings
         run: |
           cd ${{ github.workspace }}/YouGroupSettings
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ygs.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -233,7 +238,7 @@ jobs:
       - name: Build YTVideoOverlay
         run: |
           cd ${{ github.workspace }}/YTVideoOverlay
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ytvo.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -241,7 +246,7 @@ jobs:
       - name: Build NoYTPremium
         run: |
           cd ${{ github.workspace }}/NoYTPremium
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/nopremium.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -249,7 +254,7 @@ jobs:
       - name: Build YTNoPaidPromo
         run: |
           cd ${{ github.workspace }}/YTNoPaidPromo
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ytnopromo.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -257,8 +262,24 @@ jobs:
       - name: Build YouMute
         run: |
           cd ${{ github.workspace }}/YouMute
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ym.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouSlider
+        run: |
+          cd ${{ github.workspace }}/YouSlider
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/youslide.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+       - name: Build YouSlider
+        run: |
+          cd ${{ github.workspace }}/YouSlider
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/youslide.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
