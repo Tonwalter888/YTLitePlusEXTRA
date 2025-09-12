@@ -153,16 +153,14 @@ jobs:
           fi
 
       - name: Clone YTUHD
-        run: |
-         if [ -d "${{ github.workspace }}/YTUHD" ]; then
-            echo "YTUHD exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/YTUHD
-            git pull
-          else
-            echo "YTUHD does not exist. Cloning repository..."
-            cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git  
-          fi
+        uses: actions/checkout@v4.1.7
+        with:
+          repository: theos/theos
+          ref: 8ae109d91df472dce495c1652183ff40d9fbef24
+          path: ${{ github.workspace }}/theos
+          submodules: recursive
+
+      
           
       - name: Clone Return-YouTube-Dislikes
         run: |
@@ -283,6 +281,18 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/IAmYouTube.git
           fi   
+
+      - name: Clone YouMute
+        run: |
+         if [ -d "${{ github.workspace }}/YouMute" ]; then
+            echo "YouMute exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouMute
+            git pull
+          else
+            echo "YouMute does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
+          fi
         
       - name: Build YouPiP
         run: |
@@ -364,11 +374,27 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
+      - name: Build YTHoldForSpeed
+        run: |
+          cd ${{ github.workspace }}/YTHoldForSpeed
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/ytholdspeed.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+ 
       - name: Build IAmYouTube
         run: |
           cd ${{ github.workspace }}/IAmYouTube
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/imyt.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouMute
+        run: |
+          cd ${{ github.workspace }}/YouMute
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/ym.deb
         env:
           THEOS: ${{ github.workspace }}/theos
      
