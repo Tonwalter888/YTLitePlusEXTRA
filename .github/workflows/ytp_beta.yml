@@ -180,7 +180,7 @@ jobs:
         uses: actions/checkout@v4.1.7
         with:
           repository: PoomSmart/YouSlider
-          ref: 76a3722d375fdd4c95b3719962edff1f5eb3b0f1
+          ref: 6950c7ccadf791d976d6a214f813c52f54cc71f4
           path: ${{ github.workspace }}/YouSlider
           
       - name: Clone YouGroupSettings
