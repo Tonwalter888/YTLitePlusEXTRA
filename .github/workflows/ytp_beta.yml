@@ -268,7 +268,7 @@ jobs:
           else
             echo "DontEatMyContent does not exist. Cloning repository..."
             cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/aricloverEXTRA/YTHoldForSpeed-Sideloaded.git
+            git clone --quiet --depth=1 https://github.com/Tonwalter888/YTHoldForSpeed.git
           fi
 
       - name: Clone YouTimeStamp
@@ -377,7 +377,7 @@ jobs:
 
       - name: Build YTHoldForSpeed
         run: |
-          cd ${{ github.workspace }}/YTHoldForSpeed-Sideloaded
+          cd ${{ github.workspace }}/YTHoldForSpeed
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ytholdspeed.deb
         env:
