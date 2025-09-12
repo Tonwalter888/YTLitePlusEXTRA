@@ -155,9 +155,9 @@ jobs:
       - name: Clone YTUHD
         uses: actions/checkout@v4.1.7
         with:
-          repository: theos/theos
+          repository: PoomSmart/YTUHD
           ref: a8adbfcd279f815c282d59be553be462759aab22
-          path: ${{ github.workspace }}/theos
+          path: ${{ github.workspace }}/YTUHD
           submodules: recursive
      
       - name: Clone Return-YouTube-Dislikes
