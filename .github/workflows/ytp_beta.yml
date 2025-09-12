@@ -1,5 +1,5 @@
 name: Create YTLitePlusEXTRA IPA [For Testing]
-##If you found this file have an update,
+##If you found this file have an update, Please don't sync your fork.##
 on:
   workflow_dispatch:
     inputs:
