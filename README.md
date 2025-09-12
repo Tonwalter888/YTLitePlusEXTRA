@@ -8,7 +8,6 @@ If you have any problem,feel free to open issues.
 - YouMute(Mute the video faster)
 - YouSpeed(Change video speeds in video overlay)
 - YouQuality(Change video quality in video overlay)
-- IAmYouTube (Acts the app as a normal Youtube app)
 - And Much more...
 
 ## FAQ
