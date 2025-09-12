@@ -272,18 +272,6 @@ jobs:
             git clone --quiet --depth=1 https://github.com/Tonwalter888/YTHoldForSpeed.git
           fi
 
-      - name: Clone YouTimeStamp
-        run: |
-         if [ -d "${{ github.workspace }}/YouTimeStamp" ]; then
-            echo "YouTimeStamp exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/YouTimeStamp
-            git pull
-          else
-            echo "YouTimeStamp does not exist. Cloning repository..."
-            cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/aricloverEXTRA/YouTimeStamp.git
-          fi
-
       - name: Clone IAmYouTube
         run: |
          if [ -d "${{ github.workspace }}/IAmYouTube" ]; then
@@ -381,17 +369,6 @@ jobs:
           cd ${{ github.workspace }}/YTHoldForSpeed
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ytholdspeed.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-          
-      - name: Build YouTimeStamp
-        run: |
-          cd ${{ github.workspace }}
-          rm -fr ${{ github.workspace }}/YouTubeHeader
-          git clone https://github.com/PoomSmart/YouTubeHeader.git
-          cd ${{ github.workspace }}/YouTimeStamp
-          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
-          mv packages/*.deb ${{ github.workspace }}/youtime.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
