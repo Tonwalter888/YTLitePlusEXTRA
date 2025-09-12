@@ -157,6 +157,11 @@ jobs:
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/bhackel/YouLoop.git
 
+      - name: Clone YTVideoOverlay
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoOverlay.git
+
       - name: Build YouLoop
         run: |
           cd ${{ github.workspace }}/YouLoop
