@@ -3,6 +3,53 @@ name: Create YTLitePlusEXTRA IPA [For Testing]
 on:
   workflow_dispatch:
     inputs:
+      enable_youpip:
+        description: "Integrate YouPiP"
+        type: boolean
+        required: true
+        default: false
+
+      enable_ytuhd:
+        description: "Integrate YTUHD"
+        type: boolean
+        required: true
+        default: false
+
+      enable_yq:
+        description: "Integrate YouQuality"
+        type: boolean
+        required: true
+        default: false
+
+      enable_ryd:
+        description: "Integrate Return YouTube Dislikes"
+        type: boolean
+        required: true
+        default: false
+        
+      enable_noytpremium:
+        description: "Integrate NoYTPremium"
+        type: boolean
+        required: true
+        default: false
+
+      enable_ytnopromo:
+        description: "Integrate YTNoPaidPromo"
+        type: boolean
+        required: true
+        default: false
+
+      enable_youmute:
+        description: "Integrate YouMute"
+        type: boolean
+        required: true
+        default: false
+
+      enable_test:
+        description: "Are you using for Sideload devices? (IMPORTANT)"
+        type: boolean 
+        required: true
+        default: false  
       ipa_url:
         description: "URL to the decrypted IPA file"
         default: ""
@@ -138,6 +185,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Clone YouPiP
+        if: ${{ inputs.enable_youpip }}
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
@@ -145,9 +193,10 @@ jobs:
       - name: Clone Alderis
         run: |
           cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/hbang/Alderis
+          git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
 
       - name: Clone YTUHD
+        if: ${{ inputs.enable_ytuhd = 'true' }}
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git
@@ -165,6 +214,7 @@ jobs:
           fi
           
       - name: Clone Return-YouTube-Dislikes
+        if: ${{ inputs.enable_ryd }}
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
@@ -187,11 +237,13 @@ jobs:
           git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
 
       - name: Clone NoYTPremium
+        if: ${{ inputs.enable_noytpremium }}
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/NoYTPremium.git
 
       - name: Clone YTNoPaidPromo
+        if: ${{ inputs.enable_ytnopromo }}
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 --recurse-submodules https://github.com/PoomSmart/YTNoPaidPromo.git
