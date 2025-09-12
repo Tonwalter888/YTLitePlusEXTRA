@@ -156,7 +156,7 @@ jobs:
         uses: actions/checkout@v4.1.7
         with:
           repository: bhackel/YouLoop
-          ref: 899a2fdd539ae308e5847bbb3d7212cfce30a3a6
+          ref: 9b9079be8cccac62b2a374e6a1e418e584276c08
           path: ${{ github.workspace }}/YouLoop
           submodules: recursive
 
