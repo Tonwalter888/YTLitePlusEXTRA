@@ -1,6 +1,6 @@
 # YTLitePlusEXTRA
 This is a fork repo from YTLite,but add more tweaks (from PoomSmart) similar to YTLitePlus.
-This is just an another alternative for who can't build IPA in YTLitePlus or the app is unusable.
+This is just an another alternative for who can't build IPA in YTLitePlus or The app is unusable.
 
 ## Main Features
 - YTLite (eg. Download Videos,No ads,Background Playback)
