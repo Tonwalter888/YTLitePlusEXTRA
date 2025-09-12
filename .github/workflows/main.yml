@@ -323,7 +323,7 @@ jobs:
       - name: Build YouPiP
         run: |
           cd ${{ github.workspace }}/YouPiP
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/youpip.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -331,7 +331,7 @@ jobs:
       - name: Build YTUHD
         run: |
           cd ${{ github.workspace }}/YTUHD
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ytuhd.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -339,7 +339,7 @@ jobs:
       - name: Build Return-YouTube-Dislikes
         run: |
           cd ${{ github.workspace }}/Return-YouTube-Dislikes
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ryd.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -347,7 +347,7 @@ jobs:
       - name: Build YouGroupSettings
         run: |
           cd ${{ github.workspace }}/YouGroupSettings
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ygs.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -355,7 +355,7 @@ jobs:
       - name: Build YTVideoOverlay
         run: |
           cd ${{ github.workspace }}/YTVideoOverlay
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ytvo.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -363,7 +363,7 @@ jobs:
       - name: Build NoYTPremium
         run: |
           cd ${{ github.workspace }}/NoYTPremium
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/nopremium.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -371,7 +371,7 @@ jobs:
       - name: Build YTClassicVideoQuality
         run: |
           cd ${{ github.workspace }}/YTClassicVideoQuality
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ytcvq.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -379,7 +379,7 @@ jobs:
       - name: Build YTNoPaidPromo
         run: |
           cd ${{ github.workspace }}/YTNoPaidPromo
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ytnopromo.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -387,7 +387,7 @@ jobs:
       - name: Build YouMute
         run: |
           cd ${{ github.workspace }}/YouMute
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ym.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -395,7 +395,7 @@ jobs:
       - name: Build YTABConfig
         run: |
           cd ${{ github.workspace }}/YTABConfig
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/abconfig.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -403,7 +403,7 @@ jobs:
       - name: Build YouChooseQuality
         run: |
           cd ${{ github.workspace }}/YouChooseQuality
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/youchoose.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -411,7 +411,7 @@ jobs:
       - name: Build YouQuality
         run: |
           cd ${{ github.workspace }}/YouQuality
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/youqual.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -419,7 +419,7 @@ jobs:
       - name: Build YouSpeed
         run: |
           cd ${{ github.workspace }}/YouSpeed
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/youspeed.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -427,7 +427,7 @@ jobs:
       - name: Build DontEatMyContent
         run: |
           cd ${{ github.workspace }}/DontEatMyContent
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/demc.deb
         env:
           THEOS: ${{ github.workspace }}/theos
