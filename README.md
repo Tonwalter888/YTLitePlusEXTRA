@@ -11,6 +11,7 @@ Also,if you see a popup says "Incompatible Tweaks Detected",just ignore it.
 - YouSpeed (Change video speeds in video overlay)
 - YTABConfig (Configures A/B settings)
 - YTDarker (Enable native darker dark mode)
+- YouTimeStamp (Copy video URL from video overlay)
 - And Much more...
 
 ## FAQ
