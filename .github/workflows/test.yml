@@ -414,14 +414,6 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/ytdark.deb
         env:
           THEOS: ${{ github.workspace }}/theos    
-
-      - name: Build Alderis
-        run: |
-          cd ${{ github.workspace }}/Alderis
-          make clean package install DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
-          mv packages/*.deb ${{ github.workspace }}/adr.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos 
      
       - name: Inject tweaks into IPA
         run: |
