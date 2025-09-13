@@ -326,18 +326,6 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YTDarker.git
           fi
-
-      - name: Clone Alderis
-        run: |
-         if [ -d "${{ github.workspace }}/Alderis" ]; then
-            echo "Alderis exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/Alderis
-            git pull
-          else
-            echo "Alderis does not exist. Cloning repository..."
-            cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/Tonwalter888/Alderis.git
-          fi
         
       - name: Build YouPiP
         run: |
@@ -346,6 +334,14 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/youpip.deb
         env:
           THEOS: ${{ github.workspace }}/theos    
+
+      - name: Build Alderis
+        run: |
+          cd ${{ github.workspace }}/Alderis
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/adr.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
 
       - name: Build YTUHD
         run: |
