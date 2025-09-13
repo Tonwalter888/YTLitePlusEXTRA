@@ -8,6 +8,7 @@ If you have any problems,feel free to open issues.
 - YouMute (Mute the video faster)
 - YouSpeed (Change video speeds in video overlay)
 - YouQuality (Change video quality in video overlay)
+- YTDarker (Enable native darker dark mode)
 - And Much more...
 
 ## FAQ
