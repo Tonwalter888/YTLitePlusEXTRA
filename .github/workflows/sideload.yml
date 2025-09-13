@@ -32,7 +32,7 @@ concurrency:
 
 jobs:
   build:
-    name: build
+    name: Build YTLitePlusEXTRA IPA
     runs-on: macos-latest
     permissions:
       contents: write
