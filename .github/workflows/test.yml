@@ -314,6 +314,18 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
           fi
+
+      - name: Clone YTDarker
+        run: |
+         if [ -d "${{ github.workspace }}/YTDarker" ]; then
+            echo "YTDarker exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTDarker
+            git pull
+          else
+            echo "YTDarker does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YTDarker.git
+          fi
         
       - name: Build YouPiP
         run: |
@@ -434,6 +446,14 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/ym.deb
         env:
           THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YTDarker
+        run: |
+          cd ${{ github.workspace }}/YTDarker
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/ytdark.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos    
      
       - name: Inject tweaks into IPA
         run: |
