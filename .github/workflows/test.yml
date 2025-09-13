@@ -337,7 +337,7 @@ jobs:
 
       - name: Build Alderis
         run: |
-          cd ${{ github.workspace }}/Alderis
+          cd ${{ github.workspace }}
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/adr.deb
         env:
