@@ -5,7 +5,7 @@ If you have any problems,feel free to open issues.
 ## Main Features
 - YTLite (eg. Download Videos,No ads,Background Playback)
 - NoYTPremium (Remove Premium alerts)
-- YouMute (Mute the video in video overlay)
+- YouMute (Mute the video sounds in video overlay)
 - YouSpeed (Change video speeds in video overlay)
 - YTABConfig (Configures A/B settings)
 - YTDarker (Enable native darker dark mode)
