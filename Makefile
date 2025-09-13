@@ -12,9 +12,10 @@ TARGET := iphone:clang:latest:14.0
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = YTLite
+TWEAK_NAME = YTLitePlusEXTRA
 $(TWEAK_NAME)_FRAMEWORKS = UIKit Foundation SystemConfiguration
 $(TWEAK_NAME)_CFLAGS = -fobjc-arc -DTWEAK_VERSION=$(PACKAGE_VERSION)
 $(TWEAK_NAME)_FILES = $(wildcard *.x Utils/*.m)
+$(TWEAK_NAME)_EXTRA_FRAMEWORKS += Alderis
 
 include $(THEOS_MAKE_PATH)/tweak.mk
