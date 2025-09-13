@@ -326,6 +326,18 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YTABGoodies.git
           fi
+
+      - name: Clone YouTimeStamp
+        run: |
+         if [ -d "${{ github.workspace }}/YouTimeStamp" ]; then
+            echo "YouTimeStamp exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouTimeStamp
+            git pull
+          else
+            echo "YouTimeStamp does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/Tonwalter888/YouTimeStamp.git
+          fi
         
       - name: Build YouPiP
         run: |
@@ -453,8 +465,15 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ytgoodab.deb
         env:
-          THEOS: ${{ github.workspace }}/theos    
-
+          THEOS: ${{ github.workspace }}/theos 
+          
+      - name: Build YouTimeStamp
+        run: |
+          cd ${{ github.workspace }}/YouTimeStamp
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/youts.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos 
      
       - name: Inject tweaks into IPA
         run: |
