@@ -302,6 +302,30 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/PoomSmart/YTDarker.git
           fi
+
+      - name: Clone YouTube-X
+        run: |
+         if [ -d "${{ github.workspace }}/YouTube-X" ]; then
+            echo "YouTube-X exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouTube-X
+            git pull
+          else
+            echo "YouTube-X does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouTube-X.git
+          fi
+
+      - name: Clone YTABGoodies
+        run: |
+         if [ -d "${{ github.workspace }}/YTABGoodies" ]; then
+            echo "YTABGoodies exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTABGoodies
+            git pull
+          else
+            echo "YTABGoodies does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YTABGoodies.git
+          fi
         
       - name: Build YouPiP
         run: |
@@ -413,7 +437,23 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/ytdark.deb
         env:
+          THEOS: ${{ github.workspace }}/theos 
+
+      - name: Build YouTube-X
+        run: |
+          cd ${{ github.workspace }}/YouTube-X
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/ytx.deb
+        env:
           THEOS: ${{ github.workspace }}/theos    
+
+      - name: Build YTABGoodies
+        run: |
+          cd ${{ github.workspace }}/YTABGoodies
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/ytgoodab.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos 
      
       - name: Inject tweaks into IPA
         run: |
