@@ -267,18 +267,6 @@ jobs:
             git clone --quiet --depth=1 https://github.com/PoomSmart/IAmYouTube.git
           fi 
           
-      - name: Clone YTNoPaidPromo
-        run: |
-         if [ -d "${{ github.workspace }}/YTNoPaidPromo" ]; then
-            echo "YTNoPaidPromo exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/YTNoPaidPromo
-            git pull
-          else
-            echo "YTNoPaidPromo does not exist. Cloning repository..."
-            cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/PoomSmart/YTNoPaidPromo.git
-          fi
-          
       - name: Clone YouChooseQuality
         run: |
          if [ -d "${{ github.workspace }}/YouChooseQuality" ]; then
@@ -410,14 +398,6 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/youchoose.deb
         env:
           THEOS: ${{ github.workspace }}/theos    
-
-      - name: Build YTNoPaidPromo
-        run: |
-          cd ${{ github.workspace }}/YTNoPaidPromo
-          make clean package DEBUG=0 FINALPACKAGE=1 
-          mv packages/*.deb ${{ github.workspace }}/ytnopromo.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouMute
         run: |
