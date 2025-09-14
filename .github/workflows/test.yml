@@ -121,7 +121,6 @@ jobs:
             echo "Copying YouTubeHeader to YTHeaders..."
             rm -rf "$THEOS/include/YTHeaders"
             cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
-            cp -r "$THEOS/include/YouTubeHeader" "${{ github.workspace }}/YouTubeHeader"
           fi
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -350,7 +349,7 @@ jobs:
           else
             echo "YouLoop does not exist. Cloning repository..."
             cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/bhackel/YouLoop.git
+            git clone --quiet --depth=1 https://github.com/Tonwalter888/YouLoop.git
           fi
 
       - name: Build YouLoop
