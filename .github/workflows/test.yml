@@ -183,17 +183,16 @@ jobs:
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
           fi
 
-      - name: Clone YTVideoOverlay
+      - name: Clone YTVideoOverlayPlus
         run: |
-         if [ -d "${{ github.workspace }}/YTVideoOverlay" ]; then
-            echo "YTVideoOverlay exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/YTVideoOverlay
+         if [ -d "${{ github.workspace }}/YTVideoOverlayPlus" ]; then
+            echo "YTVideoOverlayPlus exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YTVideoOverlayPlus
             git pull
           else
-            echo "YTVideoOverlay does not exist. Cloning repository..."
+            echo "YTVideoOverlayPlus does not exist. Cloning repository..."
             cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoOverlay.git
-            cp -r "${{ github.workspace }}/YTVideoOverlay" "${{ github.workspace }}/theos/YTVideoOverlay"
+            git clone --quiet --depth=1 https://github.com/aricloverEXTRA/YTVideoOverlayPlus.git
           fi
 
       - name: Clone NoYTPremium
@@ -220,16 +219,16 @@ jobs:
             git clone --quiet --depth=1 https://github.com/PoomSmart/YTABConfig.git
           fi
                   
-      - name: Clone YouQuality
+      - name: Clone YouQualityExpanded
         run: |
-         if [ -d "${{ github.workspace }}/YouQuality" ]; then
-            echo "YouQuality exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/YouQuality
+         if [ -d "${{ github.workspace }}/YouQualityExpanded" ]; then
+            echo "YouQualityExpanded exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouQualityExpanded
             git pull
           else
-            echo "YouQuality does not exist. Cloning repository..."
+            echo "YouQualityExpanded does not exist. Cloning repository..."
             cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/PoomSmart/YouQuality.git
+            git clone --quiet --depth=1 https://github.com/aricloverEXTRA/YouQualityExpanded.git
           fi
 
       - name: Clone YouSpeed
