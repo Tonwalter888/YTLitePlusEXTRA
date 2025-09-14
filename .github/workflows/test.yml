@@ -83,7 +83,7 @@ jobs:
         run: |
           git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/xybp888/iOS-SDKs.git
           cd iOS-SDKs
-          git sparse-checkout set --no-cone iPhoneOS18.5.sdk
+          git sparse-checkout set --no-cone iPhoneOS18.6.sdk
           git checkout
           mv *.sdk $THEOS/sdks
         env:
@@ -181,16 +181,16 @@ jobs:
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
           fi
 
-      - name: Clone YTVideoOverlayPlus
+      - name: Clone YTVideoOverlay
         run: |
          if [ -d "${{ github.workspace }}/YTVideoOverlay" ]; then
-            echo "YTVideoOverlayPlus exists. Pulling latest changes..."
+            echo "YTVideoOverlay exists. Pulling latest changes..."
             cd ${{ github.workspace }}/YTVideoOverlay
             git pull
           else
-            echo "YTVideoOverlayPlus does not exist. Cloning repository..."
+            echo "YTVideoOverlay does not exist. Cloning repository..."
             cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/Tonwalter888/YTVideoOverlay.git
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoOverlay.git
           fi
 
       - name: Clone NoYTPremium
@@ -217,16 +217,16 @@ jobs:
             git clone --quiet --depth=1 https://github.com/PoomSmart/YTABConfig.git
           fi
                   
-      - name: Clone YouQualityExpanded
+      - name: Clone YouQuality
         run: |
-         if [ -d "${{ github.workspace }}/YouQualityExpanded" ]; then
-            echo "YouQualityExpanded exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/YouQualityExpanded
+         if [ -d "${{ github.workspace }}/YouQuality" ]; then
+            echo "YouQuality exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouQuality
             git pull
           else
-            echo "YouQualityExpanded does not exist. Cloning repository..."
+            echo "YouQuality does not exist. Cloning repository..."
             cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/aricloverEXTRA/YouQualityExpanded.git
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouQuality.git
           fi
 
       - name: Clone YouSpeed
