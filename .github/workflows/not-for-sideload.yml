@@ -338,6 +338,18 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/Tonwalter888/YouTimeStamp.git
           fi
+
+      - name: Clone YouLoop
+        run: |
+         if [ -d "${{ github.workspace }}/YouLoop" ]; then
+            echo "YouLoop exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouLoop
+            git pull
+          else
+            echo "YouLoop does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/Tonwalter888/YouLoop.git
+          fi
         
       - name: Build YouPiP
         run: |
@@ -472,6 +484,14 @@ jobs:
           cd ${{ github.workspace }}/YouTimeStamp
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/youts.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouLoop
+        run: |
+          cd ${{ github.workspace }}/YouLoop
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/youloop.deb
         env:
           THEOS: ${{ github.workspace }}/theos
      
