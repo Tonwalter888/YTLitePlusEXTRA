@@ -10,7 +10,7 @@ on:
 
       tweak_version:
         description: "YTLite Version (You can type manually from YTLite Releases)"
-        default: "5.2b2"
+        default: "5.2b3"
         required: true
         type: string
 
