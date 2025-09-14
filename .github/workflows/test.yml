@@ -185,14 +185,14 @@ jobs:
 
       - name: Clone YTVideoOverlayPlus
         run: |
-         if [ -d "${{ github.workspace }}/YTVideoOverlayPlus" ]; then
+         if [ -d "${{ github.workspace }}/YTVideoOverlay" ]; then
             echo "YTVideoOverlayPlus exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/YTVideoOverlayPlus
+            cd ${{ github.workspace }}/YTVideoOverlay
             git pull
           else
             echo "YTVideoOverlayPlus does not exist. Cloning repository..."
             cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/aricloverEXTRA/YTVideoOverlayPlus.git
+            git clone --quiet --depth=1 https://github.com/Tonwalter888/YTVideoOverlay.git
           fi
 
       - name: Clone NoYTPremium
