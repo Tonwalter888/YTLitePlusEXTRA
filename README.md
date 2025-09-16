@@ -34,7 +34,7 @@ Also if you see a popup says "Incompatible Tweaks Detected",just check on "Don't
     <li><strong>NOTE:</strong> Make sure to provide a direct download link to the file, not a link to a webpage. Otherwise, the process will fail.</li>
     <li>Enter the tweak version from the releases (the latest release is selected by default). You can also change the BundleID and Display Name if desired.</li>
     <li>Make sure all inputs are correct, then click <strong>Run workflow</strong> to start the process.</li>
-    <li>Wait for the build to finish. You can download the YTLitePlusEXTRA IPA from the releases section of your forked repo. (If you can't find the releases section, go to your forked repo and add /releases to the URL, i.e., github.com/user/YTLitePlusEXTRA/releases.)</li>
+    <li>Wait for the build to finish. You can download the YTLitePlusEXTRA IPA from the releases section of your forked repo. (If you can't find the releases section, go to your forked repo and add /releases to the URL, i.e., github.com/yourusername/YTLitePlusEXTRA/releases.)</li>
   </ol>
 </details>
 
