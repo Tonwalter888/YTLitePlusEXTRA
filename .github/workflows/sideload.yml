@@ -61,7 +61,18 @@ jobs:
       - name: Set PATH environment variable
         run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
 
+      - name: Cache Theos
+        id: theos
+        uses: actions/cache@v4.2.4
+        env:
+          cache-name: theos_cache_8ae109d
+        with:
+          path: theos/
+          key: ${{ env.cache-name }}
+          restore-keys: ${{ env.cache-name }}
+
       - name: Install Theos
+        if: ${{ steps.theos.outputs.cache-hit != 'true' }
         uses: actions/checkout@v5.0.0
         with:
           repository: theos/theos
@@ -69,6 +80,7 @@ jobs:
           submodules: recursive
 
       - name: Download iOS SDK
+        if: ${{ steps.theos.outputs.cache-hit != 'true' }}
         run: |
           git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/xybp888/iOS-SDKs.git
           cd iOS-SDKs
