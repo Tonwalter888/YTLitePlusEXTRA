@@ -60,17 +60,7 @@ jobs:
 
       - name: Set PATH environment variable
         run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
-
-      - name: Cache Theos
-        id: theos
-        uses: actions/cache@v4
-        env:
-          cache-name: theos_cache_8ae109d
-        with:
-          path: theos/
-          key: ${{ env.cache-name }}
-          restore-keys: ${{ env.cache-name }}
-
+        
       - name: Setup Theos
         uses: actions/checkout@v4.1.7
         with:
