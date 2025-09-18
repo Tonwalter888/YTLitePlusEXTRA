@@ -95,6 +95,8 @@ jobs:
 
       - name: Download YTLite 
         run: |
+          cd ${{ github.workspace }}
+          ls
           deb_url="https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.tweak_version }}/com.dvntm.ytlite_${{ inputs.tweak_version }}_iphoneos-arm.deb"
           wget "$deb_url" --no-verbose -O ${{ github.workspace }}/ytlite.deb
 
