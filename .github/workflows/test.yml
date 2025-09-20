@@ -80,7 +80,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Install cyan
-        run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip$THEOS/sdks
+        run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
 
       - name: Download YouTube Plus
         id: download_ytp
