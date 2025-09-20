@@ -70,6 +70,25 @@ jobs:
 
       - name: Download iOS SDK
         run: |
+          if [ -d "${{ github.workspace }}/iOS-SDKs" ]; then
+            echo "iOS SDK already installed. Pulling latest changes..."
+            cd ${{ github.workspace }}/iOS-SDKs
+            git pull
+            git sparse-checkout set --no-cone iPhoneOS18.6.sdk
+            git checkout
+            rm -fr $THEOS/sdks/*.sdk
+            mv *.sdk $THEOS/sdks
+          else
+            echo "iOS SDK does not install. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/xybp888/iOS-SDKs.git
+            cd ${{ github.workspace }}/iOS-SDKs
+            git sparse-checkout set --no-cone iPhoneOS18.6.sdk
+            git checkout
+            rm -fr $THEOS/sdks/*.sdk
+            mv *.sdk $THEOS/sdks
+          fi
+
           git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/xybp888/iOS-SDKs.git
           cd iOS-SDKs
           git sparse-checkout set --no-cone iPhoneOS26.0.sdk
