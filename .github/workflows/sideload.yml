@@ -103,7 +103,7 @@ jobs:
         run: |
           git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/BillyCurtis/OpenYouTubeSafariExtension.git
           cd OpenYouTubeSafariExtension
-          git sparse-checkout set --no-cone OpenYoutubeSafariExtension.appex
+          git sparse-checkout set --no-cone OpenYouTubeSafariExtension.appex
           git checkout
           mv *.appex ${{ github.workspace }}
 
@@ -496,7 +496,7 @@ jobs:
      
       - name: Inject tweaks into IPA
         run: |
-          tweaks="ytlite.deb OpenYoutubeSafariExtension.appex"
+          tweaks="ytlite.deb OpenYouTubeSafariExtension.appex"
 
           for f in *.deb; do
             if [ -f "$f" ]; then
