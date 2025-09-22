@@ -352,9 +352,9 @@ jobs:
         
       - name: Build YouPiP
         run: |
+          rm -fr packages/*.deb
           cd ${{ github.workspace }}/YouPiP
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
-          rm -fr packages/*.deb
           mv packages/*.deb ${{ github.workspace }}/youpip.deb
         env:
           THEOS: ${{ github.workspace }}/theos    
