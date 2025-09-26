@@ -38,7 +38,7 @@ jobs:
       contents: write
 
     steps:
-      - name: Clone This Repo
+      - name: Clone This Repository
         uses: actions/checkout@v5
         with:
           path: main
