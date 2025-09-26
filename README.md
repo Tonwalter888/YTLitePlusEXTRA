@@ -30,7 +30,7 @@ Just check on "Don't show for this version",click on "I accept all risks" and ig
   <summary>How to build the YTLitePlusEXTRA IPA</summary>
   <ol>
     <li>Click on <strong>Sync fork</strong>, and if your branch is out-of-date, click on <strong>Update branch</strong>.</li>
-    <li>Navigate to the <strong>Actions tab</strong> in your forked repository and select <strong>Create YTLitePlusEXTRA IPA. ( Make sure you choose For Sideloading or Not For Sideloading workflow for your target device and DON'T USE FOR TESTING ONE )</strong></li>
+    <li>Navigate to the <strong>Actions tab</strong> in your forked repository and select <strong>Build YTLitePlusEXTRA IPA. ( Make sure you choose For Sideloading or Not For Sideloading workflow for your target device and DON'T USE FOR TESTING ONE )</strong></li>
     <li>Click the <strong>Run workflow</strong> button located on the right side.</li>
     <li>Prepare a decrypted .ipa file <em>(we cannot provide this due to legal reasons)</em>, then upload it to a file provider (e.g., filebin.net, filemail.com, or Dropbox is recommended). Paste the URL of the decrypted IPA file in the provided field.</li>
     <li><strong>NOTE:</strong> Make sure to provide a direct download link to the file, not a link to a webpage. Otherwise, the process will fail.</li>
