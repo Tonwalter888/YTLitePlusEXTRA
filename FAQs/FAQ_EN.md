@@ -12,7 +12,7 @@
   <summary>My iOS version is no longer supported by the latest YouTube app. What can I do?</summary>
     <p>Here are some possible options:</p>
     <li><a href="https://ios.cfw.guide/get-started/">Jailbreak your device</a>, install the latest supported YouTube version from the App Store, and install YTLitePlusEXTRA as a tweak</a></li>
-    <li>Or Find a compatible IPA version online and <a href="../README.md#how-to-build-a-youtube-plus-app-using-github-actions">build a YTLitePlusEXTRA app using Github actions</a></li>
+    <li>Or Find a compatible IPA version online and <a href="../README.md#how-to-build-a-ytliteplusextra-ipa-using-github-actions">build a YTLitePlusEXTRA app using Github actions</a></li>
 </details>
 <br>
 <details>
