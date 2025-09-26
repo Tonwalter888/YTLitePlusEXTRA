@@ -347,7 +347,7 @@ jobs:
           else
             echo "YouSubscriptions does not exist. Cloning repository..."
             cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/aricloverEXTRA/YouSubscriptions.git
+            git clone --quiet --depth=1 https://github.com/Tonwalter888/YouSubscriptions.git
           fi
 
       - name: Clone YouShare
@@ -359,7 +359,7 @@ jobs:
           else
             echo "YouShare does not exist. Cloning repository..."
             cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/aricloverEXTRA/YouShare.git
+            git clone --quiet --depth=1 https://github.com/Tonwalter888/YouShare.git
           fi
         
       - name: Build YouPiP
