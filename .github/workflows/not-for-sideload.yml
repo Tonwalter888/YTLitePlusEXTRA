@@ -337,6 +337,30 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/Tonwalter888/YouLoop.git
           fi
+
+      - name: Clone YouSubscriptions
+        run: |
+         if [ -d "${{ github.workspace }}/YouSubscriptions" ]; then
+            echo "YouSubscriptions exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouSubscriptions
+            git pull
+          else
+            echo "YouSubscriptions does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/aricloverEXTRA/YouSubscriptions.git
+          fi
+
+      - name: Clone YouShare
+        run: |
+         if [ -d "${{ github.workspace }}/YouShare" ]; then
+            echo "YouShare exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouShare
+            git pull
+          else
+            echo "YouShare does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/aricloverEXTRA/YouShare.git
+          fi
         
       - name: Build YouPiP
         run: |
@@ -471,6 +495,22 @@ jobs:
           cd ${{ github.workspace }}/YouLoop
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/youloop.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouSubscriptions
+        run: |
+          cd ${{ github.workspace }}/YouSubscriptions
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/yousub.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos 
+
+      - name: Build YouShare
+        run: |
+          cd ${{ github.workspace }}/YouShare
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/youshare.deb
         env:
           THEOS: ${{ github.workspace }}/theos
      
