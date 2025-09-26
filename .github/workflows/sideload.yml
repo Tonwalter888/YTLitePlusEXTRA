@@ -78,7 +78,7 @@ jobs:
 
       - name: Install Theos
         if: ${{ steps.theos.outputs.cache-hit != 'true' }}
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v5
         with:
           repository: theos/theos
           ref: 8ae109d91df472dce495c1652183ff40d9fbef24
