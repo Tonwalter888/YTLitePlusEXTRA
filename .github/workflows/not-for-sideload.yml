@@ -1,4 +1,4 @@
-name: Create YTLitePlusEXTRA IPA (Not For Sideloading)
+name: Build YTLitePlusEXTRA IPA (Not For Sideloading)
 on:
   workflow_dispatch:
     inputs:
@@ -38,18 +38,18 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout Main
+      - name: Clone This Repo
         uses: actions/checkout@v5
         with:
           path: main
           submodules: recursive
 
-      - name: Hide sensitive inputs
+      - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
           exclude_inputs: bundle_id,display_name,tweak_version
           
-      - name: Download and validate IPA
+      - name: Download and Validate IPA
         run: |
           wget "${{ inputs.ipa_url }}" --no-verbose -O ${{ github.workspace }}/youtube.ipa
 
