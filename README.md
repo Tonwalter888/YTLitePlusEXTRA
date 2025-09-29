@@ -14,6 +14,7 @@ Just check on "Don't show for this version",click on "I accept all risks" and ig
 - YTABConfig (Configures A/B settings)
 - YTDarker (Enable native darker dark mode)
 - YouTimeStamp (Copy video URL from video overlay)
+- YouSlider (Customizes iOS YouTube video slider and scrubber)
 - And Much more...
 
 ## FAQ
@@ -42,7 +43,7 @@ Just check on "Don't show for this version",click on "I accept all risks" and ig
 
 ## Supported YouTube Version
 <ul>
-   <li><strong>Latest confirmed:</strong> 20.31.6</li>
-   <li><strong>Date tested:</strong> Sep 14, 2025</li>
+   <li><strong>Latest confirmed:</strong> 20.38.4</li>
+   <li><strong>Date tested:</strong> Sep 29, 2025</li>
    <li><strong>YTLite:</strong> 5.2 beta 3</li>
 </ul>
