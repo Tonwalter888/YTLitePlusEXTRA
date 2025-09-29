@@ -342,6 +342,30 @@ jobs:
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/Tonwalter888/YouLoop.git
           fi
+
+      - name: Clone Alderis
+        run: |
+         if [ -d "${{ github.workspace }}/Alderis" ]; then
+            echo "Alderis exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/Alderis
+            git pull
+          else
+            echo "Alderis does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
+          fi
+
+      - name: Clone YouSlider
+        run: |
+         if [ -d "${{ github.workspace }}/YouSlider" ]; then
+            echo "YouSlider exists. Pulling latest changes..."
+            cd ${{ github.workspace }}/YouSlider
+            git pull
+          else
+            echo "YouSlider does not exist. Cloning repository..."
+            cd ${{ github.workspace }}
+            git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
+          fi
         
       - name: Build YouPiP
         run: |
@@ -476,6 +500,22 @@ jobs:
           cd ${{ github.workspace }}/YouLoop
           make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
           mv packages/*.deb ${{ github.workspace }}/youloop.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouSlider
+        run: |
+          cd ${{ github.workspace }}/YouSlider
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/youslider.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+          
+      - name: Build Alderis
+        run: |
+          cd ${{ github.workspace }}/Alderis
+          make clean package DEBUG=0 FINALPACKAGE=1 SIDELOAD=1
+          mv packages/*.deb ${{ github.workspace }}/alderis.deb
         env:
           THEOS: ${{ github.workspace }}/theos
      
