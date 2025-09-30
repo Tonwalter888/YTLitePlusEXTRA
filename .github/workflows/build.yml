@@ -349,13 +349,10 @@ jobs:
             echo "Alderis exists. Pulling latest changes..."
             cd ${{ github.workspace }}/Alderis
             git pull
-            cd ${{ github.workspace }}/theos/vendor/frameworks/Alderis
-            git pull
           else
             echo "Alderis does not exist. Cloning repository..."
             cd ${{ github.workspace }}
             git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
-            git clone --quiet --depth=1 https://github.com/hbang/Alderis.git ${{ github.workspace }}/theos/vendor/frameworks/Alderis
           fi
 
       - name: Clone YouSlider
