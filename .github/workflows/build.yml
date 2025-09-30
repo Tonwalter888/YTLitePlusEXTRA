@@ -393,7 +393,7 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
   
-      - name: Inject tweaks into IPA
+      - name: Inject Tweaks Into IPA
         run: |
           tweaks="ytlite.deb OpenYouTubeSafariExtension.appex"
 
