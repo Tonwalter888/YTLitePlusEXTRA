@@ -63,7 +63,7 @@ jobs:
       - name: Install Dependencies
         run: brew install make ldid
 
-      - name: Set PATH environment variable
+      - name: Set PATH Environment Variable
         run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
 
       - name: Cache Theos
