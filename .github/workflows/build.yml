@@ -170,11 +170,6 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoOverlay.git
-
-      - name: Clone NoYTPremium
-        run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/PoomSmart/NoYTPremium.git
           
       - name: Clone YTABConfig
         run: |
@@ -205,11 +200,6 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
-
-      - name: Clone YouTube-X
-        run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/PoomSmart/YouTube-X.git
 
       - name: Clone YTABGoodies
         run: |
