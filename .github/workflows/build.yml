@@ -1,4 +1,4 @@
-name: Build YTLitePlusEXTRA IPA (Not For Sideloading)
+name: Build YTLitePlusEXTRA IPA
 on:
   workflow_dispatch:
     inputs:
@@ -38,7 +38,7 @@ jobs:
       contents: write
 
     steps:
-      - name: Clone This Repository
+      - name: Checkout Main
         uses: actions/checkout@v5
         with:
           path: main
