@@ -241,7 +241,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}/YTABConfig
           make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/abconfig.deb
+          mv packages/*.deb ${{ github.workspace }}/ytabconfig.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
@@ -249,7 +249,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}/YouQuality
           make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/youqual.deb
+          mv packages/*.deb ${{ github.workspace }}/youquality.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
