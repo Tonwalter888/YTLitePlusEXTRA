@@ -68,7 +68,7 @@ jobs:
 
       - name: Cache Theos
         id: theos
-        uses: actions/cache@v4.2.4
+        uses: actions/cache@v4.3.0
         env:
           cache-name: theos_cache_fae1d87
         with:
@@ -377,19 +377,19 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
-      - name: Build Alderis
-        run: |
-          cd ${{ github.workspace }}/Alderis
-          make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/alderis.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
       - name: Build YouSlider
         run: |
           cd ${{ github.workspace }}/YouSlider
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/youslider.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build Alderis
+        run: |
+          cd ${{ github.workspace }}/Alderis
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/alderis.deb
         env:
           THEOS: ${{ github.workspace }}/theos
   
