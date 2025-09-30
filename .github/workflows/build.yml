@@ -352,7 +352,7 @@ jobs:
           else
             echo "Alderis does not exist. Cloning repository..."
             cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
+            git clone --quiet --depth=1 https://github.com/hbang/Alderis.git ${{ github.workspace }}/theos/vendor/frameworks/Alderis
           fi
 
       - name: Clone YouSlider
