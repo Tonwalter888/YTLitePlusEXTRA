@@ -67,9 +67,11 @@ jobs:
         run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
 
       - name: Install Theos
-        run: |
-          cd ${{ github.workspace }}
-          git clone --quiet --depth=1 https://github.com/theos/theos.git
+        uses: actions/checkout@v5
+        with:
+          repository: theos/theos
+          path: ${{ github.workspace }}/theos
+          submodules: recursive
         
       - name: Download iOS SDK
         run: |
