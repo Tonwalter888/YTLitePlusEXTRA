@@ -66,27 +66,12 @@ jobs:
       - name: Set PATH Environment Variable
         run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
 
-      - name: Cache Theos
-        id: theos
-        uses: actions/cache@v4.3.0
-        env:
-          cache-name: theos_cache_fae1d87
-        with:
-          path: theos/
-          key: ${{ env.cache-name }}
-          restore-keys: ${{ env.cache-name }}
-
       - name: Install Theos
-        if: ${{ steps.theos.outputs.cache-hit != 'true' }}
-        uses: actions/checkout@v5
-        with:
-          repository: theos/theos
-          ref: fae1d870b966aee12340f2d3737313ff022725eb
-          path: ${{ github.workspace }}/theos
-          submodules: recursive
-
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 https://github.com/theos/theos.git
+        
       - name: Download iOS SDK
-        if: ${{ steps.theos.outputs.cache-hit != 'true' }}
         run: |
           git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/xybp888/iOS-SDKs.git
           cd iOS-SDKs
@@ -114,32 +99,16 @@ jobs:
 
       - name: Clone YouTubeHeader
         run: |
-          if [ -d "$THEOS/include/YouTubeHeader" ]; then
-            echo "YouTubeHeader exists. Pulling latest changes..."
-            cd $THEOS/include/YouTubeHeader
-            git pull
-          else
-            echo "YouTubeHeader does not exist. Cloning repository..."
-            cd $THEOS/include
-            git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git
-            echo "Copying YouTubeHeader to YTHeaders..."
-            rm -rf "$THEOS/include/YTHeaders"
-            cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
-          fi
+           cd $THEOS/include
+           git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git
+           cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
         env:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Clone PSHeader
         run: |
-          if [ -d "$THEOS/include/PSHeader" ]; then
-            echo "PSHeader exists. Pulling latest changes..."
-            cd $THEOS/include/PSHeader
-            git pull
-          else
-            echo "PSHeader does not exist. Cloning repository..."
-            cd $THEOS/include
-            git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git
-          fi
+           cd $THEOS/include
+           git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git
         env:
           THEOS: ${{ github.workspace }}/theos
 
