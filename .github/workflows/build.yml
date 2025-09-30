@@ -206,11 +206,6 @@ jobs:
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
 
-      - name: Clone YTDarker
-        run: |
-           cd ${{ github.workspace }}
-           git clone --quiet --depth=1 https://github.com/PoomSmart/YTDarker.git
-
       - name: Clone YouTube-X
         run: |
           cd ${{ github.workspace }}
@@ -281,14 +276,6 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
-      - name: Build NoYTPremium
-        run: |
-          cd ${{ github.workspace }}/NoYTPremium
-          make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/nopremium.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
       - name: Build YTABConfig
         run: |
           cd ${{ github.workspace }}/YTABConfig
@@ -335,23 +322,7 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/ym.deb
         env:
-          THEOS: ${{ github.workspace }}/theos
-
-      - name: Build YTDarker
-        run: |
-          cd ${{ github.workspace }}/YTDarker
-          make clean package DEBUG=0 FINALPACKAGE=1 
-          mv packages/*.deb ${{ github.workspace }}/ytdark.deb
-        env:
           THEOS: ${{ github.workspace }}/theos 
-
-      - name: Build YouTube-X
-        run: |
-          cd ${{ github.workspace }}/YouTube-X
-          make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/ytx.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos    
 
       - name: Build YTABGoodies
         run: |
