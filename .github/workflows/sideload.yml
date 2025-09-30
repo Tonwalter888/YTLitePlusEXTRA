@@ -105,6 +105,8 @@ jobs:
            cd libundirect
            chmod +x install_to_theos.sh
            ./install_to_theos.sh
+        env:
+          THEOS: ${{ github.workspace }}/theos
 
       - name: Download YTLite 
         run: |
