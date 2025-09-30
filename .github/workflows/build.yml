@@ -505,7 +505,7 @@ jobs:
 
       - name: Build Alderis
         run: |
-          cd ${{ github.workspace }}/Alderis
+          cd $THEOS/vendor/frameworks/Alderis
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/alderis.deb
         env:
