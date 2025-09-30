@@ -99,15 +99,6 @@ jobs:
       - name: Install cyan
         run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
 
-      - name: Install libundirect
-        run : |
-           git clone https://github.com/Tonwalter888/libundirect.git
-           cd libundirect
-           chmod +x install_to_theos.sh
-           ./install_to_theos.sh
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
       - name: Download YTLite 
         run: |
           deb_url="https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.tweak_version }}/com.dvntm.ytlite_${{ inputs.tweak_version }}_iphoneos-arm.deb"
@@ -165,16 +156,12 @@ jobs:
           fi
 
       - name: Clone YTUHD
-        run: |
-         if [ -d "${{ github.workspace }}/YTUHD" ]; then
-            echo "YTUHD exists. Pulling latest changes..."
-            cd ${{ github.workspace }}/YTUHD
-            git pull
-          else
-            echo "YTUHD does not exist. Cloning repository..."
-            cd ${{ github.workspace }}
-            git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git
-          fi
+        uses: actions/checkout@v5
+        with:
+          repository: PoomSmart/YTUHD
+          ref: 0f59b38817d554ab692a0053456319847a6ab1a1
+          path: ${{ github.workspace }}/YTUHD
+          submodules: recursive
 
       - name: Clone Return-YouTube-Dislikes
         run: |
