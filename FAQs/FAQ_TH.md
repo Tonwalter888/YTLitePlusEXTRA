@@ -37,7 +37,7 @@
 </details>
 <br>
 <details>
-  <summary>ใช้ Youtube เวอร์ชั่นที่ <a href="https://github.com/dayanch96/YTLite?tab=readme-ov-file#supported-youtube-version">dayanch96</a> แนะนำ แล้วมีปัญหา Shorts ไม่เปลี่ยนไปตามคลิป</summary>
+  <summary>ใช้ Youtube เวอร์ชั่นที่ <a href="https://github.com/dayanch96/YTLite?tab=readme-ov-file#supported-youtube-version">dayanch96</a> แนะนำ แล้วมีปัญหา Shorts ชื่อช่องกับชื่อคลิปไม่เปลี่ยนตาม</summary>
     <p>ให้ใช้ Youtube เวอร์ชั่นล่าสุดแทน สามารถหาโหลด IPA ได้เลย</p>
 </details>
 
