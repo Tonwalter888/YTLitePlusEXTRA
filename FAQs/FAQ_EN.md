@@ -35,10 +35,9 @@
       <li>Watch a few full-length videos without being signed in. Stay signed out for a few hours.</li>
       <li>Sign back into the account that was having issues</li>
     </ol>
-<details>
+</details>
 <br>
 <details>
   <summary>I use Youtube version that <a href="https://github.com/dayanch96/YTLite?tab=readme-ov-file#supported-youtube-version">dayanch96</a> recommmend and Shorts won't change channel and video name.</summary>
     <p>Use the latest Youtube version instead.</p>
-  
 </details>
