@@ -1,4 +1,4 @@
-[English](README.md)  [Thai](README_TH.md)
+[Swich To Thai](README_TH.md)
 # YTLitePlusEXTRA
 This is a fork repo from YTLite,but add more tweaks similar to YTLitePlus.
 This is just an another alternative for who can't build IPA in YTLitePlus or The app is unusable.
