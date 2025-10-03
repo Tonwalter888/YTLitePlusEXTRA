@@ -14,8 +14,7 @@ Also if you see a popup says "Incompatible Tweaks Detected",just check on "Don't
 - And Much more...
 
 ## FAQ
-- [English FAQ](FAQs/FAQ_EN.md)
-- [Thai FAQ](FAQs/FAQ_TH.md)
+[Here](FAQs/FAQ_EN.md)
 
 ## How to build a YTLitePlusEXTRA IPA using Github actions
 > [!NOTE]
