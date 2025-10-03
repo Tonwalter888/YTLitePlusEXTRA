@@ -10,9 +10,7 @@
 <br>
 <details>
   <summary>My iOS version is no longer supported by the latest YouTube app. What can I do?</summary>
-    <p>Here are some possible options:</p>
-    <li><a href="https://ios.cfw.guide/get-started/">Jailbreak your device</a>, install the latest supported YouTube version from the App Store, and install YTLitePlusEXTRA as a tweak</a></li>
-    <li>Or Find a compatible IPA version online and <a href="../README.md#how-to-build-a-ytliteplusextra-ipa-using-github-actions">build a YTLitePlusEXTRA IPA using Github actions</a></li>
+    <p>Find a compatible IPA version online and <a href="../README.md#how-to-build-a-ytliteplusextra-ipa-using-github-actions">build a YTLitePlusEXTRA IPA using Github actions</p>
 </details>
 <br>
 <details>
@@ -37,4 +35,10 @@
       <li>Watch a few full-length videos without being signed in. Stay signed out for a few hours.</li>
       <li>Sign back into the account that was having issues</li>
     </ol>
+<details>
+<br>
+<details>
+  <summary>I use Youtube version that <a href="https://github.com/dayanch96/YTLite?tab=readme-ov-file#supported-youtube-version">dayanch96</a> recommmend and Shorts won't change channel and video name.</summary>
+    <p>Use the latest Youtube version instead.</p>
+  
 </details>
