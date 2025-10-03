@@ -26,7 +26,7 @@
       <li><strong>นี้ไม่ใช่</strong>เพราะบัญชีโดนแบน</li>
     </ol>
     <br>
-    <p>ปัญหานี้เกิดได้ทั้งๆที่ไม่ได้ลงม็อดเลย เหมือนเกิดจาก VisitorID or VisitorData ที่ผิดหรือหายไปตามนี้: <a href="https://github.com/pepeloni-away/userscripts/issues/6#issuecomment-2860641610"></p>
+    <p>ปัญหานี้เกิดได้ทั้งๆที่ไม่ได้ลงม็อดเลย เหมือนเกิดจาก VisitorID or VisitorData ที่ผิดหรือหายไป<a href="https://github.com/pepeloni-away/userscripts/issues/6#issuecomment-2860641610">ตามนี้</a></p>
     <br>
     <p><strong>วิธีแก้ปัญหาชั่วคราว:</strong></p>
     <ol>
@@ -37,7 +37,7 @@
 </details>
 <br>
 <details>
-  <summary>ใช้ Youtube เวอร์ชั่นที่ @dayanch96 แล้วมีปัญหา Shorts ไม่เปลี่ยนไปตามคลิป</summary>
-    <p>ให้ใช้ Youtube เวอร์ชั่นล่าสุดแทน</p>
+  <summary>ใช้ Youtube เวอร์ชั่นที่ <a href="https://github.com/dayanch96/YTLite?tab=readme-ov-file#supported-youtube-version">dayanch96</a> แนะนำ แล้วมีปัญหา Shorts ไม่เปลี่ยนไปตามคลิป</summary>
+    <p>ให้ใช้ Youtube เวอร์ชั่นล่าสุดแทน สามารถหาโหลด IPA ได้เลย</p>
 
 
