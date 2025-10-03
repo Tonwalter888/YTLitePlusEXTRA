@@ -10,7 +10,7 @@
 <br>
 <details>
   <summary>iOS ที่ใช้อยู่ไม่ซับพอร์ตเวอร์ชั่นล่าสุดแล้ว ทำยังไงได้บ้าง</summary>
-    <li>หา IPA เวอร์ชั่นที่ซับพอร์ตและ <a href="../README.md#how-to-build-a-ytliteplusextra-ipa-using-github-actions">แล้วสร้าง IPA โดยใช้ Github Actions</a></li>
+    <p>หา IPA เวอร์ชั่นที่ซับพอร์ตและ <a href="../README.md#how-to-build-a-ytliteplusextra-ipa-using-github-actions">แล้วสร้าง IPA โดยใช้ Github Actions</a><p>
 </details>
 <br>
 <details>
