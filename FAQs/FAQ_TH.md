@@ -5,7 +5,7 @@
     <p>iOS 14 ขึ้นไป <strong>แต่</strong>จำเป็นที่จะต้องหา IPA ที่ใช้กับ iOS นี้ได้ด้วย ด้านล่างนี้คือเวอร์ชั่นที่ซับพอร์ตที่แต่ละ iOS:</p>
     <li><strong>iOS 14</strong>: YouTube v19.20.2</li>
     <li><strong>iOS 15</strong>: YouTube v20.21.6</li>
-    <li><strong>iOS 16+</strong>: เวอร์ชั่นไหนก็ได้ ที่ Youtube ซับพอร์ต</li>
+    <li><strong>iOS 16 ขึ้นไป</strong>: เวอร์ชั่นไหนก็ได้ ที่ Youtube ซับพอร์ต</li>
 </details>
 <br>
 <details>
