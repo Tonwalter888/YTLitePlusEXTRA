@@ -16,7 +16,7 @@ Also if you see a popup says "Incompatible Tweaks Detected",just check on "Don't
 ## FAQ
 [Here](FAQs/FAQ_EN.md)
 
-## How to build a YTLitePlusEXTRA IPA using Github actions
+## How to build a YTLitePlusEXTRA IPA using Github Actions
 > [!NOTE]
 > If this your first time, complete following steps before starting:
 >
