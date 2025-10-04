@@ -10,7 +10,7 @@ Also if you see a popup says "Incompatible Tweaks Detected",just check on "Don't
 - YouSpeed (Change video speeds in video overlay)
 - YTABConfig (Configures A/B settings)
 - YouTimeStamp (Copy video URL from video overlay)
-- YouSlider (Customizes iOS YouTube video slider and scrubber)
+- YouSlider (Customizes video slider and scrubber)
 - And Much more...
 
 ## FAQ
