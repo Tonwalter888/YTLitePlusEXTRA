@@ -8,6 +8,7 @@
     <li><strong>iOS 16 or Higher</strong>: Any version, as supported by YouTube.</li>
 </details>
 <br>
+<details>
   <summary>My iOS version is no longer supported by the latest YouTube app. What can I do?</summary>
     <p>Find a compatible IPA version online and <a href="../README.md#how-to-build-a-ytliteplusextra-ipa-using-github-actions">build a YTLitePlusEXTRA IPA using Github actions</p>
 </details>
