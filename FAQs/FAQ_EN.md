@@ -38,6 +38,6 @@
 </details>
 <br>
 <details>
-  <summary>I use Youtube version that <a href="https://github.com/dayanch96/YTLite?tab=readme-ov-file#supported-youtube-version">dayanch96</a> recommmends and Shorts won't change channel and video name.</summary>
+  <summary>I use Youtube version that <a href="https://github.com/dayanch96/YTLite?tab=readme-ov-file#supported-youtube-version">dayanch96</a> recommmends and Shorts doesn't change channel name/video name doesn't change/same video when scrolling</summary>
     <p>Use the latest Youtube version instead.</p>
 </details>
