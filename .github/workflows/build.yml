@@ -88,7 +88,7 @@ jobs:
 
       - name: Download YTLite
         run: |
-          deb_url="https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.tweak_version }}/com.dvntm.ytlite_${{ inputs.tweak_version }}_iphoneos-arm.deb"
+          deb_url="https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.tweak_version }}/com.dvntm.ytlite_${{ inputs.tweak_version }}_iphoneos-arm64.deb"
           wget "$deb_url" --no-verbose -O ${{ github.workspace }}/ytlite.deb
 
       - name: Clone Open in YouTube (Safari Extension)
