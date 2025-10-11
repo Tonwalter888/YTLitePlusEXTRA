@@ -340,7 +340,7 @@ jobs:
       - name: Upload to GitHub Releases
         uses: softprops/action-gh-release@v2.3.3
         with:
-          tag_name: ytliteplusextra${{ github.run_number }}
+          tag_name: ytliteplusextra-ipa${{ github.run_number }}
           name: YTLitePlusEXTRA_v${{ inputs.tweak_version }} (${{ github.run_number }}) 
           files: YTLitePlusEXTRA_v${{ inputs.tweak_version }}.ipa
           draft: true
