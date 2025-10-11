@@ -79,6 +79,13 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
+      - name: Install tbd
+        run: |
+          cd /usr/local/bin
+          wget --no-verbose https://github.com/inoahdev/tbd/releases/download/2.2/tbd-mac
+          mv tbd-mac tbd
+          chmod +x tbd
+
       - name: Install cyan
         if: ${{ inputs.create_cyan }}
         run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
