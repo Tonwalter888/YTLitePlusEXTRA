@@ -29,7 +29,7 @@ Also if you see a popup says "Incompatible Tweaks Detected",just check on "Don't
     <li>Click on <strong>Sync fork</strong>, and if your branch is out-of-date, click on <strong>Update branch</strong>.</li>
     <li>Navigate to the <strong>Actions tab</strong> in your forked repository and select <strong>Build YTLitePlusEXTRA IPA.</strong></li>
     <li>Click the <strong>Run workflow</strong> button located on the right side.</li>
-    <li>Prepare a decrypted .ipa file <em>(I cannot provide this due to legal reasons)</em>, then upload it to a file provider (e.g., filebin.net, filemail.com, or Dropbox is recommended). Paste the URL of the decrypted IPA file in the provided field.</li>
+    <li>Prepare a decrypted .ipa file (I cannot provide this due to legal reasons), then upload it to a file provider (e.g., filebin.net, filemail.com, or Dropbox is recommended). Paste the URL of the decrypted IPA file in the provided field.</li>
     <li><strong>NOTE:</strong> Make sure to provide a direct download link to the file, not a link to a webpage. Otherwise, the process will fail.</li>
     <li>Enter the tweak version from the releases (the latest release is selected by default). You can also change the BundleID and Display Name if desired.</li>
     <li>Make sure all inputs are correct, then click <strong>Run workflow</strong> to start the process.</li>
@@ -39,7 +39,7 @@ Also if you see a popup says "Incompatible Tweaks Detected",just check on "Don't
 
 ## Supported YouTube Version
 <ul>
-   <li><strong>Latest confirmed:</strong> 20.39.6</li>
-   <li><strong>Date tested:</strong> Oct 4, 2025</li>
+   <li><strong>Latest confirmed:</strong> 20.40.4</li>
+   <li><strong>Date tested:</strong> Oct 11, 2025</li>
    <li><strong>YTLite:</strong> 5.2 beta 3</li>
 </ul>
