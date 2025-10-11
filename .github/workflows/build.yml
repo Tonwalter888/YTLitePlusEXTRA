@@ -196,7 +196,12 @@ jobs:
         run: |
            cd ${{ github.workspace }}
            git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
-        
+
+      - name: Clone YouChooseQuality
+        run: |
+           cd ${{ github.workspace }}
+           git clone --quiet --depth=1 https://github.com/PoomSmart/YouChooseQuality.git
+      
       - name: Build YouPiP
         run: |
           cd ${{ github.workspace }}/YouPiP
@@ -322,6 +327,14 @@ jobs:
           cd ${{ github.workspace }}/Alderis
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/alderis.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YouChooseQuality
+        run: |
+          cd ${{ github.workspace }}/YouChooseQuality
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/youchoose.deb
         env:
           THEOS: ${{ github.workspace }}/theos
   
