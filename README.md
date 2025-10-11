@@ -11,6 +11,7 @@ Also if you see a popup says "Incompatible Tweaks Detected",just check on "Don't
 - YTABConfig (Configures A/B settings)
 - YouTimeStamp (Copy video URL from video overlay)
 - YouSlider (Customizes video slider and scrubber)
+- YouChooseQuality (Auto select the video quality from your scenario)
 - And Much more...
 
 ## FAQ
