@@ -348,24 +348,24 @@ jobs:
       - name: Generate .zip file for TrollFools
         if: ${{ inputs.create_tf }}
         run: |
-          mkdir -p ytp_tf
+          mkdir -p tf
 
           for f in *.deb; do
             if [ -f "$f" ]; then
               echo "Extracting $f..."
               mkdir -p tmp_deb
               dpkg-deb -x "$f" tmp_deb
-              find tmp_deb -type f -name "*.dylib" -exec cp -R {} ytp_tf/ \;
-              find tmp_deb -type d -name "*.bundle" -exec cp -R {} ytp_tf/ \;
+              find tmp_deb -type f -name "*.dylib" -exec cp -R {} tf/ \;
+              find tmp_deb -type d -name "*.bundle" -exec cp -R {} tf/ \;
               rm -rf tmp_deb
             fi
           done
 
           echo "Zipping..."
-          cd ytp_tf
+          cd tf
           zip -r "../TrollFools_YTLitePlusEXTRA_v${{ inputs.tweak_version }}.zip" .
           cd ..
-          rm -rf ytp_tf
+          rm -rf tf
 
       - name: Set output file list
         run: |
