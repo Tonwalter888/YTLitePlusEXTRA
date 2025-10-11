@@ -83,8 +83,13 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
-      - name: Install cyan
-        run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip 
+      - name: Install cyan and tbd
+        run: |
+          pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
+          cd /usr/local/bin
+          wget --no-verbose https://github.com/inoahdev/tbd/releases/download/2.2/tbd-mac
+          mv tbd-mac tbd
+          chmod +x tbd 
 
       - name: Download YTLite
         run: |
