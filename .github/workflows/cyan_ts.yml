@@ -62,7 +62,7 @@ jobs:
       - name: Set PATH Environment Variable
         run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
 
-      - name: Setup Theos
+      - name: Install Theos
         uses: actions/checkout@v5
         with:
           repository: theos/theos
@@ -83,7 +83,7 @@ jobs:
         if: ${{ inputs.create_cyan }}
         run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
 
-      - name: Download YouTube Plus
+      - name: Download YTLite
         run: |
           deb_url="https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.tweak_version }}/com.dvntm.ytlite_${{ inputs.tweak_version }}_iphoneos-arm64.deb"
           wget "$deb_url" --no-verbose -O ${{ github.workspace }}/ytlite.deb
@@ -332,7 +332,7 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
-      - name: Generate .cyan file
+      - name: Generate .cyan File
         if: ${{ inputs.create_cyan }}
         run: |
           tweaks="ytlite.deb OpenYouTubeSafariExtension.appex"
@@ -345,7 +345,7 @@ jobs:
 
           cgen -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }} -o Cyan_YTLitePlusEXTRA_v${{ inputs.tweak_version }}.cyan
 
-      - name: Generate .zip file for TrollFools
+      - name: Generate .zip File for TrollFools
         if: ${{ inputs.create_tf }}
         run: |
           mkdir -p tf
@@ -367,7 +367,7 @@ jobs:
           cd ..
           rm -rf tf
 
-      - name: Set output file list
+      - name: Set Output File List
         run: |
           files=""
           if [ "${{ inputs.create_cyan }}" = "true" ]; then
@@ -383,7 +383,7 @@ jobs:
       - name: Upload to GitHub Releases
         uses: softprops/action-gh-release@v2.3.3
         with:
-          tag_name: ytp-${{ github.run_number }}
+          tag_name: ytliteplusextra-cyants${{ github.run_number }}
           name: YTLitePlusEXTRA_v${{ inputs.tweak_version }}_Cyan_TrollFools (${{ github.run_number }})
           files: ${{ steps.filelist.outputs.files }}
           draft: true
