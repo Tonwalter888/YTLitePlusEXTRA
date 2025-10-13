@@ -352,7 +352,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}/YTSilentVote
           make clean package DEBUG=0 FINALPACKAGE=1
-          mv packages/*.deb ${{ github.workspace }}/ytnolikevote.deb
+          mv packages/*.deb ${{ github.workspace }}/ytnovote.deb
         env:
           THEOS: ${{ github.workspace }}/theos  
   
