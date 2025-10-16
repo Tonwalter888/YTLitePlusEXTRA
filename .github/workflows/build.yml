@@ -48,7 +48,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-jobs:
+jobs:.
   build:
     name: Build and Release YTLitePlusEXTRA IPA
     runs-on: macos-latest
