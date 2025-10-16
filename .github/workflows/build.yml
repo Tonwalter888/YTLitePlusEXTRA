@@ -432,3 +432,7 @@ jobs:
         if: ${{ inputs.draft_release }}
         run: |
           echo -e '### 🚀 Draft Release\n\nThe release draft has been created successfully! You can view your releases here: https://github.com/${{ github.repository }}/releases' >> $GITHUB_STEP_SUMMARY
+     
+      - name: Cleanup
+        run: |
+          echo -e '### 🧹 Cleanup\n\nYou can remove previous GitHub Action runs here: https://github.com/${{ github.repository }}/actions/workflows/delete-workflow-runs.yml' >> $GITHUB_STEP_SUMMARY

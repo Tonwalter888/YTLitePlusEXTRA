@@ -40,7 +40,7 @@ Also if you see a popup says "Incompatible Tweaks Detected",just check on "Don't
 
 ## Supported YouTube Version
 <ul>
-   <li><strong>Latest confirmed:</strong> 20.40.4</li>
-   <li><strong>Date tested:</strong> Oct 11, 2025</li>
+   <li><strong>Latest confirmed:</strong> 20.41.5</li>
+   <li><strong>Date tested:</strong> Oct 16, 2025</li>
    <li><strong>YTLite:</strong> 5.2 beta 3</li>
 </ul>
