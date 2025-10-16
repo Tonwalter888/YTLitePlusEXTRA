@@ -418,7 +418,7 @@ jobs:
           files: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa
           draft: true
 
-      - name: Output a Artifact Upload
+      - name: Output an Artifact Upload
         if: ${{ inputs.upload_artifact }}
         run: |
           echo -e '### 📦 Artifact Upload\n\nThe artifact was uploaded successfully! Refresh and [scroll down](#artifacts) to view the artifact. Note that you must be signed in to GitHub to download it.' >> $GITHUB_STEP_SUMMARY
