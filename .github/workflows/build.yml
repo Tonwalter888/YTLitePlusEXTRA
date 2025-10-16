@@ -392,14 +392,6 @@ jobs:
           
           cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
-      - name: Prepare to Upload Artifact
-        id: ipa
-        run: |
-          mkdir -p upload
-          cp -r YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa upload/YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa
-          echo "upload=$(ls -t upload | head -n1)" >> $GITHUB_OUTPUT
-          mv "upload/$(ls -t upload | head -n1)" "upload/YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa"
-
       - name: Upload IPA to Catbox
         if: ${{ inputs.catbox_upload }}
         run: |
@@ -414,8 +406,8 @@ jobs:
         if: ${{ inputs.upload_artifact }}
         uses: actions/upload-artifact@v4.6.2
         with:
-          name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }} 
-          path: ${{ github.workspace }}/upload/${{ steps.ipa.outputs.upload }}
+          name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }} (${{ github.run_number }})
+          path: ${{ github.workspace }}/YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa
 
       - name: Create a Draft Release
         if: ${{ inputs.draft_release }}
