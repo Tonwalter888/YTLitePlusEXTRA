@@ -65,7 +65,7 @@ jobs:
       - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
-          exclude_inputs: bundle_id,display_name,tweak_version
+          exclude_inputs: bundle_id,display_name,tweak_version,draft_release,catbox_upload,upload_artifact
           
       - name: Download and Validate IPA
         run: |
@@ -381,6 +381,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos  
   
       - name: Inject Tweaks Into IPA
+        id: ipa
         run: |
           tweaks="ytlite.deb OpenYouTubeSafariExtension.appex"
 
@@ -391,6 +392,9 @@ jobs:
           done
           
           cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
+          mkdir -p upload
+          cp -r YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa upload/YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa
+          echo "upload=$(ls -t upload | head -n1)" >> $GITHUB_OUTPUT
 
       - name: Upload IPA to Catbox
         if: ${{ inputs.catbox_upload }}
@@ -407,7 +411,7 @@ jobs:
         uses: actions/upload-artifact@v4.6.2
         with:
           name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }} 
-          path: ${{ github.workspace }}/YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa
+          path: ${{ github.workspace }}/upload/${{ steps.ipa.outputs.upload }}
 
       - name: Create a Draft Release
         if: ${{ inputs.draft_release }}
