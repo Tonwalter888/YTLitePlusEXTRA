@@ -381,7 +381,6 @@ jobs:
           THEOS: ${{ github.workspace }}/theos  
   
       - name: Inject Tweaks Into IPA
-        id: ipa
         run: |
           tweaks="ytlite.deb OpenYouTubeSafariExtension.appex"
 
@@ -392,9 +391,14 @@ jobs:
           done
           
           cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
+
+      - name: Prepare to Upload Artifact
+        id: ipa
+        run: |
           mkdir -p upload
           cp -r YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa upload/YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa
           echo "upload=$(ls -t upload | head -n1)" >> $GITHUB_OUTPUT
+          mv "upload/$(ls -t upload | head -n1)" "upload/YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa"
 
       - name: Upload IPA to Catbox
         if: ${{ inputs.catbox_upload }}
