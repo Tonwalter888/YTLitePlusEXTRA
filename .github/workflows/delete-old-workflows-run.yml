@@ -43,7 +43,7 @@ on:
         required: false
 
 jobs:
-  del_runs:
+  Delete-old-runs:
     runs-on: ubuntu-latest
     permissions:
       actions: write
