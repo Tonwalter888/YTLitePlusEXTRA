@@ -60,6 +60,14 @@ jobs:
             exit 1
           fi
 
+      - name: Get Youtube Version 
+        run: |
+          mkdir -p ${{ github.workspace }}/ytversion
+          cp -r ${{ github.workspace }}/youtube.ipa ${{ github.workspace }}/ytversion/youtube.ipa
+          unzip -q ${{ github.workspace }}/ytversion/youtube.ipa -d ${{ github.workspace }}/ytversion/ytextracted
+          echo "YT_VERSION=$(grep -A 1 '<key>CFBundleVersion</key>' ${{ github.workspace }}/ytversion/ytextracted/Payload/YouTube.app/Info.plist | grep '<string>' | awk -F'[><]' '{print $3}')" >> $GITHUB_ENV
+          echo -e 'Done!'
+
       - name: Install Dependencies
         run: brew install make ldid swiftlint
 
@@ -363,18 +371,46 @@ jobs:
               tweaks="$tweaks $f"
             fi
           done
+          
+          cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
-          cyan -i youtube.ipa -o YTLitePlusEXTRA_v${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
+      - name: Upload IPA to Catbox
+        if: ${{ inputs.catbox_upload }}
+        run: |
+          RESPONSE=$(curl -F "reqtype=fileupload" -F "fileToUpload=@${{ github.workspace }}/YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa" https://catbox.moe/user/api.php)
+          CATBOX_URL=$(echo $RESPONSE | grep -o -E 'https://files.catbox.moe/[^"]*')
+          echo "Uploaded artifact to $CATBOX_URL"
+          CATBOX_FILE=$(echo $CATBOX_URL | sed 's|https://files.catbox.moe/||')
+          echo "CATBOX_FILE=$CATBOX_FILE" >> $GITHUB_ENV
+          echo "CATBOX_URL=$CATBOX_URL" >> $GITHUB_ENV
 
-      - name: Upload to GitHub Releases
+      - name: Upload IPA as an Artifact
+        if: ${{ inputs.upload_artifact }}
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }} 
+          path: ${{ github.workspace }}/YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa
+
+      - name: Create a Draft Release
+        if: ${{ inputs.draft_release }}
         uses: softprops/action-gh-release@v2.3.3
         with:
           tag_name: ytliteplusextra-ipa${{ github.run_number }}
-          name: YTLitePlusEXTRA_v${{ inputs.tweak_version }} (${{ github.run_number }}) 
-          files: YTLitePlusEXTRA_v${{ inputs.tweak_version }}.ipa
+          name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }} (${{ github.run_number }}) 
+          files: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa
           draft: true
 
-      - name: Output Release URL
+      - name: Output a Artifact Upload
+        if: ${{ inputs.upload_artifact }}
         run: |
-          echo "::notice::Release available at: https://github.com/${{ github.repository }}/releases"
-          
+          echo -e '### 📦 Artifact Upload\n\nThe artifact was uploaded successfully! Refresh and [scroll down](#artifacts) to view the artifact. Note that you must be signed in to GitHub to download it.' >> $GITHUB_STEP_SUMMARY
+
+      - name: Output IPA URL Link (Catbox Upload)
+        if: ${{ inputs.catbox_upload}}
+        run: |
+          echo -e '### 🐱 Catbox Upload\n\nThe Catbox upload was successful! Here is a permanent shareable link: '$CATBOX_URL >> $GITHUB_STEP_SUMMARY
+
+      - name: Output a Draft Release Link
+        if: ${{ inputs.draft_release }}
+        run: |
+          echo -e '### 🚀 Draft Release\n\nThe release draft has been created successfully! You can view your releases here: https://github.com/${{ github.repository }}/releases' >> $GITHUB_STEP_SUMMARY
