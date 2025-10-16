@@ -26,6 +26,24 @@ on:
         required: true
         type: string
 
+      upload_artifact:
+        description: "Upload IPA as an Artifact (Public)"
+        default: true
+        required: false
+        type: boolean
+        
+      catbox_upload:
+        description: "Upload IPA to Catbox.moe (URL)"
+        default: true
+        required: false
+        type: boolean
+        
+      draft_release:
+        description: "Create a draft release (Private)"
+        default: true
+        required: false
+        type: boolean
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
