@@ -424,7 +424,7 @@ jobs:
           echo -e '### 📦 Artifact Upload\n\nThe artifact was uploaded successfully! Refresh and [scroll down](#artifacts) to view the artifact. Note that you must be signed in to GitHub to download it.' >> $GITHUB_STEP_SUMMARY
 
       - name: Output IPA URL Link (Catbox Upload)
-        if: ${{ inputs.catbox_upload}}
+        if: ${{ inputs.catbox_upload }}
         run: |
           echo -e '### 🐱 Catbox Upload\n\nThe Catbox upload was successful! Here is a permanent shareable link: '$CATBOX_URL >> $GITHUB_STEP_SUMMARY
 
