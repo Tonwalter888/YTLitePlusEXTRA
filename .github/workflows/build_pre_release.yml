@@ -1,4 +1,4 @@
-name: (BETA) Build and Release YTLitePlusEXTRA IPA
+name: (Pre-Release) Build and Release YTLitePlusEXTRA IPA
 on:
   workflow_dispatch:
     inputs:
