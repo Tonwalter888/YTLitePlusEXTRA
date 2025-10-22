@@ -121,7 +121,8 @@ jobs:
 
       - name: Get YTLite Version
         run: |
-          ar x ytlite.deb control.tar.* >/dev/null 2>&1
+          cd ${{ github.workspace }}
+          ar x ytlite.deb control.tar.gz >/dev/null 2>&1
           tar -xzf control.tar.gz ./control
           VERSION=$(grep '^Version:' control | cut -d ' ' -f2)
           echo "YTLITE_VERSION=$VERSION" >> $GITHUB_ENV
