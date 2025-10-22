@@ -78,13 +78,11 @@ jobs:
             exit 1
           fi
 
-      - name: Get Youtube Version 
+      - name: Get YouTube Version 
         run: |
-          mkdir -p ${{ github.workspace }}/ytversion
-          cp -r ${{ github.workspace }}/youtube.ipa ${{ github.workspace }}/ytversion/youtube.ipa
-          unzip -q ${{ github.workspace }}/ytversion/youtube.ipa -d ${{ github.workspace }}/ytversion/ytextracted
-          echo "YT_VERSION=$(grep -A 1 '<key>CFBundleVersion</key>' ${{ github.workspace }}/ytversion/ytextracted/Payload/YouTube.app/Info.plist | grep '<string>' | awk -F'[><]' '{print $3}')" >> $GITHUB_ENV
-          echo -e 'Done!'
+          unzip -q ${{ github.workspace }}/youtube.ipa -d ${{ github.workspace }}/ytextracted
+          echo "YT_VERSION=$(grep -A 1 '<key>CFBundleVersion</key>' ${{ github.workspace }}/ytextracted/Payload/YouTube.app/Info.plist | grep '<string>' | awk -F'[><]' '{print $3}')" >> $GITHUB_ENV
+          echo -e 'Done! The YouTube Version is ${{ env.YT_VERSION }}'
 
       - name: Install Dependencies
         run: brew install make ldid swiftlint
