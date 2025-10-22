@@ -9,7 +9,7 @@ on:
         type: string
 
       deb_url:
-        description: "URL to your YTLite .deb"
+        description: "URL to your YTLite .deb file"
         default: ""
         required: true
         type: string
