@@ -434,7 +434,7 @@ jobs:
       - name: Output the IPA URL Link (Catbox Upload)
         if: ${{ inputs.catbox_upload }}
         run: |
-          echo -e '### 🐱 Catbox Upload\n\nUpload IPA to Catbox successfully! Here's a permanent shareable link: '$CATBOX_URL >> $GITHUB_STEP_SUMMARY
+          echo -e '### 🐱 Catbox Upload\n\nUpload IPA to Catbox successfully! Here is a permanent shareable link: '$CATBOX_URL >> $GITHUB_STEP_SUMMARY
 
       - name: Output a Draft Release Link
         if: ${{ inputs.draft_release }}
