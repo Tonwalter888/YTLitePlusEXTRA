@@ -92,7 +92,7 @@ jobs:
       - name: Set PATH Environment Variable
         run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
 
-      - name: Install Theos
+      - name: Clone Theos
         uses: actions/checkout@v5
         with:
           repository: theos/theos
@@ -119,9 +119,12 @@ jobs:
         run: |
           wget "${{ inputs.deb_url }}" --no-verbose -O ${{ github.workspace }}/ytlite.deb
 
-      - name: Get your YTLite version
+      - name: Get YTLite Version
         run: |
-          echo "YTLITE_VERSION=$(dpkg-deb -f ytlite.deb Version)" >> $GITHUB_ENV
+          ar x ytlite.deb control.tar.* >/dev/null 2>&1
+          tar -xzf control.tar.gz ./control
+          VERSION=$(grep '^Version:' control | cut -d ' ' -f2)
+          echo "YTLITE_VERSION=$VERSION" >> $GITHUB_ENV
           echo -e 'Done!'
 
       - name: Clone Open in YouTube (Safari Extension)
