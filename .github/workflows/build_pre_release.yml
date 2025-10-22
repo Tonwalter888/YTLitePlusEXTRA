@@ -119,6 +119,12 @@ jobs:
         run: |
           wget "${{ inputs.deb_url }}" --no-verbose -O ${{ github.workspace }}/ytlite.deb
 
+      - name: Get your YTLite version
+        run: |
+          VERSION=$(dpkg-deb -f ytlite.deb Version)
+          echo "YT_VERSION=$VERSION" >> $GITHUB_ENV
+          echo -e 'Done!'
+
       - name: Clone Open in YouTube (Safari Extension)
         run: |
           git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/BillyCurtis/OpenYouTubeSafariExtension.git
