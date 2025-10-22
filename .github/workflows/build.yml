@@ -33,7 +33,7 @@ on:
         type: boolean
         
       catbox_upload:
-        description: "Upload IPA to Catbox.moe (URL)"
+        description: "Upload IPA to Catbox.moe (URL Link)"
         default: true
         required: false
         type: boolean
@@ -418,20 +418,20 @@ jobs:
           files: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.tweak_version }}.ipa
           draft: true
 
-      - name: Output an Artifact Upload
+      - name: Output the Artifact Upload
         if: ${{ inputs.upload_artifact }}
         run: |
-          echo -e '### 📦 Artifact Upload\n\nThe artifact was uploaded successfully! Refresh and [scroll down](#artifacts) to view the artifact. Note that you must be signed in to GitHub to download it.' >> $GITHUB_STEP_SUMMARY
+          echo -e '### 📦 Artifact Upload\n\nUpload IPA as an artifact successfully! [Scroll down](#artifacts) to view the artifact. Note that you must be signed in to GitHub to download it.' >> $GITHUB_STEP_SUMMARY
 
-      - name: Output IPA URL Link (Catbox Upload)
+      - name: Output the IPA URL Link (Catbox Upload)
         if: ${{ inputs.catbox_upload }}
         run: |
-          echo -e '### 🐱 Catbox Upload\n\nThe Catbox upload was successful! Here is a permanent shareable link: '$CATBOX_URL >> $GITHUB_STEP_SUMMARY
+          echo -e '### 🐱 Catbox Upload\n\nUpload IPA to Catbox successfully! Here is a permanent shareable link: '$CATBOX_URL >> $GITHUB_STEP_SUMMARY
 
       - name: Output a Draft Release Link
         if: ${{ inputs.draft_release }}
         run: |
-          echo -e '### 🚀 Draft Release\n\nThe release draft has been created successfully! You can view your releases here: https://github.com/${{ github.repository }}/releases' >> $GITHUB_STEP_SUMMARY
+          echo -e '### 🚀 Draft Release\n\nDraft Release has been created successfully! You can view your release here: https://github.com/${{ github.repository }}/releases' >> $GITHUB_STEP_SUMMARY
      
       - name: Cleanup
         run: |
