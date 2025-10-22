@@ -38,7 +38,8 @@ Also if you see a popup says "Incompatible Tweaks Detected",just check on "Don't
   </ol>
 </details>
 
-<summary>How to build a YTLitePlusEXTRA IPA (With your own YTLite .deb file)</summary>
+<details>
+  <summary>How to build a YTLitePlusEXTRA IPA (With your own YTLite .deb file)</summary>
   <ol>
     <li>Click on <strong>Sync fork</strong>, and if your branch is out-of-date, click on <strong>Update branch</strong>.</li>
     <li>Navigate to the <strong>Actions tab</strong> in your forked repository and select <strong>(Pre-Release) Build and Release YTLitePlusEXTRA IPA.</strong></li>
