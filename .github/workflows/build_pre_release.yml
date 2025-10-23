@@ -113,7 +113,7 @@ jobs:
           wget --no-verbose https://github.com/inoahdev/tbd/releases/download/2.2/tbd-mac -O /usr/local/bin/tbd
           chmod +x /usr/local/bin/tbd 
 
-      - name: Download your YTLite .deb 
+      - name: Download and Validate your YTLite .deb 
         run: |
           wget "${{ inputs.deb_url }}" --no-verbose -O ${{ github.workspace }}/ytlite.deb
 
