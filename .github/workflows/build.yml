@@ -56,6 +56,12 @@ jobs:
           path: main
           submodules: recursive
 
+      - name: Check Inputs
+        if: ${{ !inputs.upload_artifact && !inputs.draft_release }}
+        run: |
+          echo "No IPA output way selected. Please choose at least one."
+          exit 0
+
       - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
@@ -107,7 +113,7 @@ jobs:
           wget --no-verbose https://github.com/inoahdev/tbd/releases/download/2.2/tbd-mac -O /usr/local/bin/tbd
           chmod +x /usr/local/bin/tbd 
 
-      - name: Download YTLite
+      - name: Download YTLite .deb
         run: |
           deb_url="https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.ytlite_version }}/com.dvntm.ytlite_${{ inputs.ytlite_version }}_iphoneos-arm64.deb"
           wget "$deb_url" --no-verbose -O ${{ github.workspace }}/ytlite.deb
@@ -400,16 +406,20 @@ jobs:
           files: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa
           draft: true
 
-      - name: Output the Artifact Upload
+      - name: Job Summary - Build Conplete
+        run: |
+          echo -e '### 🛠️ Build Complete' >> $GITHUB_STEP_SUMMARY
+
+      - name: Job Summary - Output the Artifact Upload
         if: ${{ inputs.upload_artifact }}
         run: |
           echo -e '### 📦 Artifact Upload\n\nUpload IPA as an artifact successfully! [Scroll down](#artifacts) to view the artifact. Note that you must be signed in to GitHub to download it.' >> $GITHUB_STEP_SUMMARY
 
-      - name: Output a Draft Release Link
+      - name: Job Summary - Output a Draft Release Link
         if: ${{ inputs.draft_release }}
         run: |
           echo -e '### 🚀 Draft Release\n\nDraft release has been created successfully! You can view your release here: https://github.com/${{ github.repository }}/releases' >> $GITHUB_STEP_SUMMARY
      
-      - name: Cleanup
+      - name: Job Summary - Cleanup
         run: |
           echo -e '### 🧹 Cleanup\n\nYou can remove previous GitHub Action runs here: https://github.com/${{ github.repository }}/actions/workflows/delete-old-workflow-runs.yml' >> $GITHUB_STEP_SUMMARY
