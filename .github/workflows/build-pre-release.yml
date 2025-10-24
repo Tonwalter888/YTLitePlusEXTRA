@@ -60,7 +60,7 @@ jobs:
         if: ${{ !inputs.upload_artifact && !inputs.draft_release }}
         run: |
           echo "No IPA output way selected. Please choose at least one."
-          exit 0
+          exit 2
 
       - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
