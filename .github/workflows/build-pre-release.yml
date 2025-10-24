@@ -50,12 +50,6 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout Main
-        uses: actions/checkout@v5
-        with:
-          path: main
-          submodules: recursive
-
       - name: Check Inputs
         if: ${{ !inputs.upload_artifact && !inputs.draft_release }}
         run: |
@@ -91,11 +85,7 @@ jobs:
         run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
 
       - name: Clone Theos
-        uses: actions/checkout@v5
-        with:
-          repository: theos/theos
-          path: ${{ github.workspace }}/theos
-          submodules: recursive
+        run: git clone --quiet --recurse-submodules https://github.com/theos/theos.git
         
       - name: Download iOS SDK
         run: |
@@ -162,12 +152,11 @@ jobs:
           git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
     
       - name: Clone YTUHD
-        uses: actions/checkout@v5
-        with:
-          repository: PoomSmart/YTUHD
-          ref: 0f59b38817d554ab692a0053456319847a6ab1a1
-          path: ${{ github.workspace }}/YTUHD
-          submodules: recursive
+        run: |
+           cd ${{ github.workspace }}
+           git clone --quiet https://github.com/PoomSmart/YTUHD.git
+           cd YTUHD
+           git checkout 0f59b38
 
       - name: Clone Return-YouTube-Dislikes
         run: |
