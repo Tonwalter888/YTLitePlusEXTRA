@@ -1,4 +1,4 @@
-name: (Pre-Release) Build and Release YTLitePlusEXTRA IPA
+name: (Pre-Release) Build YTLitePlusEXTRA IPA
 on:
   workflow_dispatch:
     inputs:
@@ -44,7 +44,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build and Release YTLitePlusEXTRA IPA
+    name: Build YTLitePlusEXTRA IPA
     runs-on: macos-latest
     permissions:
       contents: write
@@ -421,9 +421,9 @@ jobs:
           files: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa
           draft: true
 
-      - name: Job Summary - Build Conplete
+      - name: Job Summary - Build Complete
         run: |
-          echo -e '### 🛠️ Build Complete' >> $GITHUB_STEP_SUMMARY
+          echo -e '### 🛠️ Build YTLitePlusEXTRA IPA Complete!' >> $GITHUB_STEP_SUMMARY
 
       - name: Job Summary - Output the Artifact Upload
         if: ${{ inputs.upload_artifact }}
