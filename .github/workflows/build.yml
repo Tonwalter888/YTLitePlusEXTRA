@@ -1,4 +1,4 @@
-name: Build and Release YTLitePlusEXTRA IPA
+name: Build YTLitePlusEXTRA IPA
 on:
   workflow_dispatch:
     inputs:
@@ -44,7 +44,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build and Release YTLitePlusEXTRA IPA
+    name: Build YTLitePlusEXTRA IPA
     runs-on: macos-latest
     permissions:
       contents: write
@@ -408,7 +408,7 @@ jobs:
 
       - name: Job Summary - Build Conplete
         run: |
-          echo -e '### 🛠️ Build Complete' >> $GITHUB_STEP_SUMMARY
+          echo -e '### 🛠️ Build YTLitePlusEXTRA IPA Complete!' >> $GITHUB_STEP_SUMMARY
 
       - name: Job Summary - Output the Artifact Upload
         if: ${{ inputs.upload_artifact }}
