@@ -27,7 +27,7 @@ on:
         type: string
 
       upload_artifact:
-        description: "Export IPA as an artifact (Public)"
+        description: "Upload IPA as an artifact (Public)"
         default: true
         required: false
         type: boolean
