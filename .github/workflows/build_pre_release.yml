@@ -437,4 +437,4 @@ jobs:
      
       - name: Job Summary - Cleanup
         run: |
-          echo -e '### 🧹 Cleanup\n\nYou can remove previous GitHub Action runs here: https://github.com/${{ github.repository }}/actions/workflows/delete-old-workflow-runs.yml' >> $GITHUB_STEP_SUMMARY
+          echo -e '### 🧹 Cleanup\n\nYou can remove previous GitHub Action runs here: https://github.com/${{ github.repository }}/actions/workflows/delete-old-workflows-run.yml' >> $GITHUB_STEP_SUMMARY
