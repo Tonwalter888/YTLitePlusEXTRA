@@ -31,6 +31,12 @@ on:
         default: true
         required: false
         type: boolean
+
+      catbox_upload:
+        description: "Upload IPA to Catbox.moe (URL)"
+        default: true
+        required: false
+        type: boolean
         
       draft_release:
         description: "Create a draft release (Private)"
@@ -51,7 +57,7 @@ jobs:
 
     steps:
       - name: Check Inputs
-        if: ${{ !inputs.upload_artifact && !inputs.draft_release }}
+        if: ${{ !inputs.upload_artifact && !inputs.draft_release && !inputs.catbox_upload }}
         run: |
           echo "No IPA output way selected. Please choose at least one."
           exit 1
@@ -59,7 +65,7 @@ jobs:
       - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
-          exclude_inputs: bundle_id,display_name,tweak_version,draft_release,upload_artifact
+          exclude_inputs: bundle_id,display_name,tweak_version,draft_release,upload_artifact,catbox_upload
           
       - name: Download and Validate IPA
         run: |
@@ -154,9 +160,7 @@ jobs:
       - name: Clone YTUHD
         run: |
            cd ${{ github.workspace }}
-           git clone --quiet https://github.com/PoomSmart/YTUHD.git
-           cd YTUHD
-           git checkout 0f59b38
+           git clone --quiet https://github.com/Tonwalter888/YTUHD.git
 
       - name: Clone Return-YouTube-Dislikes
         run: |
@@ -394,6 +398,16 @@ jobs:
           
           cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
+      - name: Upload IPA to Catbox
+        if: ${{ inputs.catbox_upload }}
+        run: |
+          RESPONSE=$(curl -F "reqtype=fileupload" -F "fileToUpload=@${{ github.workspace }}/YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa" https://catbox.moe/user/api.php)
+          CATBOX_URL=$(echo $RESPONSE | grep -o -E 'https://files.catbox.moe/[^"]*')
+          echo "Uploaded artifact to $CATBOX_URL"
+          CATBOX_FILE=$(echo $CATBOX_URL | sed 's|https://files.catbox.moe/||')
+          echo "CATBOX_FILE=$CATBOX_FILE" >> $GITHUB_ENV
+          echo "CATBOX_URL=$CATBOX_URL" >> $GITHUB_ENV
+
       - name: Upload IPA as an Artifact
         if: ${{ inputs.upload_artifact }}
         uses: actions/upload-artifact@v4.6.2
@@ -418,6 +432,11 @@ jobs:
         if: ${{ inputs.upload_artifact }}
         run: |
           echo -e '### 📦 Artifact Upload\n\nUpload IPA as an artifact successfully! [Scroll down](#artifacts) to view the artifact. Note that you must be signed in to GitHub to download it.' >> $GITHUB_STEP_SUMMARY
+
+      - name: Job Summary - Output the IPA URL (Catbox Upload)
+        if: ${{ inputs.catbox_upload }}
+        run: |
+          echo -e '### 🐱 Catbox Upload\n\nUpload IPA to Catbox successfully! Here is a permanent shareable link: '$CATBOX_URL >> $GITHUB_STEP_SUMMARY
 
       - name: Job Summary - Output a Draft Release Link
         if: ${{ inputs.draft_release }}
