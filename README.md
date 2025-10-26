@@ -9,9 +9,10 @@ Also if you see a popup says "Incompatible Tweaks Detected",just check on "Don't
 - YouMute (Mute the video sounds in video overlay)
 - YouSpeed (Change video speeds in video overlay)
 - YTABConfig (Configures A/B settings)
-- YouTimeStamp (Copy video URL from video overlay)
+- YouTimeStamp (Copy video URL with timestamp from video overlay)
 - YouSlider (Customizes video slider and scrubber)
 - YouChooseQuality (Auto select the video quality from your scenario)
+- YouShare (Copy video URL from video overlay)
 - And Much more...
 
 ## FAQ

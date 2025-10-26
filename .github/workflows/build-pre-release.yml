@@ -241,6 +241,11 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YTSilentVote.git
+
+      - name: Clone YouShare
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 https://github.com/Tonwalter888/YouShare.git
       
       - name: Build YouPiP
         run: |
@@ -383,6 +388,14 @@ jobs:
           cd ${{ github.workspace }}/YTSilentVote
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/ytnovote.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos  
+
+      - name: Build YouShare
+        run: |
+          cd ${{ github.workspace }}/YouShare
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/youshare.deb
         env:
           THEOS: ${{ github.workspace }}/theos  
   
