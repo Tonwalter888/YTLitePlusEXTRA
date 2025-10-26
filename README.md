@@ -3,7 +3,7 @@ This is a fork repo from YTLite,but add more tweaks similar to YTLitePlus for wh
 If you have any problems,feel free to open issues!
 
 **NOTE:** 
-- If you are experiencing 4K video is buffering,replay the video again or seek the video to other point then seek back or wait until the video reload automaticly
+- If you are experiencing 4K video is buffering,replay the video again or seek the video to other point then seek back or wait until the video reload automaticly.
 - If you see a popup says "Incompatible Tweaks Detected",just check on "Don't show for this version",click on "I accept all risks" and ignore it.
 
 ## Main Features
