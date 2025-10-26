@@ -1,10 +1,10 @@
 # YTLitePlusEXTRA
-This is a fork repo from YTLite,but add more tweaks similar to YTLitePlus.
-This is just an another alternative for who can't build IPA in YTLitePlus or The app is unusable.
-If you have any problems,feel free to open issues.
-Also if you see a popup says "Incompatible Tweaks Detected",just check on "Don't show for this version",click on "I accept all risks" and ignore it.
+- This is a fork repo from YTLite,but add more tweaks similar to YTLitePlus for who can't build IPA or The app is unusable.
+If you have any problems,feel free to open issues!
 
-**NOTE:** If you are experiencing 4K video won't load,replay the video again or seek the video to other point then seek back.
+**NOTE:** 
+- If you are experiencing 4K video won't load,replay the video again or seek the video to other point then seek back.
+- If you see a popup says "Incompatible Tweaks Detected",just check on "Don't show for this version",click on "I accept all risks" and ignore it.
 
 ## Main Features
 - YTLite (eg. Download Videos,No ads,Background Playback)
