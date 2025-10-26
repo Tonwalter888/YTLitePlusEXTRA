@@ -4,7 +4,7 @@ This is just an another alternative for who can't build IPA in YTLitePlus or The
 If you have any problems,feel free to open issues.
 Also if you see a popup says "Incompatible Tweaks Detected",just check on "Don't show for this version",click on "I accept all risks" and ignore it.
 
-**NOTE:** If you are experiencing 4K video won't load,replay the video again.
+**NOTE:** If you are experiencing 4K video won't load,replay the video again or seek the video to other point then seek back.
 
 ## Main Features
 - YTLite (eg. Download Videos,No ads,Background Playback)
