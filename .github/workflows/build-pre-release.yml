@@ -69,7 +69,7 @@ jobs:
           
       - name: Download and Validate IPA
         run: |
-          wget "${{ inputs.ipa_url }}" --no-verbose -O ${{ github.workspace }}/youtube.ipa
+          wget ${{ inputs.ipa_url }} --no-verbose -O ${{ github.workspace }}/youtube.ipa
 
           ipa_type=$(file --mime-type -b ${{ github.workspace }}/youtube.ipa)
 
@@ -111,7 +111,7 @@ jobs:
 
       - name: Download and Validate your YTLite .deb 
         run: |
-          wget "${{ inputs.deb_url }}" --no-verbose -O ${{ github.workspace }}/ytlite.deb
+          wget ${{ inputs.deb_url }} --no-verbose -O ${{ github.workspace }}/ytlite.deb
 
           deb_type=$(file --mime-type -b ${{ github.workspace }}/ytlite.deb)
 
