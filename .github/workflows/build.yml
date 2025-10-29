@@ -69,7 +69,7 @@ jobs:
           
       - name: Download and Validate IPA
         run: |
-          wget "${{ inputs.ipa_url }}" --no-verbose -O ${{ github.workspace }}/youtube.ipa
+          wget ${{ inputs.ipa_url }} --no-verbose -O ${{ github.workspace }}/youtube.ipa
 
           file_type=$(file --mime-type -b ${{ github.workspace }}/youtube.ipa)
 
@@ -110,7 +110,7 @@ jobs:
           chmod +x /usr/local/bin/tbd 
 
       - name: Download YTLite .deb
-        run: wget "https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.ytlite_version }}/com.dvntm.ytlite_${{ inputs.ytlite_version }}_iphoneos-arm64.deb --no-verbose -O ${{ github.workspace }}/ytlite.deb
+        run: wget https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.ytlite_version }}/com.dvntm.ytlite_${{ inputs.ytlite_version }}_iphoneos-arm64.deb --no-verbose -O ${{ github.workspace }}/ytlite.deb
 
       - name: Clone Open in YouTube (Safari Extension)
         run: |
