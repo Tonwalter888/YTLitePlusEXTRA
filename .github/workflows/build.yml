@@ -409,7 +409,7 @@ jobs:
         uses: actions/upload-artifact@v4.6.2
         with:
           name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}
-          path: ${{ github.workspace }}/YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa
+          path: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa
 
       - name: Create a Draft Release
         if: ${{ inputs.draft_release }}
