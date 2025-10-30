@@ -139,7 +139,7 @@ jobs:
       - name: Clone YouTubeHeader
         run: |
            cd $THEOS/include
-           git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git
+           git clone --quiet https://github.com/PoomSmart/YouTubeHeader.git
            cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -147,7 +147,7 @@ jobs:
       - name: Clone PSHeader
         run: |
            cd $THEOS/include
-           git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git
+           git clone --quiet https://github.com/PoomSmart/PSHeader.git
         env:
           THEOS: ${{ github.workspace }}/theos
 
