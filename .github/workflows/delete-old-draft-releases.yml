@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
         inputs:
            time:
-             description: "Set a certain amount of time you want to keep"
+             description: "Set a certain amount of time you want to keep. (s=seconds,m=minutes,h=hours,d=days,w=weeks,mo=months,y=years)"
              default: ""
              required: false
              type: string  
