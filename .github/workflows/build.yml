@@ -123,7 +123,7 @@ jobs:
       - name: Clone YouTubeHeader
         run: |
            cd $THEOS/include
-           git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git
+           git clone --quiet https://github.com/PoomSmart/YouTubeHeader.git
            cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -131,66 +131,66 @@ jobs:
       - name: Clone PSHeader
         run: |
            cd $THEOS/include
-           git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git
+           git clone --quiet https://github.com/PoomSmart/PSHeader.git
         env:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Clone YouPiP
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
+        run: git clone --quiet https://github.com/PoomSmart/YouPiP.git
     
       - name: Clone YTUHD
         run: git clone --quiet https://github.com/Tonwalter888/YTUHD.git
            
       - name: Clone Return-YouTube-Dislikes
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
+        run: git clone --quiet https://github.com/PoomSmart/Return-YouTube-Dislikes.git
 
       - name: Clone YouGroupSettings
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
+        run: git clone --quiet https://github.com/PoomSmart/YouGroupSettings.git
            
       - name: Clone YTVideoOverlay
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoOverlay.git
+        run: git clone --quiet https://github.com/PoomSmart/YTVideoOverlay.git
           
       - name: Clone YTABConfig
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTABConfig.git
+        run: git clone --quiet https://github.com/PoomSmart/YTABConfig.git
                   
       - name: Clone YouQuality
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouQuality.git
+        run: git clone --quiet https://github.com/PoomSmart/YouQuality.git
 
       - name: Clone YouSpeed
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
+        run: git clone --quiet https://github.com/PoomSmart/YouSpeed.git
 
       - name: Clone DontEatMyContent
-        run: git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
+        run: git clone --quiet https://github.com/therealFoxster/DontEatMyContent.git
 
       - name: Clone IAmYouTube
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/IAmYouTube.git
+        run: git clone --quiet https://github.com/PoomSmart/IAmYouTube.git
 
       - name: Clone YouMute
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
+        run: git clone --quiet https://github.com/PoomSmart/YouMute.git
 
       - name: Clone YTABGoodies
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTABGoodies.git
+        run: git clone --quiet https://github.com/PoomSmart/YTABGoodies.git
 
       - name: Clone YouTimeStamp
-        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouTimeStamp.git
+        run: git clone --quiet https://github.com/Tonwalter888/YouTimeStamp.git
     
       - name: Clone YouLoop
-        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouLoop.git
+        run: git clone --quiet https://github.com/Tonwalter888/YouLoop.git
 
       - name: Clone Alderis
-        run: git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
+        run: git clone --quiet https://github.com/hbang/Alderis.git
 
       - name: Clone YouSlider
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
+        run: git clone --quiet https://github.com/PoomSmart/YouSlider.git
 
       - name: Clone YouChooseQuality
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouChooseQuality.git
+        run: git clone --quiet https://github.com/PoomSmart/YouChooseQuality.git
 
       - name: Clone YTSilentVote
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTSilentVote.git
+        run: git clone --quiet https://github.com/PoomSmart/YTSilentVote.git
 
       - name: Clone YouShare
-        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouShare.git
+        run: git clone --quiet https://github.com/Tonwalter888/YouShare.git
       
       - name: Build YouPiP
         run: |
