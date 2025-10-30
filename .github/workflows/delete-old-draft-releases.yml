@@ -1,0 +1,24 @@
+name: Delete old draft releases
+on:
+  workflow_dispatch:
+        inputs:
+           time:
+             description: "Set a certain amount of time you want to keep"
+             default: ""
+             required: false
+             type: string  
+
+permissions:
+  contents: write
+  
+jobs:
+  build:
+    name: Delete old draft releases
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete old draft releases
+        uses: hugo19941994/delete-draft-releases@v2.0.0
+        with:
+          threshold: ${{ inputs.time }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
