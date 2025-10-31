@@ -3,7 +3,8 @@ This is a fork repo from YTLite,but add more tweaks similar to YTLitePlus for wh
 If you have any problems,feel free to open issues!
 
 **NOTE:** 
-If you see a popup says "Incompatible Tweaks Detected",just check on "Don't show for this version",click on "I accept all risks" and ignore it.
+- If you see a popup says "Incompatible Tweaks Detected",just check on "Don't show for this version",click on "I accept all risks" and ignore it.
+- If YouTube's loop video feature doesn't work,use YouLoop in Settings -> Video Overlay -> Show Loop Video Button
 
 ## Main Features
 - YTLite (eg. Download Videos,No ads,Background Playback)
