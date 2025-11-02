@@ -58,7 +58,7 @@ If you have any problems,feel free to open issues!
 
 ## Supported YouTube Version
 <ul>
-   <li><strong>Latest confirmed:</strong> 20.42.3</li>
-   <li><strong>Date tested:</strong> Oct 25, 2025</li>
+   <li><strong>Latest confirmed:</strong> 20.43.3</li>
+   <li><strong>Date tested:</strong> Nov 2, 2025</li>
    <li><strong>YTLite:</strong> 5.2 beta 3</li>
 </ul>
