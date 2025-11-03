@@ -389,7 +389,7 @@ jobs:
       - name: Job Summary - Output the Artifact Upload
         if: ${{ inputs.upload_artifact }}
         run: |
-          echo -e '### 📦 Artifact Upload\n\nUpload IPA as an artifact successfully! [Scroll down](#artifacts) to view the artifact. Note that you must be signed in to GitHub to download it.' >> $GITHUB_STEP_SUMMARY
+          echo -e '### 📦 Artifact Upload\n\nUpload IPA as an artifact successfully! Refresh and [Scroll down](#artifacts) to view the artifact. Note that you must be signed in to GitHub to download it.' >> $GITHUB_STEP_SUMMARY
 
       - name: Job Summary - Output the IPA URL (Catbox Upload)
         if: ${{ inputs.catbox_upload }}
