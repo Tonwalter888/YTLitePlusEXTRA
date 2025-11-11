@@ -63,7 +63,7 @@ jobs:
           exit 1
 
       - name: Hide Sensitive Inputs
-        uses: levibostian/action-hide-sensitive-inputs@v1
+        uses: levibostian/action-hide-sensitive-inputs@v1.1.1
         with:
           exclude_inputs: bundle_id,display_name,tweak_version,draft_release,upload_artifact,catbox_upload
           
@@ -73,7 +73,7 @@ jobs:
 
           ipa_type=$(file --mime-type -b youtube.ipa)
 
-          if [[ "$ipa_type" != "application/x-ios-app" && "$ipa_type" != "application/zip" ]]; then
+          if [[ "$ipa_type" != "application/x-ios-app" ]]; then
             echo "::error::Validation failed: The downloaded file is not a valid IPA. Detected type: $ipa_type."
             exit 1
           fi
@@ -384,14 +384,14 @@ jobs:
 
       - name: Upload IPA as an Artifact
         if: ${{ inputs.upload_artifact }}
-        uses: actions/upload-artifact@v4.6.2
+        uses: actions/upload-artifact@v5
         with:
           name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}
           path: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa
 
       - name: Create a Draft Release
         if: ${{ inputs.draft_release }}
-        uses: softprops/action-gh-release@v2.3.3
+        uses: softprops/action-gh-release@v2.4.2
         with:
           tag_name: ytliteplusextra-pre-release-ipa${{ github.run_number }}
           name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }} (${{ github.run_number }}) 
