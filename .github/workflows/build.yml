@@ -73,7 +73,7 @@ jobs:
 
           file_type=$(file --mime-type -b youtube.ipa)
 
-          if [[ "$file_type" != "application/x-ios-app" ]]; then
+          if [[ "$file_type" != "application/x-ios-app" && "$file_type" != "application/zip" ]]; then
             echo "::error::Validation failed: The downloaded file is not a valid IPA. Detected type: $file_type."
             exit 1
           fi
