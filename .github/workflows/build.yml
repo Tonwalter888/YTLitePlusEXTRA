@@ -124,6 +124,8 @@ jobs:
         run: |
            cd $THEOS/include
            git clone --quiet https://github.com/PoomSmart/YouTubeHeader.git
+           cd YouTubeHeader
+           git checkout 854a92b
            cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
         env:
           THEOS: ${{ github.workspace }}/theos
