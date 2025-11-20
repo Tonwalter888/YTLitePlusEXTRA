@@ -110,7 +110,7 @@ jobs:
           chmod +x /usr/local/bin/tbd 
 
       - name: Download YTLite .deb
-        run: wget https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.ytlite_version }}/com.dvntm.ytlite_${{ inputs.ytlite_version }}_iphoneos-arm.deb --no-verbose -O ytlite.deb
+        run: wget https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.ytlite_version }}/com.dvntm.ytlite_${{ inputs.ytlite_version }}_iphoneos-arm64.deb --no-verbose -O ytlite.deb
 
       - name: Clone Open in YouTube (Safari Extension)
         run: |
