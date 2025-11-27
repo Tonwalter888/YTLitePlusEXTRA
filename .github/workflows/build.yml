@@ -198,7 +198,7 @@ jobs:
       - name: Build YouPiP
         run: |
           cd YouPiP
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/youpip.deb
         env:
           THEOS: ${{ github.workspace }}/theos    
@@ -206,7 +206,7 @@ jobs:
       - name: Build YTUHD
         run: |
           cd YTUHD
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/ytuhd.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -214,7 +214,7 @@ jobs:
       - name: Build Return-YouTube-Dislikes
         run: |
           cd Return-YouTube-Dislikes
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/ryd.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -222,7 +222,7 @@ jobs:
       - name: Build YouGroupSettings
         run: |
           cd YouGroupSettings
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/ygs.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -230,7 +230,7 @@ jobs:
       - name: Build YTVideoOverlay
         run: |
           cd YTVideoOverlay
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/ytvo.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -238,7 +238,7 @@ jobs:
       - name: Build YTABConfig
         run: |
           cd YTABConfig
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/ytabconfig.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -246,7 +246,7 @@ jobs:
       - name: Build YouQuality
         run: |
           cd YouQuality
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/youquality.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -254,7 +254,7 @@ jobs:
       - name: Build YouSpeed
         run: |
           cd YouSpeed
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/youspeed.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -262,7 +262,7 @@ jobs:
       - name: Build DontEatMyContent
         run: |
           cd DontEatMyContent
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/demc.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -270,7 +270,7 @@ jobs:
       - name: Build IAmYouTube
         run: |
           cd IAmYouTube
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/imyt.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -278,7 +278,7 @@ jobs:
       - name: Build YouMute
         run: |
           cd YouMute
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/ym.deb
         env:
           THEOS: ${{ github.workspace }}/theos 
@@ -286,7 +286,7 @@ jobs:
       - name: Build YTABGoodies
         run: |
           cd YTABGoodies
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/ytgoodab.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -294,7 +294,7 @@ jobs:
       - name: Build YouTimeStamp
         run: |
           cd YouTimeStamp
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/youts.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -302,7 +302,7 @@ jobs:
       - name: Build YouLoop
         run: |
           cd YouLoop
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/youloop.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -310,7 +310,7 @@ jobs:
       - name: Build YouSlider
         run: |
           cd YouSlider
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/youslider.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -326,7 +326,7 @@ jobs:
       - name: Build YouChooseQuality
         run: |
           cd YouChooseQuality
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/youchoose.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -334,7 +334,7 @@ jobs:
       - name: Build YTSilentVote
         run: |
           cd YTSilentVote
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/ytnovote.deb
         env:
           THEOS: ${{ github.workspace }}/theos  
@@ -342,7 +342,7 @@ jobs:
       - name: Build YouShare
         run: |
           cd YouShare
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/youshare.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -350,7 +350,7 @@ jobs:
       - name: Build Gonerino
         run: |
           cd Gonerino
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 
           mv packages/*.deb ${{ github.workspace }}/gonerino.deb
         env:
           THEOS: ${{ github.workspace }}/theos
