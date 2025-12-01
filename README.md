@@ -19,7 +19,7 @@ There are still some bugs in settings that 2 Gonerino are showing up,I'll find a
 - YouSlider (Customizes video slider and scrubber)
 - YouChooseQuality (Auto select the video quality from your scenario)
 - YouShare (Copy video URL from video overlay)
-- Gonerino (Filter videos/channels/keywords you don't want them to show up)
+- Gonerino (Filter videos/channels/keywords that you don't want them to show up)
 - And Much more...
 
 ## FAQ
