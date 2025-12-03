@@ -4,8 +4,8 @@ If you have any problems,feel free to open issues!
 
 
 **NOTE:** 
-- If you see a popup says "Incompatible Tweaks Detected",just check on "Don't show for this version",click on "I accept all risks" and ignore it.
 - If you are experiencing playback issues,try YouTube version 19.47.7.
+- If you see a popup says "Incompatible Tweaks Detected",just check on "Don't show for this version",click on "I accept all risks" and ignore it.
 - If YouTube's loop video feature doesn't work,use YouLoop in Settings -> Video Overlay -> Show Loop Video Button instead.
 
 **Known Issue:**
