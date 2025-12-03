@@ -178,9 +178,6 @@ jobs:
       - name: Clone DontEatMyContent
         run: git clone --quiet https://github.com/therealFoxster/DontEatMyContent.git
 
-      - name: Clone IAmYouTube
-        run: git clone --quiet https://github.com/PoomSmart/IAmYouTube.git
-
       - name: Clone YouMute
         run: git clone --quiet https://github.com/PoomSmart/YouMute.git
 
@@ -280,14 +277,6 @@ jobs:
           cd DontEatMyContent
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/demc.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
-      - name: Build IAmYouTube
-        run: |
-          cd IAmYouTube
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/imyt.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
