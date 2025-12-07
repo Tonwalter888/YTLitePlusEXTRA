@@ -9,7 +9,7 @@ If you have any problems,feel free to open issues!
 - If YouTube's loop video feature doesn't work,use YouLoop in Settings -> Video Overlay -> Show Loop Video Button instead.
 
 **Known Issue:**
-There are still some bugs in settings that 2 Gonerino are showing up,I'll find a solution soon.
+There are still some bugs in settings that 2 Gonerino are showing up.
 
 ## Main Features
 - YTLite (eg. Download Videos,No ads,Background Playback)
