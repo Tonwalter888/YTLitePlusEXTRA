@@ -2,7 +2,7 @@
 This is a fork repo from YTLite,but add more tweaks similar to YTLitePlus for who can't build IPA or The app is unusable.
 If you have any problems,feel free to open issues!
 
-**EDIT:**THANKS FOR 100 FORKS!🥳🎉🙏
+**EDIT:** THANKS FOR 100 FORKS!🥳🎉🙏
 
 
 **NOTE:** 
