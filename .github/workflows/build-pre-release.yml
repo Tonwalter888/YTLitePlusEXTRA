@@ -373,14 +373,14 @@ jobs:
 
       - name: Upload IPA as an Artifact
         if: ${{ inputs.upload_artifact }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v6.0.0
         with:
           name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}
           path: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa
 
       - name: Create a Draft Release
         if: ${{ inputs.draft_release }}
-        uses: softprops/action-gh-release@v2.5
+        uses: softprops/action-gh-release@v2.5.0
         with:
           tag_name: ytliteplusextra-pre-release-ipa${{ github.run_number }}
           name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }} (${{ github.run_number }}) 
