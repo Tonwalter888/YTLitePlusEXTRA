@@ -7,7 +7,7 @@ on:
         default: ""
         required: true
         type: string
-
+        
       ytlite_version:
         description: "YTLite Version (You can enter the version manually from YTLite releases or leave default.)"
         default: "5.2b4"
@@ -357,14 +357,14 @@ jobs:
 
       - name: Upload IPA as an Artifact
         if: ${{ inputs.upload_artifact }}
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}
           path: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa
 
       - name: Create a Draft Release
         if: ${{ inputs.draft_release }}
-        uses: softprops/action-gh-release@v2.4.2
+        uses: softprops/action-gh-release@v2.5
         with:
           tag_name: ytliteplusextra-ipa${{ github.run_number }}
           name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }} (${{ github.run_number }}) 
