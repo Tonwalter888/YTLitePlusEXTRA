@@ -18,10 +18,9 @@ There are still some bugs in settings that 2 Gonerino are showing up.
 - YouMute (Mute the video sounds in video overlay)
 - YouSpeed (Change video speeds in video overlay)
 - YTABConfig (Configures A/B settings)
-- YouTimeStamp (Copy video URL with timestamp from video overlay)
 - YouSlider (Customizes video slider and scrubber)
 - YouChooseQuality (Auto select the video quality from your scenario)
-- YouShare (Copy video URL from video overlay)
+- YouShare (Copy video URL faster from video overlay)
 - Gonerino (Filter videos/channels/keywords that you don't want them to show up on your feed)
 - And Much more...
 

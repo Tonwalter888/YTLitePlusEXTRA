@@ -183,9 +183,6 @@ jobs:
 
       - name: Clone YTABGoodies
         run: git clone --quiet https://github.com/PoomSmart/YTABGoodies.git
-
-      - name: Clone YouTimeStamp
-        run: git clone --quiet https://github.com/Tonwalter888/YouTimeStamp.git
     
       - name: Clone YouLoop
         run: git clone --quiet https://github.com/Tonwalter888/YouLoop.git
@@ -293,14 +290,6 @@ jobs:
           cd YTABGoodies
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytgoodab.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
-
-      - name: Build YouTimeStamp
-        run: |
-          cd YouTimeStamp
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/youts.deb
         env:
           THEOS: ${{ github.workspace }}/theos
 
