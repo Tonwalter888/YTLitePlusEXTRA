@@ -63,7 +63,7 @@ jobs:
           exit 1
 
       - name: Hide Sensitive Inputs
-        uses: levibostian/action-hide-sensitive-inputs@v1.0.0
+        uses: levibostian/action-hide-sensitive-inputs@v1
         with:
           exclude_inputs: bundle_id,display_name,tweak_version,draft_release,upload_artifact,catbox_upload
           
@@ -373,7 +373,7 @@ jobs:
 
       - name: Upload IPA as an Artifact
         if: ${{ inputs.upload_artifact }}
-        uses: actions/upload-artifact@v6.0.0
+        uses: actions/upload-artifact@v6
         with:
           name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}
           path: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa
