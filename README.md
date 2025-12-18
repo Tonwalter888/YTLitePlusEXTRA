@@ -63,7 +63,7 @@ There are still some bugs in settings that 2 Gonerino are showing up.
 
 ## Supported YouTube Version
 <ul>
-   <li><strong>Latest confirmed:</strong> 20.47.3</li>
-   <li><strong>Date tested:</strong> Dec 1, 2025</li>
+   <li><strong>Latest confirmed:</strong> 20.50.9,19.49.5</li>
+   <li><strong>Date tested:</strong> Dec 18, 2025</li>
    <li><strong>YTLite:</strong> 5.2 beta 4</li>
 </ul>
