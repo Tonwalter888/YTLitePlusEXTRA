@@ -33,6 +33,7 @@ on:
         type: choice
         options:
           - "ALL"
+          - "Unsuccessful: action_required,cancelled,failure,skipped"
           - action_required
           - cancelled
           - failure
