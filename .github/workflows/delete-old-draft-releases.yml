@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Delete old draft releases
-        uses: hugo19941994/delete-draft-releases@v2.0.0
+        uses: hugo19941994/delete-draft-releases@v2
         with:
           threshold: ${{ inputs.time }}
         env:
