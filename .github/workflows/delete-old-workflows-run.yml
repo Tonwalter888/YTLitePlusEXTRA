@@ -78,5 +78,3 @@ jobs:
           dry_run: ${{ inputs.dry_run }}
           check_branch_existence: ${{ inputs.check_branch_existence }}
           check_pullrequest_exist: ${{ inputs.check_pullrequest_exist }}
-
-
