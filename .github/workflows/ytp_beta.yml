@@ -368,7 +368,7 @@ jobs:
           files: YouTubePlus_Beta_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa
           draft: true
 
-      - name: Job Summary - Build Conplete
+      - name: Job Summary - Build Complete
         run: |
           echo -e '### 🛠️ Build YouTubePlus Beta IPA Complete!' >> $GITHUB_STEP_SUMMARY
 

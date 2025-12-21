@@ -378,7 +378,7 @@ jobs:
           files: ${{ steps.filelist.outputs.files }}
           draft: true
 
-      - name: Job Summary - Build Conplete
+      - name: Job Summary - Build Complete
         run: |
           echo -e '### 🛠️ Generate TrollFools/Cyan files Complete!' >> $GITHUB_STEP_SUMMARY
 
