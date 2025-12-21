@@ -1,9 +1,7 @@
 name: Generate TrollFools/Cyan files
-
 on:
   workflow_dispatch:
     inputs:
-
       create_cyan:
         description: "Generate .cyan file"
         type: boolean
