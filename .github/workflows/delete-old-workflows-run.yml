@@ -51,7 +51,7 @@ jobs:
       contents: read
     steps:
       - name: Delete old workflows run
-        uses: Mattraks/delete-workflow-runs@v2.0.6
+        uses: Mattraks/delete-workflow-runs@v2.1
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
