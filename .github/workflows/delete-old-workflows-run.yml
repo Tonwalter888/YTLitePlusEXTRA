@@ -41,7 +41,13 @@ on:
       dry_run:
         description: 'Logs simulated changes, no deletions are performed'
         required: false
-
+      check_branch_existence:
+        description: 'Skip deletion for runs linked to an existing branch'
+        required: false
+      check_pullrequest_exist:
+        description: 'Skip deletion for runs linked to a pull request'
+        required: false
+        
 jobs:
   build:
     name: Delete old workflows run
@@ -66,3 +72,5 @@ jobs:
               || github.event.inputs.delete_run_by_conclusion_pattern
             }}
           dry_run: ${{ github.event.inputs.dry_run }}
+          check_branch_existence: ${{ github.event.inputs.check_branch_existence }}
+          check_pullrequest_exist: ${{ github.event.inputs.check_pullrequest_exist }}
