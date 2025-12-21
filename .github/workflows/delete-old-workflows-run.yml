@@ -43,10 +43,14 @@ on:
         required: false
       check_branch_existence:
         description: 'Skip deletion for runs linked to an existing branch'
+        default: false
         required: false
+        type: boolean
       check_pullrequest_exist:
         description: 'Skip deletion for runs linked to a pull request'
+        default: false
         required: false
+        type: boolean
         
 jobs:
   build:
