@@ -64,6 +64,24 @@ on:
         required: true
         type: string
 
+      upload_artifact:
+        description: "Upload TrollFools/Cyan files as an artifact (Public)"
+        default: true
+        required: false
+        type: boolean
+
+      catbox_upload:
+        description: "Upload TrollFools/Cyan files to Catbox.moe (URL)"
+        default: true
+        required: false
+        type: boolean
+        
+      draft_release:
+        description: "Create a draft release (Private)"
+        default: true
+        required: false
+        type: boolean
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -77,7 +95,7 @@ jobs:
 
     steps:
       - name: Checkout Main
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v6.0.1
         with:
           path: main
           submodules: recursive
@@ -86,7 +104,7 @@ jobs:
         if: ${{ !inputs.create_cyan && !inputs.create_tf }}
         run: |
           echo "No output format selected."
-          exit 0
+          exit 1
 
       - name: Install Dependencies
         run: brew install make ldid dpkg
@@ -97,9 +115,9 @@ jobs:
       - name: Cache Theos
         if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_demc }}
         id: theos
-        uses: actions/cache@v4
+        uses: actions/cache@v5.0.1
         env:
-          cache-name: theos_cache_67db2ab
+          cache-name: theos_cache_95ab5f4
         with:
           path: theos/
           key: ${{ env.cache-name }}
@@ -107,19 +125,19 @@ jobs:
 
       - name: Setup Theos
         if: ${{ (inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_demc) && steps.theos.outputs.cache-hit != 'true' }}
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v6.0.1
         with:
           repository: theos/theos
-          ref: 67db2ab8d950910161730de77c322658ea3e6b44
+          ref: 95ab5f4db49cb28ef8fff2d9ec91c840f2ca73f0
           path: ${{ github.workspace }}/theos
           submodules: recursive
 
       - name: Download iOS SDK
         if: ${{ (inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_demc) && steps.theos.outputs.cache-hit != 'true' }}
         run: |
-          git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/theos/sdks/
-          cd sdks
-          git sparse-checkout set --no-cone iPhoneOS16.5.sdk
+          git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/xybp888/iOS-SDKs.git
+          cd iOS-SDKs
+          git sparse-checkout set --no-cone iPhoneOS18.6.sdk
           git checkout
           mv *.sdk $THEOS/sdks
         env:
@@ -138,9 +156,9 @@ jobs:
       - name: Clone Open in YouTube (Safari extension)
         if: ${{ inputs.create_cyan }}
         run: |
-          git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/CokePokes/YoutubeExtensions/
-          cd YoutubeExtensions
-          git sparse-checkout set --no-cone OpenYoutubeSafariExtension.appex
+          git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/BillyCurtis/OpenYouTubeSafariExtension.git
+          cd OpenYouTubeSafariExtension
+          git sparse-checkout set --no-cone OpenYouTubeSafariExtension.appex
           git checkout
           mv *.appex ${{ github.workspace }}
 
@@ -226,7 +244,7 @@ jobs:
         if: ${{ inputs.enable_youpip }}
         run: |
           cd ${{ github.workspace }}/YouPiP
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youpip.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -235,7 +253,7 @@ jobs:
         if: ${{ inputs.enable_ytuhd }}
         run: |
           cd ${{ github.workspace }}/YTUHD
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytuhd.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -244,7 +262,7 @@ jobs:
         if: ${{ inputs.enable_ryd }}
         run: |
           cd ${{ github.workspace }}/Return-YouTube-Dislikes
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ryd.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -253,7 +271,7 @@ jobs:
         if: ${{ inputs.enable_demc }}
         run: |
           cd ${{ github.workspace }}/YouGroupSettings
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ygs.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -262,7 +280,7 @@ jobs:
         if: ${{ inputs.enable_yq }}
         run: |
           cd ${{ github.workspace }}/YouQuality
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/yq.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -271,7 +289,7 @@ jobs:
         if: ${{ inputs.enable_yq || inputs.enable_youpip }}
         run: |
           cd ${{ github.workspace }}/YTVideoOverlay
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytvo.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -280,7 +298,7 @@ jobs:
         if: ${{ inputs.enable_demc }}
         run: |
           cd ${{ github.workspace }}/DontEatMyContent
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/demc.deb
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -288,9 +306,9 @@ jobs:
       - name: Generate .cyan file
         if: ${{ inputs.create_cyan }}
         run: |
-          tweaks="ytplus.deb OpenYoutubeSafariExtension.appex"
+          tweaks="ytplus.deb OpenYouTubeSafariExtension.appex"
 
-          for deb in youpip.deb ytuhd.deb ryd.deb ygs.deb yq.deb ytvo.deb demc.deb; do
+          for deb in *.deb; do
             if [ -f "$deb" ]; then
               tweaks="$tweaks $deb"
             fi
@@ -334,14 +352,51 @@ jobs:
           echo -e "$files" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Upload to GitHub Releases
-        uses: softprops/action-gh-release@v2.0.1
+      - name: Upload IPA to Catbox
+        if: ${{ inputs.catbox_upload }}
+        run: |
+          RESPONSE=$(curl -F "reqtype=fileupload" -F "fileToUpload=@${{ steps.filelist.outputs.files }}" https://catbox.moe/user/api.php)
+          CATBOX_URL=$(echo $RESPONSE | grep -o -E 'https://files.catbox.moe/[^"]*')
+          echo "Uploaded artifact to $CATBOX_URL"
+          CATBOX_FILE=$(echo $CATBOX_URL | sed 's|https://files.catbox.moe/||')
+          echo "CATBOX_FILE=$CATBOX_FILE" >> $GITHUB_ENV
+          echo "CATBOX_URL=$CATBOX_URL" >> $GITHUB_ENV
+
+      - name: Upload IPA as an Artifact
+        if: ${{ inputs.upload_artifact }}
+        uses: actions/upload-artifact@v6
+        with:
+          name: YouTubePlus v${{ inputs.tweak_version }}_cyan_trollfools
+          path: ${{ steps.filelist.outputs.files }}
+
+      - name: Create a Draft Release
+        if: ${{ inputs.draft_release }}
+        uses: softprops/action-gh-release@v2.5.0
         with:
           tag_name: ytp-${{ github.run_number }}
           name: YouTubePlus v${{ inputs.tweak_version }}_cyan_trollfools (${{ github.run_number }})
           files: ${{ steps.filelist.outputs.files }}
           draft: true
 
-      - name: Output Release URL
+      - name: Job Summary - Build Conplete
         run: |
-          echo "::notice::Release available at: https://github.com/${{ github.repository }}/releases"
+          echo -e '### 🛠️ Generate TrollFools/Cyan files Complete!' >> $GITHUB_STEP_SUMMARY
+
+      - name: Job Summary - Output the Artifact Upload
+        if: ${{ inputs.upload_artifact }}
+        run: |
+          echo -e '### 📦 Artifact Upload\n\nUpload TrollFools/Cyan files as an artifact successfully! Refresh and [Scroll down](#artifacts) to view the artifact. Note that you must be signed in to GitHub to download it.' >> $GITHUB_STEP_SUMMARY
+
+      - name: Job Summary - Output the TrollFools/Cyan files URL (Catbox Upload)
+        if: ${{ inputs.catbox_upload }}
+        run: |
+          echo -e '### 🐱 Catbox Upload\n\nUpload TrollFools/Cyan files to Catbox successfully! Here is a permanent shareable link: '$CATBOX_URL >> $GITHUB_STEP_SUMMARY
+
+      - name: Job Summary - Output a Draft Release Link
+        if: ${{ inputs.draft_release }}
+        run: |
+          echo -e '### 🚀 Draft Release\n\nDraft release has been created successfully! You can view your release here: https://github.com/${{ github.repository }}/releases' >> $GITHUB_STEP_SUMMARY
+     
+      - name: Job Summary - Cleanup
+        run: |
+          echo -e '### 🧹 Cleanup\n\nYou can remove previous GitHub Actions run here: https://github.com/${{ github.repository }}/actions/workflows/delete-old-workflows-run.yml And if you want to delelte old draft releases you have then here: https://github.com/${{ github.repository }}/actions/workflows/delete-old-draft-releases.yml' >> $GITHUB_STEP_SUMMARY
