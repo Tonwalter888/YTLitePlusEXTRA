@@ -355,7 +355,7 @@ jobs:
         run: |
           RESPONSE=$(curl -F "reqtype=fileupload" -F "fileToUpload=@${{ steps.filelist.outputs.files }}" https://catbox.moe/user/api.php)
           CATBOX_URL=$(echo $RESPONSE | grep -o -E 'https://files.catbox.moe/[^"]*')
-          echo "Uploaded artifact to $CATBOX_URL"
+          echo "Uploaded the TrollFools/Cyan files to $CATBOX_URL"
           CATBOX_FILE=$(echo $CATBOX_URL | sed 's|https://files.catbox.moe/||')
           echo "CATBOX_FILE=$CATBOX_FILE" >> $GITHUB_ENV
           echo "CATBOX_URL=$CATBOX_URL" >> $GITHUB_ENV
@@ -364,7 +364,7 @@ jobs:
         if: ${{ inputs.upload_artifact }}
         uses: actions/upload-artifact@v6
         with:
-          name: YouTubePlus v${{ inputs.tweak_version }}_cyan_trollfools
+          name: YouTubePlus v${{ inputs.tweak_version }} cyan_trollfools
           path: ${{ steps.filelist.outputs.files }}
 
       - name: Create a Draft Release
@@ -372,7 +372,7 @@ jobs:
         uses: softprops/action-gh-release@v2.5.0
         with:
           tag_name: ytp-${{ github.run_number }}
-          name: YouTubePlus v${{ inputs.tweak_version }}_cyan_trollfools (${{ github.run_number }})
+          name: YouTubePlus v${{ inputs.tweak_version }} cyan_trollfools (${{ github.run_number }})
           files: ${{ steps.filelist.outputs.files }}
           draft: true
 

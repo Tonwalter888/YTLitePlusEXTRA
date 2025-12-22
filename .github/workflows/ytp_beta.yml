@@ -125,13 +125,13 @@ jobs:
             exit 1
           fi
 
-      - name: Get YouTube version 
+      - name: Get YouTube Version 
         run: |
           unzip -q youtube.ipa -d ytextracted
           echo "YT_VERSION=$(grep -A 1 '<key>CFBundleVersion</key>' ytextracted/Payload/YouTube.app/Info.plist | grep '<string>' | awk -F'[><]' '{print $3}')" >> $GITHUB_ENV
           echo -e 'Done!'
 
-      - name: Get tweak version
+      - name: Get Tweak Version
         run: |
           ar x ytplus.deb control.tar.gz >/dev/null 2>&1
           tar -xzf control.tar.gz ./control
@@ -345,7 +345,7 @@ jobs:
         run: |
           RESPONSE=$(curl -F "reqtype=fileupload" -F "fileToUpload=@YouTubePlus_Beta_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa" https://catbox.moe/user/api.php)
           CATBOX_URL=$(echo $RESPONSE | grep -o -E 'https://files.catbox.moe/[^"]*')
-          echo "Uploaded artifact to $CATBOX_URL"
+          echo "Uploaded the IPA to $CATBOX_URL"
           CATBOX_FILE=$(echo $CATBOX_URL | sed 's|https://files.catbox.moe/||')
           echo "CATBOX_FILE=$CATBOX_FILE" >> $GITHUB_ENV
           echo "CATBOX_URL=$CATBOX_URL" >> $GITHUB_ENV
@@ -354,7 +354,7 @@ jobs:
         if: ${{ inputs.upload_artifact }}
         uses: actions/upload-artifact@v6
         with:
-          name: YouTubePlus_Beta_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}
+          name: YouTubePlus Beta ${{ env.YT_VERSION }} v${{ env.YTLITE_VERSION }}
           path: YouTubePlus_Beta_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa
 
       - name: Create a Draft Release
