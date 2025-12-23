@@ -8,9 +8,6 @@ If you have any problems,feel free to open issues!
 - If you are experiencing playback issues,use YouTube version 19.49.5.
 - If YouTube's loop video feature doesn't work,use YouLoop in Settings -> Video Overlay -> Show Loop Video Button instead.
 
-**Known Issue:**
-There are still some bugs in settings that 2 Gonerino are showing up.
-
 ## Main Features
 - YTLite (eg. Download Videos,No ads,Background Playback)
 - YouMute (Mute the video sounds in video overlay)
@@ -20,7 +17,7 @@ There are still some bugs in settings that 2 Gonerino are showing up.
 - YouChooseQuality (Auto select the video quality from your scenario)
 - YouShare (Copy video URL faster from video overlay)
 - Gonerino (Filter videos/channels/keywords that you don't want them to show up on your feed)
-- And Much more...
+- And much more...
 
 ## FAQ
 [Here](FAQs/FAQ_EN.md)
