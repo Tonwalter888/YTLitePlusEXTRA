@@ -88,7 +88,9 @@ jobs:
         run: brew install make ldid swiftlint
 
       - name: Set PATH Environment Variable
-        run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
+        run: |
+          echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
+          echo "THEOS=${{ github.workspace }}/theos" >> $GITHUB_ENV
 
       - name: Clone Theos
         run: git clone --quiet --no-tags --single-branch --depth=1 --recurse-submodules https://github.com/theos/theos.git
@@ -100,8 +102,6 @@ jobs:
           git sparse-checkout set --no-cone iPhoneOS18.6.sdk
           git checkout
           mv *.sdk $THEOS/sdks
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Install cyan and tbd
         run: |
@@ -141,15 +141,11 @@ jobs:
            cd $THEOS/include
            git clone --quiet --no-tags --single-branch --depth=1 https://github.com/PoomSmart/YouTubeHeader.git
            cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Clone PSHeader
         run: |
            cd $THEOS/include
            git clone --quiet --no-tags --single-branch --depth=1 https://github.com/PoomSmart/PSHeader.git
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Clone YouPiP
         run: git clone --quiet --no-tags --single-branch --depth=1 https://github.com/PoomSmart/YouPiP.git
@@ -209,145 +205,109 @@ jobs:
         run: |
           cd YouPiP
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/youpip.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos    
+          mv packages/*.deb ${{ github.workspace }}/youpip.deb    
 
       - name: Build YTUHD
         run: |
           cd YTUHD
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytuhd.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build Return-YouTube-Dislikes
         run: |
           cd Return-YouTube-Dislikes
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ryd.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouGroupSettings
         run: |
           cd YouGroupSettings
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ygs.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build YTVideoOverlay
         run: |
           cd YTVideoOverlay
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytvo.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build YTABConfig
         run: |
           cd YTABConfig
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytabconfig.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouQuality
         run: |
           cd YouQuality
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youquality.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouSpeed
         run: |
           cd YouSpeed
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youspeed.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build DontEatMyContent
         run: |
           cd DontEatMyContent
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/demc.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouMute
         run: |
           cd YouMute
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ym.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos 
+          mv packages/*.deb ${{ github.workspace }}/ym.deb 
 
       - name: Build YTABGoodies
         run: |
           cd YTABGoodies
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytgoodab.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouLoop
         run: |
           cd YouLoop
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youloop.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouSlider
         run: |
           cd YouSlider
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youslider.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build Alderis
         run: |
           cd Alderis
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/alderis.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build YouChooseQuality
         run: |
           cd YouChooseQuality
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youchoose.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
 
       - name: Build YTSilentVote
         run: |
           cd YTSilentVote
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ytnovote.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos  
+          mv packages/*.deb ${{ github.workspace }}/ytnovote.deb  
 
       - name: Build YouShare
         run: |
           cd YouShare
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/youshare.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos 
+          mv packages/*.deb ${{ github.workspace }}/youshare.deb 
           
       - name: Build Gonerino
         run: |
           cd Gonerino
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/gonerino.deb
-        env:
-          THEOS: ${{ github.workspace }}/theos
   
       - name: Inject Tweaks Into IPA
         run: |
@@ -366,9 +326,7 @@ jobs:
         run: |
           RESPONSE=$(curl -F "reqtype=fileupload" -F "fileToUpload=@YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa" https://catbox.moe/user/api.php)
           CATBOX_URL=$(echo $RESPONSE | grep -o -E 'https://files.catbox.moe/[^"]*')
-          echo "Uploaded artifact to $CATBOX_URL"
-          CATBOX_FILE=$(echo $CATBOX_URL | sed 's|https://files.catbox.moe/||')
-          echo "CATBOX_FILE=$CATBOX_FILE" >> $GITHUB_ENV
+          echo "Uploaded the IPA to $CATBOX_URL"
           echo "CATBOX_URL=$CATBOX_URL" >> $GITHUB_ENV
 
       - name: Upload IPA as an Artifact
