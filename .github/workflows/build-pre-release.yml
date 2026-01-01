@@ -69,7 +69,7 @@ jobs:
           
       - name: Download and Validate IPA
         run: |
-          wget ${{ inputs.ipa_url }} --no-verbose -O youtube.ipa
+          wget "${{ inputs.ipa_url }}" --no-verbose -O youtube.ipa
 
           ipa_type=$(file --mime-type -b youtube.ipa)
 
@@ -105,12 +105,12 @@ jobs:
       - name: Install cyan and tbd
         run: |
           pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
-          wget --no-verbose https://github.com/inoahdev/tbd/releases/download/2.2/tbd-mac -O /usr/local/bin/tbd
+          wget --no-verbose "https://github.com/inoahdev/tbd/releases/download/2.2/tbd-mac" -O /usr/local/bin/tbd
           chmod +x /usr/local/bin/tbd 
 
       - name: Download and Validate your YTLite .deb 
         run: |
-          wget ${{ inputs.deb_url }} --no-verbose -O ytlite.deb
+          wget "${{ inputs.deb_url }}" --no-verbose -O ytlite.deb
 
           deb_type=$(file --mime-type -b ytlite.deb)
 
