@@ -69,9 +69,9 @@ jobs:
           
       - name: Download and Validate IPA
         run: |
-          wget "${{ inputs.ipa_url }}" --no-verbose -O ${{ github.workspace }}/youtube.ipa
+          wget "${{ inputs.ipa_url }}" --no-verbose -O youtube.ipa
 
-          file_type=$(file --mime-type -b ${{ github.workspace }}/youtube.ipa)
+          file_type=$(file --mime-type -b youtube.ipa)
 
           if [[ "$file_type" != "application/x-ios-app" && "$file_type" != "application/zip" ]]; then
             echo "::error::Validation failed: The downloaded file is not a valid IPA. Detected type: $file_type."
@@ -105,11 +105,11 @@ jobs:
       - name: Install cyan and tbd
         run: |
           pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
-          wget --no-verbose https://github.com/inoahdev/tbd/releases/download/2.2/tbd-mac -O /usr/local/bin/tbd
+          wget --no-verbose "https://github.com/inoahdev/tbd/releases/download/2.2/tbd-mac" -O /usr/local/bin/tbd
           chmod +x /usr/local/bin/tbd 
 
       - name: Download YTLite .deb
-        run: wget https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.ytlite_version }}/com.dvntm.ytlite_${{ inputs.ytlite_version }}_iphoneos-arm64.deb --no-verbose -O ytlite.deb
+        run: wget "https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.ytlite_version }}/com.dvntm.ytlite_${{ inputs.ytlite_version }}_iphoneos-arm64.deb" --no-verbose -O ytlite.deb
 
       - name: Clone Open in YouTube (Safari Extension)
         run: |
