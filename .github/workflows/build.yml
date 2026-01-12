@@ -307,7 +307,7 @@ jobs:
       - name: Build YTweaks
         run: |
           cd YTweaks
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/ytweaks.deb
           
       - name: Inject Tweaks Into IPA
