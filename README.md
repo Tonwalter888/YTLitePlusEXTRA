@@ -5,7 +5,7 @@ If you have any problems,feel free to open issues!
 **EDIT:** THANKS FOR 100 FORKS!🥳🎉🙏
 
 **NOTE:** 
-- If you are experiencing playback issues,use YouTube version 19.49.5.
+- If you are experiencing playback issues,use YouTube version 19.49.5 or turn on Legacy PiP in YouPiP settings.
 - If YouTube's loop video feature doesn't work,use YouLoop in Settings -> Video Overlay -> Show Loop Video Button instead.
 
 ## Main Features
