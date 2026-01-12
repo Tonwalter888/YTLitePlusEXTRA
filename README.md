@@ -9,14 +9,16 @@ If you have any problems,feel free to open issues!
 - If YouTube's loop video feature doesn't work,use YouLoop in Settings -> Video Overlay -> Show Loop Video Button instead.
 
 ## Main Features
-- YTLite (eg. Download Videos,No ads,Background Playback)
-- YouMute (Mute the video sounds in video overlay)
-- YouSpeed (Change video speeds in video overlay)
-- YTABConfig (Configures A/B settings)
-- YouSlider (Customizes video slider and scrubber)
-- YouChooseQuality (Auto select the video quality from your scenario)
-- YouShare (Copy video URL faster from video overlay)
-- Gonerino (Filter videos/channels/keywords that you don't want them to show up on your feed)
+- [YTLite](https://github.com/dayanch96/YTLite) - eg. Download Videos,No ads,Background Playback
+- [YouMute](https://github.com/PoomSmart/YouMute) - Mute the video sounds in video overlay
+- [YouSpeed](https://github.com/PoomSmart/YouSpeed) - Change video speeds in video overlay
+- [YTABConfig](https://github.com/PoomSmart/YTABConfig) - Configures A/B settings
+- [YouSlider](https://github.com/PoomSmart/YouSlider) - Customizes video slider and scrubber
+- [YouChooseQuality](https://github.com/PoomSmart/YouChooseQuality) - Auto select the video quality from your scenario
+- [YouShare](https://github.com/PoomSmart/YouShare) - Copy video URL faster from video overlay
+- [Gonerino](https://github.com/castdrian/Gonerino) - Filter videos/channels/keywords that you don't want them to show up on your feed
+- [YouGetCaption](https://github.com/PoomSmart/YouGetCaption) - Copy video captions from video overlay
+- [YTweaks](https://github.com/fosterbarnes/YTweaks) - Hide AI summary,Fix casting and more
 - And much more...
 
 ## FAQ
