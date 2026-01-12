@@ -92,7 +92,7 @@ jobs:
           echo "THEOS=${{ github.workspace }}/theos" >> $GITHUB_ENV
 
       - name: Clone Theos
-        run: git clone --quiet --no-tags --single-branch --depth=1 --recurse-submodules https://github.com/theos/theos.git
+        run: git clone --quiet --depth=1 --recurse-submodules https://github.com/theos/theos.git
            
       - name: Download iOS SDK
         run: |
