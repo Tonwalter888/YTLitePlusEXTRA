@@ -15,7 +15,7 @@ If you have any problems,feel free to open issues!
 - [YTABConfig](https://github.com/PoomSmart/YTABConfig) - Configures A/B settings
 - [YouSlider](https://github.com/PoomSmart/YouSlider) - Customizes video slider and scrubber
 - [YouChooseQuality](https://github.com/PoomSmart/YouChooseQuality) - Auto select the video quality from your scenario
-- [YouShare](https://github.com/PoomSmart/YouShare) - Copy video URL faster from video overlay
+- [YouShare](https://github.com/Tonwalter888/YouShare) - Copy video URL faster from video overlay
 - [Gonerino](https://github.com/castdrian/Gonerino) - Filter videos/channels/keywords that you don't want them to show up on your feed
 - [YouGetCaption](https://github.com/PoomSmart/YouGetCaption) - Copy video captions from video overlay
 - [YTweaks](https://github.com/fosterbarnes/YTweaks) - Hide AI summary,Fix casting and more
