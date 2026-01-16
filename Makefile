@@ -8,11 +8,11 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = YTExtraFlags
 
-// ifeq ($(LEGACY),1)
+# ifeq ($(LEGACY),1)
 $(TWEAK_NAME)_FILES = Legacy.x
-// else
-// $(TWEAK_NAME)_FILES = Tweak.x
-// endif
+# else
+# $(TWEAK_NAME)_FILES = Tweak.x
+# endif
 $(TWEAK_NAME)_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
