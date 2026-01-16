@@ -1,3 +1,6 @@
+// Legacy.x
+// These flags are based on YouTube version 19.49.5.
+
 // PiP
 
 %hook YTColdConfig
