@@ -159,9 +159,6 @@ jobs:
 
       - name: Clone YouMute
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
-
-      - name: Clone YTABGoodies
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTABGoodies.git
     
       - name: Clone YouLoop
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouLoop.git
@@ -251,13 +248,7 @@ jobs:
         run: |
           cd YouMute
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ym.deb 
-
-      - name: Build YTABGoodies
-        run: |
-          cd YTABGoodies
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ytgoodab.deb
+          mv packages/*.deb ${{ github.workspace }}/ym.deb
 
       - name: Build YouLoop
         run: |
