@@ -1,5 +1,5 @@
-Package: dev.water888.ytextraflags
-Name: YTExtraFlags
+Package: dev.water888.ytflags
+Name: YTFlags
 Version: 1.0.1
 Architecture: iphoneos-arm64
 Description: Flags hooks for YouTube app
