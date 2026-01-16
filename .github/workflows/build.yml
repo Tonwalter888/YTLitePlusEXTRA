@@ -189,6 +189,9 @@ jobs:
 
       - name: Clone YouGetCaption
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGetCaption.git
+
+      - name: Clone YTFlags
+        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTFlags.git
         
       - name: Build YouPiP
         run: |
@@ -309,6 +312,12 @@ jobs:
           cd YTweaks
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/ytweaks.deb
+
+      - name: Build YTFlags
+        run: |
+          cd YTFlags
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          mv packages/*.deb ${{ github.workspace }}/ytflags.deb
           
       - name: Inject Tweaks Into IPA
         run: |
