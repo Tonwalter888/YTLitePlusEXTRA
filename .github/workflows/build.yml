@@ -129,9 +129,6 @@ jobs:
         run: |
            cd $THEOS/include
            git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git
-
-      - name: Clone YouPiP
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
     
       - name: Clone YTUHD
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTUHD.git
@@ -188,13 +185,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGetCaption.git
 
       - name: Clone YTFlags
-        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTFlags.git
-        
-      - name: Build YouPiP
-        run: |
-          cd YouPiP
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/youpip.deb    
+        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTFlags.git          
 
       - name: Build YTUHD
         run: |
