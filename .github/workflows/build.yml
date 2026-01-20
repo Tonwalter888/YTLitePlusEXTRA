@@ -121,14 +121,11 @@ jobs:
 
       - name: Clone YouTubeHeader
         run: |
-           cd $THEOS/include
-           git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git
+           git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git $THEOS/include/YouTubeHeader
            cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
 
       - name: Clone PSHeader
-        run: |
-           cd $THEOS/include
-           git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git $THEOS/include/PSHeader
 
       - name: Clone YouPiP
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
