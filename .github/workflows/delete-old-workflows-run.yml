@@ -43,12 +43,6 @@ on:
           - failure
           - skipped
           - success
-          
-      dry_run:
-        description: 'Logs simulated changes, no deletions are performed'
-        default: false
-        required: false
-        type: boolean
         
       check_branch_existence:
         description: 'Skip deletion for runs linked to an existing branch'
@@ -85,6 +79,5 @@ jobs:
               && 'action_required,cancelled,failure,skipped'
               || inputs.delete_run_by_conclusion_pattern
             }}
-          dry_run: ${{ inputs.dry_run }}
           check_branch_existence: ${{ inputs.check_branch_existence }}
           check_pullrequest_exist: ${{ inputs.check_pullrequest_exist }}
