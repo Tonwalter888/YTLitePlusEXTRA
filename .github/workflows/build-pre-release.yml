@@ -201,6 +201,9 @@ jobs:
 
       - name: Clone YouGetCaption
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGetCaption.git
+
+      - name: Clone YTFlags
+        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTFlags.git
         
       - name: Build YouPiP
         run: |
@@ -320,11 +323,17 @@ jobs:
         run: |
           cd YTweaks
           make clean package DEBUG=0 FINALPACKAGE=1 ROOTLESS=1
-          mv packages/*.deb ${{ github.workspace }}/ytweaks.deb
+          mv packages/*.deb ${{ github.workspace }}/ytweaks.
+          
+      - name: Build YTFlags
+        run: |
+          cd YTFlags
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          mv packages/*.deb ${{ github.workspace }}/ytflags.deb
   
       - name: Inject Tweaks Into IPA
         run: |
-          tweaks="ytlite.deb OpenYouTubeSafariExtension.appex"
+          tweaks="OpenYouTubeSafariExtension.appex"
 
           for f in *.deb; do
             if [ -f "$f" ]; then
