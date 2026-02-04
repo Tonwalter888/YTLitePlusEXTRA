@@ -323,7 +323,7 @@ jobs:
         run: |
           cd YTweaks
           make clean package DEBUG=0 FINALPACKAGE=1 ROOTLESS=1
-          mv packages/*.deb ${{ github.workspace }}/ytweaks.
+          mv packages/*.deb ${{ github.workspace }}/ytweaks.deb
           
       - name: Build YTFlags
         run: |
