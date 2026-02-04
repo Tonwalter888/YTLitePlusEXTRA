@@ -19,6 +19,7 @@ If you have any problems,feel free to open issues!
 - [Gonerino](https://github.com/castdrian/Gonerino) - Filter videos/channels/keywords that you don't want them to show up on your feed
 - [YouGetCaption](https://github.com/PoomSmart/YouGetCaption) - Copy video captions from video overlay
 - [YTweaks](https://github.com/fosterbarnes/YTweaks) - Hide AI summary,Fix casting and more
+- [YTFlags](https://github.com/Tonwalter888/YTFlags) - Tries to make your YouTube experience even better
 - And much more...
 
 ## FAQ
