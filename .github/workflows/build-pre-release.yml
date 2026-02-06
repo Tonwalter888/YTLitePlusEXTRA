@@ -86,7 +86,7 @@ jobs:
       - name: Install Dependencies
         run: brew install make ldid swiftlint
 
-      - name: Set PATH Environment Variable
+      - name: Set PATH Environment Variables
         run: |
           echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
           echo "THEOS=${{ github.workspace }}/theos" >> $GITHUB_ENV
