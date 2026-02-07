@@ -25,13 +25,13 @@ If you have any problems, feel free to open issues!
 > If this your first time, complete following steps before starting:
 >
 > 1. Fork this repository using the fork button on the top right
-> 2. On your forked repository, go to **Settings** > **Actions**, enable **Read and Write** permissions.
+> 2. On your forked repository, go to **Settings** -> **Actions**, and enable **Read and Write** permissions.
 
 <details>
   <summary>How to build a YTLitePlusEXTRA IPA</summary>
   <ol>
     <li>Click on <strong>Sync fork</strong>, and if your branch is out-of-date, click on <strong>Update branch</strong>.</li>
-    <li>Navigate to the <strong>Actions tab</strong> in your forked repository and select <strong>Build and Release YTLitePlusEXTRA IPA.</strong></li>
+    <li>Navigate to the <strong>Actions</strong> in your forked repository and select <strong>Build and Release YTLitePlusEXTRA IPA.</strong></li>
     <li>Click the <strong>Run workflow</strong> button located on the right side.</li>
     <li>Get a decrypted .ipa file (I cannot provide this due to legal reasons.), then upload it to a file provider (e.g., filebin.net,filemail.com,catbox.moe or Dropbox is recommended). Paste the URL of the decrypted IPA file in the provided field.</li>
     <strong>NOTE:</strong> Make sure to provide a direct download link to the file, not a link to a webpage. Otherwise, the process will fail.
@@ -45,7 +45,7 @@ If you have any problems, feel free to open issues!
   <summary>How to build a YTLitePlusEXTRA IPA (With your own YTLite .deb file)</summary>
   <ol>
     <li>Click on <strong>Sync fork</strong>, and if your branch is out-of-date, click on <strong>Update branch</strong>.</li>
-    <li>Navigate to the <strong>Actions tab</strong> in your forked repository and select <strong>(Pre-Release) Build and Release YTLitePlusEXTRA IPA.</strong></li>
+    <li>Navigate to the <strong>Actions</strong> in your forked repository and select <strong>(Pre-Release) Build and Release YTLitePlusEXTRA IPA.</strong></li>
     <li>Click the <strong>Run workflow</strong> button located on the right side.</li>
     <li>Get a decrypted .ipa file (I cannot provide this due to legal reasons.), then upload it to a file provider (e.g., filebin.net,filemail.com,catbox.moe or Dropbox is recommended). Paste the URL of the decrypted IPA file in the provided field.</li>
     <li>Get your YTLite .deb file, then upload it to a file provider (e.g., filebin.net, catbox.moe, or Dropbox is recommended). Paste the URL of the deb file in the provided field.</li>
