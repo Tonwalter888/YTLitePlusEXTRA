@@ -4,8 +4,7 @@ If you have any problems, feel free to open issues!
 
 **EDIT:** THANKS FOR 100 FORKS!🥳🎉🙏
 
-**NOTE:** 
-- Before you open a new issue, please check in [FAQs](FAQs.md) first and make sure your issue doesn't have in it.
+**NOTE:** Before you open a new issue, please check in [FAQs](FAQs.md) first and make sure your issue doesn't have in it.
 
 ## Main Features
 - [YTLite](https://github.com/dayanch96/YTLite) - eg. Download Videos,No ads,Background Playback
