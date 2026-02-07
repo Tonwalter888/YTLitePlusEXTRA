@@ -28,8 +28,8 @@
     <p>Before jumping to conclusions:</p>
       <p>This is <strong>NOT</strong> caused by ad blocking.</p>
     <p>The issue is your account gets YouTube banned or flagged. If you want to use YouTube newer than version 19.49.5, try avaliable workarounds below.</p>
-    <p><strong>Avaliable Workarounds:</strong></p>
-    <p>Choose only <strong>ONE</strong> workaround you want to use</p>
+    <p><strong>Avaliable Workarounds</strong></p>
+    <p>Try one of these:</p>
       <li>Sign out from your Google account and watch YouTube without signing in.</li>
       <li>Use your other Google accounts. If you haven't got some, create a new one.</li>
       <li>Use YouTube version 20.25.4 and turn on Legacy PiP in YouPiP settings. But you will lose PiP functionality.</li>
