@@ -27,9 +27,10 @@
   <summary>When I try to play a video, I get <strong>Something went wrong. Refresh and try again later.</strong></summary>
     <p>Before jumping to conclusions:</p>
       <p>This is <strong>NOT</strong> caused by ad blocking.</p>
-    <p>The issue is your account gets YouTube banned or flagged. If you want to use YouTube newer than version 19.49.5, try avaliable workarounds below.</p>
+    <p>The issue is your account gets YouTube banned or flagged. Try avaliable workarounds below.</p>
     <p><strong>Avaliable Workarounds</strong></p>
     <p>Try one of these:</p>
+      <li>Use YouTube version 19.49.5 or below.</li>
       <li>Sign out from your Google account and watch YouTube without signing in.</li>
       <li>Use your other Google accounts. If you haven't got some, create a new one.</li>
       <li>Use YouTube version 20.25.4 and turn on Legacy PiP in YouPiP settings. But you will lose PiP functionality.</li>
