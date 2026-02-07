@@ -1,12 +1,11 @@
 # YTLitePlusEXTRA
 This is a fork repo from YTLite,but add more tweaks similar to YTLitePlus for who can't build IPA or The app is unusable.
-If you have any problems,feel free to open issues!
+If you have any problems, feel free to open issues!
 
 **EDIT:** THANKS FOR 100 FORKS!🥳🎉🙏
 
 **NOTE:** 
-- If you are experiencing playback issues,use YouTube version 19.49.5 or turn on Legacy PiP in YouPiP settings.
-- If YouTube's loop video feature doesn't work,use YouLoop in Settings -> Video Overlay -> Show Loop Video Button instead.
+- Before you open a new issue, please check in [FAQs](FAQs.md) first and make sure your issue doesn't have in it.
 
 ## Main Features
 - [YTLite](https://github.com/dayanch96/YTLite) - eg. Download Videos,No ads,Background Playback
@@ -16,21 +15,18 @@ If you have any problems,feel free to open issues!
 - [YouSlider](https://github.com/PoomSmart/YouSlider) - Customizes video slider and scrubber
 - [YouChooseQuality](https://github.com/PoomSmart/YouChooseQuality) - Auto select the video quality from your scenario
 - [YouShare](https://github.com/Tonwalter888/YouShare) - Copy video URL faster from video overlay
-- [Gonerino](https://github.com/castdrian/Gonerino) - Filter videos/channels/keywords that you don't want them to show up on your feed
+- [Gonerino](https://github.com/castdrian/Gonerino) - Filter videos/channels/keywords that you don't want them to show up on your feeds
 - [YouGetCaption](https://github.com/PoomSmart/YouGetCaption) - Copy video captions from video overlay
 - [YTweaks](https://github.com/fosterbarnes/YTweaks) - Hide AI summary,Fix casting and more
 - [YTFlags](https://github.com/Tonwalter888/YTFlags) - Tries to make your YouTube experience even better
 - And much more...
-
-## FAQ
-[Here](FAQs/FAQ_EN.md)
 
 ## How to build a YTLitePlusEXTRA IPA using Github Actions
 > [!NOTE]
 > If this your first time, complete following steps before starting:
 >
 > 1. Fork this repository using the fork button on the top right
-> 2. On your forked repository, go to **Repository Settings** > **Actions**, enable **Read and Write** permissions.
+> 2. On your forked repository, go to **Settings** > **Actions**, enable **Read and Write** permissions.
 
 <details>
   <summary>How to build a YTLitePlusEXTRA IPA</summary>
@@ -61,9 +57,9 @@ If you have any problems,feel free to open issues!
   </ol>
 </details>
 
-## Supported YouTube Version
+## Supported YouTube Versions
 <ul>
-   <li><strong>Latest confirmed:</strong> 19.49.5, 21.04.2</li>
-   <li><strong>Date tested:</strong> Feb 4, 2026</li>
+   <li><strong>Latest confirmed:</strong> 19.49.5, 21.05.3</li>
+   <li><strong>Date tested:</strong> Feb 7, 2026</li>
    <li><strong>YTLite:</strong> 5.2 beta 4</li>
 </ul>

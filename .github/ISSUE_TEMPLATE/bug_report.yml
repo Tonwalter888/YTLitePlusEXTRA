@@ -1,5 +1,5 @@
 name: Bug reports
-description: This issue template is designed to help you report problems and suggest improvements for my project.
+description: This template is designed to help you report problems and suggest improvements for my project.
 labels: bug
 body:
   - type: textarea
