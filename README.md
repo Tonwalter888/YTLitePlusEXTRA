@@ -6,7 +6,7 @@ If you have any problems, feel free to open issues!
 
 **NOTE:** Before you open a new issue, please check in [FAQs](FAQs.md) first and make sure your issue doesn't have in it.
 
-## Main Features
+## Main features
 - [YTLite](https://github.com/dayanch96/YTLite) - eg. Download Videos,No ads,Background Playback
 - [YouMute](https://github.com/PoomSmart/YouMute) - Mute the video sounds in video overlay
 - [YouSpeed](https://github.com/PoomSmart/YouSpeed) - Change video speeds in video overlay
@@ -56,7 +56,7 @@ If you have any problems, feel free to open issues!
   </ol>
 </details>
 
-## Supported YouTube Version
+## Supported YouTube version
 <ul>
    <li><strong>Latest confirmed:</strong> 21.05.3</li>
    <li><strong>Date tested:</strong> Feb 7, 2026</li>
