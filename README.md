@@ -56,7 +56,7 @@ If you have any problems, feel free to open issues!
   </ol>
 </details>
 
-## Supported YouTube Versions
+## Supported YouTube Version
 <ul>
    <li><strong>Latest confirmed:</strong> 21.05.3</li>
    <li><strong>Date tested:</strong> Feb 7, 2026</li>
