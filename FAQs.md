@@ -33,5 +33,5 @@
       <li>Use YouTube version 19.49.5 or below. But you may get "<strong>This content isn't available, try again later.</strong>" error instead.</li>
       <li>Sign out from your Google account and watch YouTube without signing in.</li>
       <li>Use your other Google accounts. If you haven't got some, create a new one.</li>
-      <li>Use YouTube version 20.25.4 and turn on Legacy PiP in YouPiP settings. But you will lose PiP functionality.</li>
+      <li>Use YouTube version 20.25.4 and turn on Legacy PiP in YouPiP settings, but you will lose PiP functionality.</li>
 </details>
