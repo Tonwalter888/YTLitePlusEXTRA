@@ -24,7 +24,7 @@
 </details>
 <br>
 <details>
-  <summary>When I try to play a video, I get <strong>Something went wrong. Refresh and try again later.</strong> error.</summary>
+  <summary>When I try to play a video, I get "<strong>Something went wrong. Refresh and try again later.</strong>" error.</summary>
     <p>Before jumping to conclusions:</p>
       <p>This is <strong>NOT</strong> caused by ad blocking.</p>
     <p>The issue is your account gets YouTube banned or flagged. Try avaliable workarounds below.</p>
