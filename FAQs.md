@@ -30,7 +30,7 @@
     <p>The issue is your account gets YouTube banned or flagged. Try avaliable workarounds below.</p>
     <p><strong>Avaliable Workarounds</strong></p>
     <p>Try one of these:</p>
-      <li>Use YouTube version 19.49.5 or below. But you may get "This content isn't available, try again later." error instead.</li>
+      <li>Use YouTube version 19.49.5 or below. But you may get "<strong>This content isn't available, try again later.</strong>" error instead.</li>
       <li>Sign out from your Google account and watch YouTube without signing in.</li>
       <li>Use your other Google accounts. If you haven't got some, create a new one.</li>
       <li>Use YouTube version 20.25.4 and turn on Legacy PiP in YouPiP settings. But you will lose PiP functionality.</li>
