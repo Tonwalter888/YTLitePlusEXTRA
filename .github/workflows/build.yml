@@ -137,7 +137,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
 
       - name: Clone YouGroupSettings
-        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouGroupSettings.git
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
            
       - name: Clone YTVideoOverlay
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoOverlay.git
@@ -328,6 +328,7 @@ jobs:
           
           cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
+      # Thanks to the original codes from YTLitePlus - https://github.com/YTLitePlus/YTLitePlus/blob/358775e8801468d8dcb1252aef9e4125e63e3c08/.github/workflows/buildapp.yml
       - name: Upload IPA to Catbox
         if: ${{ inputs.catbox_upload }}
         run: |
