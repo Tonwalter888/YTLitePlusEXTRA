@@ -34,7 +34,7 @@ on:
 
       catbox_upload:
         description: "Upload IPA to Catbox.moe (URL)"
-        default: true
+        default: false
         required: false
         type: boolean
         
