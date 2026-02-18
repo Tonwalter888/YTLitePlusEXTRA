@@ -187,9 +187,6 @@ jobs:
       - name: Clone YTFlags
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTFlags.git
 
-      - name: Clone YTIcons
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTIcons.git
-
       - name: Build YTUHD
         run: |
           cd YTUHD
@@ -303,12 +300,6 @@ jobs:
           cd YTFlags
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytflags.deb
-
-      - name: Build YTIcons
-        run: |
-          cd YTIcons
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/yticons.deb
           
       - name: Inject Tweaks Into IPA
         run: |
