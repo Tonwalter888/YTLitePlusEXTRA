@@ -182,7 +182,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/fosterbarnes/YTweaks.git
 
       - name: Clone YouGetCaption
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGetCaption.git
+        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouGetCaption.git
 
       - name: Clone YTFlags
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTFlags.git
