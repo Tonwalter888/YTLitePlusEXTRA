@@ -86,7 +86,7 @@ jobs:
       - name: Install Dependencies
         run: brew install make ldid swiftlint
 
-      - name: Set PATH Environment Variable
+      - name: Set PATH Environment Variables
         run: |
           echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
           echo "THEOS=${{ github.workspace }}/theos" >> $GITHUB_ENV
@@ -121,14 +121,11 @@ jobs:
 
       - name: Clone YouTubeHeader
         run: |
-           cd $THEOS/include
-           git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git
+           git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git $THEOS/include/YouTubeHeader
            cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
 
       - name: Clone PSHeader
-        run: |
-           cd $THEOS/include
-           git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git $THEOS/include/PSHeader
     
       - name: Clone YTUHD
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTUHD.git
@@ -150,9 +147,6 @@ jobs:
 
       - name: Clone YouSpeed
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
-
-      - name: Clone DontEatMyContent
-        run: git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
 
       - name: Clone YouMute
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
@@ -225,12 +219,6 @@ jobs:
           cd YouSpeed
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youspeed.deb
-
-      - name: Build DontEatMyContent
-        run: |
-          cd DontEatMyContent
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/demc.deb
 
       - name: Build YouMute
         run: |
