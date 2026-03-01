@@ -62,3 +62,5 @@ If you have any problems, feel free to open issues!
    <li><strong>Date tested:</strong> Feb 20, 2026</li>
    <li><strong>YTLite:</strong> 5.2 beta 4</li>
 </ul>
+
+<strong>Update 1/3/2026:</strong> Currently, I recommend YouTube version 20.50.10 or older. Since SponsorBlock is broken in YouTube version 21+.
