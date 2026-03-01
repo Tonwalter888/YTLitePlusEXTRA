@@ -20,7 +20,7 @@
 <br>
 <details>
   <summary>YouTube's loop video option and the button don't work. What should I do?</summary>
-    <p>Uses YouLoop in Settings -> Video overlay -> Show loop video button instead.</p>
+    <p>Uses YouLoop in <strong>Settings -> Video overlay -> Show loop video button</strong> instead.</p>
 </details>
 <br>
 <details>
@@ -35,5 +35,5 @@
     	<li>When you're running the workflow, uses YTLite version <strong>5.2b3</strong>.</li>
       <li>Sign out from your Google account and watch videos without signing in.</li>
       <li>Use your other Google accounts. If you haven't got any, create a new one.</li>
-      <li>Uses YouTube version 20.25.4 and turns on Legacy PiP in YouPiP settings, but you will lose PiP functionality.</li>
+      <li>Uses YouTube version 20.25.4 and turns on <strong>Legacy PiP</strong> in YouPiP settings, but you will lose PiP functionality.</li>
 </details>
