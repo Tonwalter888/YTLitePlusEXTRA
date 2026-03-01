@@ -278,7 +278,7 @@ jobs:
         run: |
           cd YTFlags
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ytflags.de
+          mv packages/*.deb ${{ github.workspace }}/ytflags.deb
           
       - name: Inject Tweaks Into IPA
         run: |
