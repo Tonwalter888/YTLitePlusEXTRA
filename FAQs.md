@@ -32,7 +32,6 @@
     <p>The issue seems to lie on YouTube's PoToken security guard as suggested <a href="https://github.com/Tonwalter888/YTLitePlusEXTRA/issues/14#issuecomment-3924514916">here</a>.</p>
     <p><strong>Possible temporary workarounds</strong></p>
     <p>Try one of these:</p>
-      <li>Use YouTube version 19.49.5 or below. But you may get <strong>This content isn't available, try again later.</strong> error instead.</li>
       <li>Sign out from your Google account and watch YouTube without signing in.</li>
       <li>Use your other Google accounts. If you haven't got any, create a new one.</li>
       <li>Use YouTube version 20.25.4 and turn on Legacy PiP in YouPiP settings, but you will lose PiP functionality.</li>
