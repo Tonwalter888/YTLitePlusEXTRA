@@ -19,8 +19,8 @@
 </details>
 <br>
 <details>
-  <summary>YouTube video loop settings and the button don't work. What should I do?</summary>
-    <p>Use YouLoop in Settings -> Video Overlay -> Show Loop Video Button instead.</p>
+  <summary>YouTube's loop video option and the button don't work. What should I do?</summary>
+    <p>Uses YouLoop in Settings -> Video overlay -> Show loop video button instead.</p>
 </details>
 <br>
 <details>
@@ -32,8 +32,8 @@
     <p>The issue seems to lie on YouTube's PoToken security guard as suggested <a href="https://github.com/Tonwalter888/YTLitePlusEXTRA/issues/14#issuecomment-3924514916">here</a>.</p>
     <p><strong>Possible temporary workarounds</strong></p>
     <p>Try each one of these:</p>
-    	<li>When building the IPA, uses YTLite version <strong>5.2b3</strong>.</li>
-      <li>Sign out from your Google account and watch YouTube without signing in.</li>
+    	<li>When you're running the workflow, uses YTLite version <strong>5.2b3</strong>.</li>
+      <li>Sign out from your Google account and watch videos without signing in.</li>
       <li>Use your other Google accounts. If you haven't got any, create a new one.</li>
-      <li>Use YouTube version 20.25.4 and turn on Legacy PiP in YouPiP settings, but you will lose PiP functionality.</li>
+      <li>Uses YouTube version 20.25.4 and turns on Legacy PiP in YouPiP settings, but you will lose PiP functionality.</li>
 </details>
