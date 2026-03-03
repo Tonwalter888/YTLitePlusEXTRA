@@ -31,8 +31,7 @@
       <p>This is <strong>NOT</strong> due to your account being secretly blacklisted.</p>
     <p>The issue seems to lie on YouTube's PoToken security guard as suggested <a href="https://github.com/Tonwalter888/YTLitePlusEXTRA/issues/14#issuecomment-3924514916">here</a>.</p>
     <p><strong>Possible temporary workarounds</strong></p>
-    <p>Try each one of these:</p>
-    	<li>When you're running the workflow, uses YTLite version <strong>5.2b3</strong>.</li>
+    <p>Try one of these:</p>
       <li>Sign out from your Google account and watch videos without signing in.</li>
       <li>Use your other Google accounts. If you haven't got any, create a new one.</li>
       <li>Turns on <strong>Fix playback issues</strong> in YTUHD settings.</li>
