@@ -1,19 +1,7 @@
-name: (Pre-Release) Build YTLitePlusEXTRA IPA
+name: Build YTLitePlusEXTRA IPA (For iPhone 7 Plus)
 on:
   workflow_dispatch:
     inputs:
-      ipa_url:
-        description: "URL to the decrypted IPA file"
-        default: ""
-        required: true
-        type: string
-
-      deb_url:
-        description: "URL to your YTLite .deb file"
-        default: ""
-        required: true
-        type: string
-
       display_name:
         description: "App Name (Optional)"
         default: "YouTube"
@@ -25,7 +13,7 @@ on:
         default: "com.google.ios.youtube"
         required: true
         type: string
-
+        
       upload_artifact:
         description: "Upload IPA as an artifact (Public)"
         default: true
@@ -34,7 +22,7 @@ on:
 
       catbox_upload:
         description: "Upload IPA to Catbox.moe (URL)"
-        default: true
+        default: false
         required: false
         type: boolean
         
@@ -50,7 +38,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build YTLitePlusEXTRA IPA
+    name: Build YTLitePlusEXTRA IPA (For iPhone 7 Plus)
     runs-on: macos-latest
     permissions:
       contents: write
@@ -68,25 +56,12 @@ jobs:
           exclude_inputs: bundle_id,display_name,tweak_version,draft_release,upload_artifact,catbox_upload
           
       - name: Download and Validate IPA
-        run: |
-          wget "${{ inputs.ipa_url }}" --no-verbose -O youtube.ipa
-
-          ipa_type=$(file --mime-type -b youtube.ipa)
-
-          if [[ "$ipa_type" != "application/x-ios-app" && "$file_type" != "application/zip" ]]; then
-            echo "::error::Validation failed: The downloaded file is not a valid IPA. Detected type: $ipa_type."
-            exit 1
-          fi
- 
-      - name: Get YouTube Version 
-        run: |
-          unzip -q youtube.ipa -d ytextracted
-          echo "YT_VERSION=$(grep -A 1 '<key>CFBundleVersion</key>' ytextracted/Payload/YouTube.app/Info.plist | grep '<string>' | awk -F'[><]' '{print $3}')" >> $GITHUB_ENV
+        run: wget "https://archive.org/download/com.google.ios.youtube-20.21.6-Decrypted/com.google.ios.youtube-20.21.6-Decrypted.ipa" --no-verbose -O youtube.ipa
 
       - name: Install Dependencies
         run: brew install make ldid swiftlint
 
-      - name: Set PATH Environment Variable
+      - name: Set PATH Environment Variables
         run: |
           echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
           echo "THEOS=${{ github.workspace }}/theos" >> $GITHUB_ENV
@@ -96,8 +71,8 @@ jobs:
         
       - name: Download iOS SDK
         run: |
-          git clone --quiet --depth=1 -n --filter=tree:0 https://github.com/Tonwalter888/iOS-18.6-SDK.git
-          cd iOS-18.6-SDK
+          git clone --quiet --depth=1 -n --filter=tree:0 https://github.com/Tonwalter888/iOS-SDKs.git
+          cd iOS-SDKs
           git sparse-checkout set --no-cone iPhoneOS18.6.sdk
           git checkout
           mv *.sdk $THEOS/sdks
@@ -109,22 +84,7 @@ jobs:
           chmod +x /usr/local/bin/tbd 
 
       - name: Download and Validate your YTLite .deb 
-        run: |
-          wget "${{ inputs.deb_url }}" --no-verbose -O ytlite.deb
-
-          deb_type=$(file --mime-type -b ytlite.deb)
-
-          if [[ "$deb_type" != "application/vnd.debian.binary-package" ]]; then
-            echo "::error::Validation failed: The downloaded file is not a valid deb. Detected type: $deb_type."
-            exit 1
-          fi
-
-      - name: Get YTLite Version
-        run: |
-          ar x ytlite.deb control.tar.gz >/dev/null 2>&1
-          tar -xzf control.tar.gz ./control
-          VERSION=$(grep '^Version:' control | cut -d ' ' -f2)
-          echo "YTLITE_VERSION=$VERSION" >> $GITHUB_ENV
+        run: wget "https://github.com/dayanch96/YTLite/releases/download/v5.2b4/com.dvntm.ytlite_5.2b4_iphoneos-arm64.deb" --no-verbose -O ytlite.deb
 
       - name: Clone Open in YouTube (Safari Extension)
         run: |
@@ -135,18 +95,10 @@ jobs:
           mv *.appex ${{ github.workspace }}
 
       - name: Clone YouTubeHeader
-        run: |
-           cd $THEOS/include
-           git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git
-           cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git $THEOS/include/YouTubeHeader
 
       - name: Clone PSHeader
-        run: |
-           cd $THEOS/include
-           git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git
-
-      - name: Clone YouPiP
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git $THEOS/include/PSHeader
     
       - name: Clone YTUHD
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTUHD.git
@@ -169,15 +121,9 @@ jobs:
       - name: Clone YouSpeed
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
 
-      - name: Clone DontEatMyContent
-        run: git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
-
       - name: Clone YouMute
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
 
-      - name: Clone YTABGoodies
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTABGoodies.git
-    
       - name: Clone YouLoop
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouLoop.git
 
@@ -186,9 +132,6 @@ jobs:
 
       - name: Clone YouSlider
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
-
-      - name: Clone YouChooseQuality
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouChooseQuality.git
 
       - name: Clone YTSilentVote
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTSilentVote.git
@@ -204,13 +147,10 @@ jobs:
 
       - name: Clone YouGetCaption
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGetCaption.git
-        
-      - name: Build YouPiP
-        run: |
-          cd YouPiP
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/youpip.deb    
 
+      - name: Clone YTFlags
+        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTFlags.git
+        
       - name: Build YTUHD
         run: |
           cd YTUHD
@@ -253,23 +193,11 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youspeed.deb
 
-      - name: Build DontEatMyContent
-        run: |
-          cd DontEatMyContent
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/demc.deb
-
       - name: Build YouMute
         run: |
           cd YouMute
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ym.deb 
-
-      - name: Build YTABGoodies
-        run: |
-          cd YTABGoodies
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ytgoodab.deb
 
       - name: Build YouLoop
         run: |
@@ -288,12 +216,6 @@ jobs:
           cd Alderis
           make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ${{ github.workspace }}/alderis.deb
-
-      - name: Build YouChooseQuality
-        run: |
-          cd YouChooseQuality
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/youchoose.deb
 
       - name: Build YTSilentVote
         run: |
@@ -322,12 +244,18 @@ jobs:
       - name: Build YTweaks
         run: |
           cd YTweaks
-          make clean package DEBUG=0 FINALPACKAGE=1
+          make clean package DEBUG=0 FINALPACKAGE=1 ROOTLESS=1
           mv packages/*.deb ${{ github.workspace }}/ytweaks.deb
+          
+      - name: Build YTFlags
+        run: |
+          cd YTFlags
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          mv packages/*.deb ${{ github.workspace }}/ytflags.deb
   
       - name: Inject Tweaks Into IPA
         run: |
-          tweaks="ytlite.deb OpenYouTubeSafariExtension.appex"
+          tweaks="OpenYouTubeSafariExtension.appex"
 
           for f in *.deb; do
             if [ -f "$f" ]; then
@@ -337,6 +265,7 @@ jobs:
           
           cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
+      # Thanks to the original codes from YTLitePlus - https://github.com/YTLitePlus/YTLitePlus/blob/358775e8801468d8dcb1252aef9e4125e63e3c08/.github/workflows/buildapp.yml
       - name: Upload IPA to Catbox
         if: ${{ inputs.catbox_upload }}
         run: |
