@@ -26,6 +26,12 @@ on:
         required: true
         type: string
 
+      demc:
+        description: "Integrate DontEatMyContent"
+        default: true
+        required: false
+        type: boolean
+
       upload_artifact:
         description: "Upload IPA as an artifact (Public)"
         default: true
@@ -137,7 +143,9 @@ jobs:
       - name: Clone YouTubeHeader
         run: |
            git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git $THEOS/include/YouTubeHeader
-           cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
+           if [ "${{ inputs.demc }}" = "true" ]; then
+            cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
+           fi
 
       - name: Clone PSHeader
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git $THEOS/include/PSHeader
@@ -167,14 +175,12 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
 
       - name: Clone DontEatMyContent
+        if: ${{ inputs.demc }}
         run: git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
 
       - name: Clone YouMute
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
 
-      - name: Clone YTABGoodies
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTABGoodies.git
-    
       - name: Clone YouLoop
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouLoop.git
 
@@ -254,6 +260,7 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/youspeed.deb
 
       - name: Build DontEatMyContent
+        if: ${{ inputs.demc }}
         run: |
           cd DontEatMyContent
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -264,12 +271,6 @@ jobs:
           cd YouMute
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ym.deb 
-
-      - name: Build YTABGoodies
-        run: |
-          cd YTABGoodies
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ytgoodab.deb
 
       - name: Build YouLoop
         run: |
@@ -389,4 +390,4 @@ jobs:
      
       - name: Job Summary - Cleanup
         run: |
-          echo -e '### 🧹 Cleanup\n\nYou can remove previous GitHub Actions run here: https://github.com/${{ github.repository }}/actions/workflows/delete-old-workflows-run.yml And if you want to delelte old draft releases you have then here: https://github.com/${{ github.repository }}/actions/workflows/delete-old-draft-releases.yml' >> $GITHUB_STEP_SUMMARY
+          echo -e '### 🧹 Cleanup\n\nYou can remove previous GitHub Actions run here: https://github.com/${{ github.repository }}/actions/workflows/delete-old-workflows-run.yml And if you want to delelte old draft releases you have then here: https://github.com/${{ github.repository }}/actions/workflows/delete-old-draft-releases.yml' >> $GITHUB_STEP_SUMMAR
