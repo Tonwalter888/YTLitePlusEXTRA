@@ -28,7 +28,7 @@ on:
 
       catbox_upload:
         description: "Upload IPA to Catbox.moe (URL)"
-        default: false
+        default: true
         required: false
         type: boolean
         
@@ -56,11 +56,6 @@ jobs:
           echo "No IPA output way selected. Please choose at least one."
           exit 1
 
-      - name: Hide Sensitive Inputs
-        uses: levibostian/action-hide-sensitive-inputs@v1
-        with:
-          exclude_inputs: bundle_id,display_name,tweak_version,draft_release,upload_artifact,catbox_upload
-          
       - name: Download and Validate IPA
         run: wget "https://archive.org/download/com.google.ios.youtube-20.21.6-Decrypted/com.google.ios.youtube-20.21.6-Decrypted.ipa" --no-verbose -O youtube.ipa
 
