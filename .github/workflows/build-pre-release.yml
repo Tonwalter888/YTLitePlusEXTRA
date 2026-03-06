@@ -2,14 +2,20 @@ name: Build YTLitePlusEXTRA IPA (For iPhone 7 Plus)
 on:
   workflow_dispatch:
     inputs:
+      ytlite_version:
+        description: "YTLite Version"
+        default: "5.2b4"
+        required: true
+        type: string
+        
       display_name:
-        description: "App Name (Optional)"
+        description: "App Name"
         default: "YouTube"
         required: true
         type: string
 
       bundle_id:
-        description: "BundleID (Optional)"
+        description: "BundleID"
         default: "com.google.ios.youtube"
         required: true
         type: string
@@ -83,8 +89,8 @@ jobs:
           wget --no-verbose "https://github.com/inoahdev/tbd/releases/download/2.2/tbd-mac" -O /usr/local/bin/tbd
           chmod +x /usr/local/bin/tbd 
 
-      - name: Download and Validate your YTLite .deb 
-        run: wget "https://github.com/dayanch96/YTLite/releases/download/v5.2b4/com.dvntm.ytlite_5.2b4_iphoneos-arm64.deb" --no-verbose -O ytlite.deb
+      - name: Download YTLite .deb 
+        run: wget "https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.ytlite_version }}/com.dvntm.ytlite_${{ inputs.ytlite_version }}_iphoneos-arm64.deb" --no-verbose -O ytlite.deb
 
       - name: Clone Open in YouTube (Safari Extension)
         run: |
@@ -262,14 +268,14 @@ jobs:
               tweaks="$tweaks $f"
             fi
           done
-          
-          cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
+
+          cyan -i youtube.ipa -o YTLitePlusEXTRA_20.21.6_v${{ inputs.ytlite_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
       # Thanks to the original codes from YTLitePlus - https://github.com/YTLitePlus/YTLitePlus/blob/358775e8801468d8dcb1252aef9e4125e63e3c08/.github/workflows/buildapp.yml
       - name: Upload IPA to Catbox
         if: ${{ inputs.catbox_upload }}
         run: |
-          RESPONSE=$(curl -F "reqtype=fileupload" -F "fileToUpload=@YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa" https://catbox.moe/user/api.php)
+          RESPONSE=$(curl -F "reqtype=fileupload" -F "fileToUpload=@YTLitePlusEXTRA_20.21.6_v${{ inputs.ytlite_version }}.ipa" https://catbox.moe/user/api.php)
           CATBOX_URL=$(echo $RESPONSE | grep -o -E 'https://files.catbox.moe/[^"]*')
           echo "Uploaded the IPA to $CATBOX_URL"
           echo "CATBOX_URL=$CATBOX_URL" >> $GITHUB_ENV
@@ -278,16 +284,16 @@ jobs:
         if: ${{ inputs.upload_artifact }}
         uses: actions/upload-artifact@v6
         with:
-          name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}
-          path: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa
+          name: YTLitePlusEXTRA_20.21.6_v${{ inputs.ytlite_version }}
+          path: YTLitePlusEXTRA_20.21.6_v${{ inputs.ytlite_version }}.ipa
 
       - name: Create a Draft Release
         if: ${{ inputs.draft_release }}
         uses: softprops/action-gh-release@v2.5.0
         with:
-          tag_name: ytliteplusextra-pre-release-ipa${{ github.run_number }}
-          name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }} (${{ github.run_number }}) 
-          files: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa
+          tag_name: ytliteplusextra-ip7p-ipa${{ github.run_number }}
+          name: YTLitePlusEXTRA_20.21.6_v${{ inputs.ytlite_version }} (${{ github.run_number }}) 
+          files: YTLitePlusEXTRA_20.21.6_v${{ inputs.ytlite_version }}.ipa
           draft: true
 
       - name: Job Summary - Build Complete
