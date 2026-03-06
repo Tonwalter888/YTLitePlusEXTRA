@@ -255,13 +255,7 @@ jobs:
         run: |
           cd YouMute
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ym.deb 
-
-      - name: Build YTABGoodies
-        run: |
-          cd YTABGoodies
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ytgoodab.deb
+          mv packages/*.deb ${{ github.workspace }}/ym.deb
 
       - name: Build YouLoop
         run: |
