@@ -1,4 +1,4 @@
-name: Build YTLitePlusEXTRA IPA (For iPhone 7 Plus)
+name: (Pre-Release) Build YTLitePlusEXTRA IPA
 on:
   workflow_dispatch:
     inputs:
