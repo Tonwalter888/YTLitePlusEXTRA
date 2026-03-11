@@ -66,6 +66,7 @@ jobs:
         run: |
           echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH
           echo "THEOS=${{ github.workspace }}/theos" >> $GITHUB_ENV
+          echo "FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true" >> $GITHUB_ENV
 
       - name: Clone Theos
         run: git clone --quiet --depth=1 --recurse-submodules https://github.com/theos/theos.git
