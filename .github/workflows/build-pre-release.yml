@@ -292,11 +292,13 @@ jobs:
           draft: true
 
       - name: Job Summary - Build Complete
-        run: echo -e '### 🛠️ Build YTLitePlusEXTRA IPA Complete!' >> $GITHUB_STEP_SUMMARY
+        run: |
+          echo -e '### 🛠️ Build YTLitePlusEXTRA IPA Complete!' >> $GITHUB_STEP_SUMMARY
 
       - name: Job Summary - Output the Artifact Upload
         if: ${{ inputs.upload_artifact }}
-        run: echo -e '### 📦 Artifact Upload\n\nUpload IPA as an artifact successfully! Refresh and [Scroll down](#artifacts) to view the artifact. Note that you must be signed in to GitHub to download it.' >> $GITHUB_STEP_SUMMARY
+        run: |
+          echo -e '### 📦 Artifact Upload\n\nUpload IPA as an artifact successfully! Refresh and [Scroll down](#artifacts) to view the artifact. Note that you must be signed in to GitHub to download it.' >> $GITHUB_STEP_SUMMARY
 
       - name: Job Summary - Output the IPA URL (Catbox Upload)
         if: ${{ inputs.catbox_upload }}
@@ -305,7 +307,9 @@ jobs:
           
       - name: Job Summary - Output a Draft Release Link
         if: ${{ inputs.draft_release }}
-        run: echo -e '### 🚀 Draft Release\n\nDraft release has been created successfully! You can view your release here: https://github.com/${{ github.repository }}/releases' >> $GITHUB_STEP_SUMMARY
+        run: |
+          echo -e '### 🚀 Draft Release\n\nDraft release has been created successfully! You can view your release here: https://github.com/${{ github.repository }}/releases' >> $GITHUB_STEP_SUMMARY
      
       - name: Job Summary - Cleanup
-        run: echo -e '### 🧹 Cleanup\n\nYou can remove previous GitHub Actions run here: https://github.com/${{ github.repository }}/actions/workflows/delete-old-workflows-run.yml And if you want to delelte old draft releases you have then here: https://github.com/${{ github.repository }}/actions/workflows/delete-old-draft-releases.yml' >> $GITHUB_STEP_SUMMARY
+        run: |
+          echo -e '### 🧹 Cleanup\n\nYou can remove previous GitHub Actions run here: https://github.com/${{ github.repository }}/actions/workflows/delete-old-workflows-run.yml And if you want to delelte old draft releases you have then here: https://github.com/${{ github.repository }}/actions/workflows/delete-old-draft-releases.yml' >> $GITHUB_STEP_SUMMARY
