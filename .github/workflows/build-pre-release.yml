@@ -300,7 +300,8 @@ jobs:
 
       - name: Job Summary - Output the IPA URL (Catbox Upload)
         if: ${{ inputs.catbox_upload }}
-        run: echo -e '### 🐱 Catbox Upload\n\nUpload IPA to Catbox successfully! Here is a permanent shareable link: '$CATBOX_URL >> $GITHUB_STEP_SUMMARY
+        run: |
+          echo -e '### 🐱 Catbox Upload\n\nUpload IPA to Catbox successfully! Here is a permanent shareable link: '$CATBOX_URL >> $GITHUB_STEP_SUMMARY
           
       - name: Job Summary - Output a Draft Release Link
         if: ${{ inputs.draft_release }}
