@@ -178,6 +178,9 @@ jobs:
       - name: Clone YTFlags
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTFlags.git
 
+      - name: Clone YouChooseQuality
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouChooseQuality.git
+        
       - name: Build YTUHD
         run: |
           cd YTUHD
@@ -279,6 +282,12 @@ jobs:
           cd YTFlags
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytflags.deb
+
+      - name: Build YouChooseQuality
+        run: |
+          cd YouChooseQuality
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          mv packages/*.deb ${{ github.workspace }}/youchoose.deb
           
       - name: Inject Tweaks Into IPA
         run: |
