@@ -26,24 +26,6 @@ on:
         required: true
         type: string
 
-      upload_artifact:
-        description: "Upload IPA as an Artifact (Public)"
-        default: false
-        required: false
-        type: boolean
-
-      catbox_upload:
-        description: "Upload IPA to Catbox.moe (URL)"
-        default: false
-        required: false
-        type: boolean
-        
-      draft_release:
-        description: "Create a draft release (Private)"
-        default: true
-        required: false
-        type: boolean
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -59,12 +41,6 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
-      - name: Check Inputs
-        if: ${{ !inputs.upload_artifact && !inputs.draft_release && !inputs.catbox_upload }}
-        run: |
-          echo "No IPA output way selected. Please choose at least one."
-          exit 1
-
       - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
@@ -304,23 +280,7 @@ jobs:
           
           cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
-      - name: Upload IPA to Catbox
-        if: ${{ inputs.catbox_upload }}
-        run: |
-          RESPONSE=$(curl -F "reqtype=fileupload" -F "fileToUpload=@YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa" https://catbox.moe/user/api.php)
-          CATBOX_URL=$(echo $RESPONSE | grep -o -E 'https://files.catbox.moe/[^"]*')
-          echo "Uploaded the IPA to $CATBOX_URL"
-          echo "CATBOX_URL=$CATBOX_URL" >> $GITHUB_ENV
-
-      - name: Upload IPA as an Artifact
-        if: ${{ inputs.upload_artifact }}
-        uses: actions/upload-artifact@v6
-        with:
-          name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}
-          path: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa
-
       - name: Create a Draft Release
-        if: ${{ inputs.draft_release }}
         uses: softprops/action-gh-release@v2.5.0
         with:
           tag_name: ytliteplusextra-ipa${{ github.run_number }}
@@ -332,18 +292,7 @@ jobs:
         run: |
           echo -e '### 🛠️ Build YTLitePlusEXTRA IPA Complete!' >> $GITHUB_STEP_SUMMARY
 
-      - name: Job Summary - Output the Artifact Upload
-        if: ${{ inputs.upload_artifact }}
-        run: |
-          echo -e '### 📦 Artifact Upload\n\nUpload IPA as an artifact successfully! Refresh and [Scroll down](#artifacts) to view the artifact. Note that you must be signed in to GitHub to download it.' >> $GITHUB_STEP_SUMMARY
-
-      - name: Job Summary - Output the IPA URL (Catbox Upload)
-        if: ${{ inputs.catbox_upload }}
-        run: |
-          echo -e '### 🐱 Catbox Upload\n\nUpload IPA to Catbox successfully! Here is a permanent shareable link: '$CATBOX_URL >> $GITHUB_STEP_SUMMARY
-
       - name: Job Summary - Output a Draft Release Link
-        if: ${{ inputs.draft_release }}
         run: |
           echo -e '### 🚀 Draft Release\n\nDraft release has been created successfully! You can view your release here: https://github.com/${{ github.repository }}/releases' >> $GITHUB_STEP_SUMMARY     
           
