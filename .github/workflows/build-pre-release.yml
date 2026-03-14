@@ -324,7 +324,6 @@ jobs:
           cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
       - name: Create a Draft Release
-        if: ${{ inputs.draft_release }}
         uses: softprops/action-gh-release@v2.5.0
         with:
           tag_name: ytliteplusextra-pre-release-ipa${{ github.run_number }}
