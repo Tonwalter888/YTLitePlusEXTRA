@@ -48,7 +48,7 @@ jobs:
 
     steps:
       - name: Hide Sensitive Inputs
-        uses: levibostian/action-hide-sensitive-inputs@v1
+        uses: levibostian/action-hide-sensitive-inputs@v1.1.1
         with:
           exclude_inputs: bundle_id,display_name,ytlite_version,draft_release,upload_artifact,catbox_upload
           
