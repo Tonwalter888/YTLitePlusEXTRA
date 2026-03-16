@@ -158,7 +158,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTFlags.git
 
       - name: Clone YouChooseQuality
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouChooseQuality.git
+        run: git clone --quiet https://github.com/PoomSmart/YouChooseQuality.git
         
       - name: Build YTUHD
         run: |
