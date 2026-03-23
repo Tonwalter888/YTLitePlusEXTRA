@@ -26,12 +26,6 @@ on:
         required: true
         type: string
 
-      demc:
-        description: "Integrate DontEatMyContent"
-        default: true
-        required: false
-        type: boolean
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -47,7 +41,7 @@ jobs:
       - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
-          exclude_inputs: bundle_id,display_name,ytlite_version,demc
+          exclude_inputs: bundle_id,display_name,ytlite_version
           
       - name: Download and Validate IPA
         run: |
@@ -102,17 +96,10 @@ jobs:
           mv *.appex ${{ github.workspace }}
 
       - name: Clone YouTubeHeader
-        run: |
-           git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git $THEOS/include/YouTubeHeader
-           if [ "${{ inputs.demc }}" = "true" ]; then
-            cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
-           fi
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git $THEOS/include/YouTubeHeader
 
       - name: Clone PSHeader
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git $THEOS/include/PSHeader
-
-      - name: Clone YouPiP
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
     
       - name: Clone YTUHD
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTUHD.git
@@ -135,10 +122,6 @@ jobs:
       - name: Clone YouSpeed
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
 
-      - name: Clone DontEatMyContent
-        if: ${{ inputs.demc }}
-        run: git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
-
       - name: Clone YouMute
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
     
@@ -150,9 +133,6 @@ jobs:
 
       - name: Clone YouSlider
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
-
-      - name: Clone YouChooseQuality
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouChooseQuality.git
 
       - name: Clone YTSilentVote
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTSilentVote.git
@@ -172,12 +152,6 @@ jobs:
       - name: Clone YTFlags
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTFlags.git
         
-      - name: Build YouPiP
-        run: |
-          cd YouPiP
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/youpip.deb    
-
       - name: Build YTUHD
         run: |
           cd YTUHD
@@ -220,13 +194,6 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youspeed.deb
 
-      - name: Build DontEatMyContent
-        if: ${{ inputs.demc }}
-        run: |
-          cd DontEatMyContent
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/demc.deb
-
       - name: Build YouMute
         run: |
           cd YouMute
@@ -250,12 +217,6 @@ jobs:
           cd Alderis
           make clean package DEBUG=0 FINALPACKAGE=1 ARCHS=arm64
           mv packages/*.deb ${{ github.workspace }}/alderis.deb
-
-      - name: Build YouChooseQuality
-        run: |
-          cd YouChooseQuality
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/youchoose.deb
 
       - name: Build YTSilentVote
         run: |

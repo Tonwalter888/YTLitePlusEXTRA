@@ -2,15 +2,9 @@ name: (Pre-Release) Build YTLitePlusEXTRA IPA
 on:
   workflow_dispatch:
     inputs:
-      ipa_url:
-        description: "URL to the decrypted IPA file"
-        default: ""
-        required: true
-        type: string
-
-      deb_url:
-        description: "URL to your YTLite .deb file"
-        default: ""
+      ytlite_version:
+        description: "YTLite Version"
+        default: "5.2b4"
         required: true
         type: string
 
@@ -25,12 +19,6 @@ on:
         default: "com.google.ios.youtube"
         required: true
         type: string
-
-      demc:
-        description: "Integrate DontEatMyContent"
-        default: true
-        required: false
-        type: boolean
      
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -38,33 +26,15 @@ concurrency:
 
 jobs:
   build:
-    name: (Pre-Release) Build YTLitePlusEXTRA IPA
+    name: Build YTLitePlusEXTRA IPA (For iPhone 7 Plus)
     runs-on: macos-latest
     permissions:
       contents: write
 
-    steps:
-      - name: Hide Sensitive Inputs
-        uses: levibostian/action-hide-sensitive-inputs@v1
-        with:
-          exclude_inputs: bundle_id,display_name,tweak_version,demc
-          
+    steps:          
       - name: Download and Validate IPA
-        run: |
-          wget "${{ inputs.ipa_url }}" --no-verbose -O youtube.ipa
-
-          ipa_type=$(file --mime-type -b youtube.ipa)
-
-          if [[ "$ipa_type" != "application/x-ios-app" && "$file_type" != "application/zip" ]]; then
-            echo "::error::Validation failed: The downloaded file is not a valid IPA. Detected type: $ipa_type."
-            exit 1
-          fi
+        run: wget "https://archive.org/download/com.google.ios.youtube-20.21.6-Decrypted/com.google.ios.youtube-20.21.6-Decrypted.ipa" --no-verbose -O youtube.ipa
  
-      - name: Get YouTube Version 
-        run: |
-          unzip -q youtube.ipa -d ytextracted
-          echo "YT_VERSION=$(grep -A 1 '<key>CFBundleVersion</key>' ytextracted/Payload/YouTube.app/Info.plist | grep '<string>' | awk -F'[><]' '{print $3}')" >> $GITHUB_ENV
-
       - name: Install Dependencies
         run: brew install make ldid swiftlint
 
@@ -90,44 +60,14 @@ jobs:
           wget --no-verbose "https://github.com/inoahdev/tbd/releases/download/2.2/tbd-mac" -O /usr/local/bin/tbd
           chmod +x /usr/local/bin/tbd 
 
-      - name: Download and Validate your YTLite .deb 
-        run: |
-          wget "${{ inputs.deb_url }}" --no-verbose -O ytlite.deb
-
-          deb_type=$(file --mime-type -b ytlite.deb)
-
-          if [[ "$deb_type" != "application/vnd.debian.binary-package" ]]; then
-            echo "::error::Validation failed: The downloaded file is not a valid deb. Detected type: $deb_type."
-            exit 1
-          fi
-
-      - name: Get YTLite Version
-        run: |
-          ar x ytlite.deb control.tar.gz >/dev/null 2>&1
-          tar -xzf control.tar.gz ./control
-          VERSION=$(grep '^Version:' control | cut -d ' ' -f2)
-          echo "YTLITE_VERSION=$VERSION" >> $GITHUB_ENV
-
-      - name: Clone Open in YouTube (Safari Extension)
-        run: |
-          git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/BillyCurtis/OpenYouTubeSafariExtension.git
-          cd OpenYouTubeSafariExtension
-          git sparse-checkout set --no-cone OpenYouTubeSafariExtension.appex
-          git checkout
-          mv *.appex ${{ github.workspace }}
+      - name: Download YTLite .deb 
+        run: wget "https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.ytlite_version }}/com.dvntm.ytlite_${{ inputs.ytlite_version }}_iphoneos-arm64.deb" --no-verbose -O ytlite.deb
 
       - name: Clone YouTubeHeader
-        run: |
-           git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git $THEOS/include/YouTubeHeader
-           if [ "${{ inputs.demc }}" = "true" ]; then
-            cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
-           fi
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git $THEOS/include/YouTubeHeader
 
       - name: Clone PSHeader
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git $THEOS/include/PSHeader
-
-      - name: Clone YouPiP
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
     
       - name: Clone YTUHD
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTUHD.git
@@ -150,10 +90,6 @@ jobs:
       - name: Clone YouSpeed
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
 
-      - name: Clone DontEatMyContent
-        if: ${{ inputs.demc }}
-        run: git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
-
       - name: Clone YouMute
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
 
@@ -165,9 +101,6 @@ jobs:
 
       - name: Clone YouSlider
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
-
-      - name: Clone YouChooseQuality
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouChooseQuality.git
 
       - name: Clone YTSilentVote
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTSilentVote.git
@@ -187,12 +120,6 @@ jobs:
       - name: Clone YTFlags
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTFlags.git
         
-      - name: Build YouPiP
-        run: |
-          cd YouPiP
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/youpip.deb    
-
       - name: Build YTUHD
         run: |
           cd YTUHD
@@ -235,13 +162,6 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youspeed.deb
 
-      - name: Build DontEatMyContent
-        if: ${{ inputs.demc }}
-        run: |
-          cd DontEatMyContent
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/demc.deb
-
       - name: Build YouMute
         run: |
           cd YouMute
@@ -265,12 +185,6 @@ jobs:
           cd Alderis
           make clean package DEBUG=0 FINALPACKAGE=1 ARCHS=arm64
           mv packages/*.deb ${{ github.workspace }}/alderis.deb
-
-      - name: Build YouChooseQuality
-        run: |
-          cd YouChooseQuality
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/youchoose.deb
 
       - name: Build YTSilentVote
         run: |
@@ -310,25 +224,25 @@ jobs:
   
       - name: Inject Tweaks Into IPA
         run: |
-          tweaks="OpenYouTubeSafariExtension.appex"
+          tweaks=""
 
           for f in *.deb; do
             tweaks="$tweaks $f"
           done
           
-          cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
+          cyan -i youtube.ipa -o YTLitePlusEXTRA_20.21.6_v${{ env.YTLITE_VERSION }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
       - name: Create a Draft Release
         uses: softprops/action-gh-release@v2.6.1
         with:
-          tag_name: ytliteplusextra-pre-release-ipa${{ github.run_number }}
-          name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }} (${{ github.run_number }}) 
-          files: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ env.YTLITE_VERSION }}.ipa
+          tag_name: ytliteplusextra-ip7p-ipa${{ github.run_number }}
+          name: YTLitePlusEXTRA_20.21.6_v${{ env.YTLITE_VERSION }} (${{ github.run_number }}) 
+          files: YTLitePlusEXTRA_20.21.6_v${{ env.YTLITE_VERSION }}.ipa
           draft: true
 
       - name: Job Summary - Build Complete
         run: |
-          echo -e '### 🛠️ Build YTLitePlusEXTRA IPA Complete!' >> $GITHUB_STEP_SUMMARY
+          echo -e '### 🛠️ Build YTLitePlusEXTRA IPA (For iPhone 7 Plus) Complete!' >> $GITHUB_STEP_SUMMARY
 
       - name: Job Summary - Output the Draft Release Link
         run: |
