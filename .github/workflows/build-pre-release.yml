@@ -32,7 +32,7 @@ jobs:
       contents: write
 
     steps:          
-      - name: Download and Validate IPA
+      - name: Download the IPA
         run: wget "https://archive.org/download/com.google.ios.youtube-20.21.6-Decrypted/com.google.ios.youtube-20.21.6-Decrypted.ipa" --no-verbose -O youtube.ipa
  
       - name: Install Dependencies
