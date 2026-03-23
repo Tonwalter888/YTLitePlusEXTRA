@@ -42,15 +42,12 @@ jobs:
     runs-on: macos-latest
     permissions:
       contents: write
-    ## Force Node.js 24 (Temporary fix for the Github Releases Node.js 20 deprecated errors)
-    # env:
-    #   ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
     steps:
       - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
-          exclude_inputs: bundle_id,display_name,ytlite_version,draft_release,upload_artifact,catbox_upload
+          exclude_inputs: bundle_id,display_name,ytlite_version,demc
           
       - name: Download and Validate IPA
         run: |
@@ -301,15 +298,13 @@ jobs:
           tweaks="OpenYouTubeSafariExtension.appex"
 
           for f in *.deb; do
-            if [ -f "$f" ]; then
-              tweaks="$tweaks $f"
-            fi
+            tweaks="$tweaks $f"
           done
           
           cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
       - name: Create a Draft Release
-        uses: softprops/action-gh-release@v2.5.0
+        uses: softprops/action-gh-release@v2.6.1
         with:
           tag_name: ytliteplusextra-ipa${{ github.run_number }}
           name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }} (${{ github.run_number }}) 
