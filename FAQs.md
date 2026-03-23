@@ -6,7 +6,7 @@
     <li><strong>iOS 14</strong>: YouTube 19.20.2 (Outdated, unsupported by YouTube)</li>
     <li><strong>iOS 15</strong>: YouTube 20.21.6</li>
     <li><strong>iOS 16 or Higher</strong>: Any version, as long as supported by YouTube</li>
-    <li>If you want to use YouTube in iOS 14 or older, please inject <a href="https://github.com/Tonwalter888/YTLitePlusEXTRA/issues/14#issuecomment-3924514916">YouTubeLegacy</a> by PoomSmart too.</li>
+    <li>If you want to use YouTube in iOS 14 or older, please inject <a href="https://github.com/PoomSmart/YouTubeLegacy">YouTubeLegacy</a> by PoomSmart too.</li>
 </details>
 <br>
 <details>
@@ -17,7 +17,7 @@
 <details>
   <summary>Cast stopped working on sideloaded YTLitePlusEXTRA. What should I do?</summary>
     <p>Until this issue is resolved, it is recommended to use YouTube version 20.14.1 or below.</p>
-    <p>(This will be fix in YTLite 5.2b5).</p>
+    <p>(This will be fix in YTLite 5.2b5.)</p>
 </details>
 <br>
 <details>
