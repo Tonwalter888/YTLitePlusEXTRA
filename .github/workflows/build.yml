@@ -21,7 +21,7 @@ on:
         type: string
 
       bundle_id:
-        description: "BundleID (Optional)"
+        description: "Bundle ID (Optional)"
         default: "com.google.ios.youtube"
         required: true
         type: string
