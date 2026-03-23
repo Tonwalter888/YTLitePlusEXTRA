@@ -230,14 +230,14 @@ jobs:
             tweaks="$tweaks $f"
           done
           
-          cyan -i youtube.ipa -o YTLitePlusEXTRA_20.21.6_v${{ env.YTLITE_VERSION }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
+          cyan -i youtube.ipa -o YTLitePlusEXTRA_20.21.6_v${{ inputs.ytlite_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
       - name: Create a Draft Release
         uses: softprops/action-gh-release@v2.6.1
         with:
           tag_name: ytliteplusextra-ip7p-ipa${{ github.run_number }}
-          name: YTLitePlusEXTRA_20.21.6_v${{ env.YTLITE_VERSION }} (${{ github.run_number }}) 
-          files: YTLitePlusEXTRA_20.21.6_v${{ env.YTLITE_VERSION }}.ipa
+          name: YTLitePlusEXTRA_20.21.6_v${{ inputs.ytlite_version }} (${{ github.run_number }}) 
+          files: YTLitePlusEXTRA_20.21.6_v${{ inputs.ytlite_version }}.ipa
           draft: true
 
       - name: Job Summary - Build Complete
