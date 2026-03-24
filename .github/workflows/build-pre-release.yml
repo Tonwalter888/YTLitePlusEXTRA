@@ -31,7 +31,12 @@ jobs:
     permissions:
       contents: write
 
-    steps:          
+    steps:
+      - name: Hide Sensitive Inputs
+        uses: levibostian/action-hide-sensitive-inputs@v1
+        with:
+          exclude_inputs: bundle_id,display_name,ytlite_version,demc
+                    
       - name: Download the IPA
         run: wget "https://archive.org/download/com.google.ios.youtube-20.21.6-Decrypted/com.google.ios.youtube-20.21.6-Decrypted.ipa" --quiet --no-verbose -O youtube.ipa
  
