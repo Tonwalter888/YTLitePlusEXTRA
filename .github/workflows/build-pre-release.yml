@@ -33,7 +33,7 @@ jobs:
 
     steps:          
       - name: Download the IPA
-        run: wget "https://archive.org/download/com.google.ios.youtube-20.21.6-Decrypted/com.google.ios.youtube-20.21.6-Decrypted.ipa" --no-verbose -O youtube.ipa
+        run: wget "https://archive.org/download/com.google.ios.youtube-20.21.6-Decrypted/com.google.ios.youtube-20.21.6-Decrypted.ipa" --quiet --no-verbose -O youtube.ipa
  
       - name: Install Dependencies
         run: brew install make ldid swiftlint
@@ -57,11 +57,11 @@ jobs:
       - name: Install cyan and tbd
         run: |
           pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
-          wget --no-verbose "https://github.com/inoahdev/tbd/releases/download/2.2/tbd-mac" -O /usr/local/bin/tbd
+          wget --quiet --no-verbose "https://github.com/inoahdev/tbd/releases/download/2.2/tbd-mac" -O /usr/local/bin/tbd
           chmod +x /usr/local/bin/tbd 
 
       - name: Download YTLite .deb 
-        run: wget "https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.ytlite_version }}/com.dvntm.ytlite_${{ inputs.ytlite_version }}_iphoneos-arm64.deb" --no-verbose -O ytlite.deb
+        run: wget "https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.ytlite_version }}/com.dvntm.ytlite_${{ inputs.ytlite_version }}_iphoneos-arm64.deb" --quiet --no-verbose -O ytlite.deb
 
       - name: Clone YouTubeHeader
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git $THEOS/include/YouTubeHeader
@@ -233,7 +233,7 @@ jobs:
           cyan -i youtube.ipa -o YTLitePlusEXTRA_20.21.6_v${{ inputs.ytlite_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
       - name: Create a Draft Release
-        uses: softprops/action-gh-release@v2.6.1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ytliteplusextra-ip7p-ipa${{ github.run_number }}
           name: YTLitePlusEXTRA_20.21.6_v${{ inputs.ytlite_version }} (${{ github.run_number }}) 
