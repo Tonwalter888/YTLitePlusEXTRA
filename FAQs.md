@@ -7,7 +7,7 @@
     <li><strong>iOS 15</strong>: YouTube 20.21.6</li>
     <li><strong>iOS 16 or Higher</strong>: Any version, as long as supported by YouTube</li>
     <p></p>
-    <p>If you want to use YouTube in iOS 14 or older, please inject <a href="https://github.com/PoomSmart/YouTubeLegacy">YouTubeLegacy</a> by PoomSmart too.</p>
+    <p>If you want to use YouTube in iOS 14 or older, please install/inject <a href="https://github.com/PoomSmart/YouTubeLegacy">YouTubeLegacy</a> by PoomSmart too.</p>
 </details>
 <br>
 <details>
