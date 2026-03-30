@@ -91,7 +91,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
 
       - name: Clone YouMute
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
+        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouMute.git
 
       - name: Clone YouLoop
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouLoop.git
@@ -165,6 +165,7 @@ jobs:
       - name: Build YouMute
         run: |
           cd YouMute
+          git switch keepmuted
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ym.deb 
 
