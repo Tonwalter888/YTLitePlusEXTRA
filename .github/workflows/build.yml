@@ -123,7 +123,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
 
       - name: Clone YouMute
-        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouMute.git
+        run: git clone --quiet https://github.com/Tonwalter888/YouMute.git
     
       - name: Clone YouLoop
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouLoop.git
