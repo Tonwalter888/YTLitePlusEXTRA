@@ -22,11 +22,6 @@
 </details>
 <br>
 <details>
-  <summary>YouTube's loop video option and the button don't work. What should I do?</summary>
-    <p>Uses YouLoop in <strong>Settings -> Video overlay -> Show loop video button</strong> instead.</p>
-</details>
-<br>
-<details>
   <summary>When I try to play a video, I get "<strong>Something went wrong. Refresh and try again later.</strong>" error.</summary>
     <p>Before jumping to conclusions:</p>
       <p>This is <strong>NOT</strong> caused by ad blocking.</p>
