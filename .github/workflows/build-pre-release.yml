@@ -88,7 +88,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouQuality.git
 
       - name: Clone YouSpeed
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
+        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouSpeed.git
 
       - name: Clone YouMute
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
