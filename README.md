@@ -19,7 +19,6 @@ If you have any problems, feel free to open issues!
 - [YTweaks](https://github.com/fosterbarnes/YTweaks) - Hide AI summary,Fix casting and more
 - [YTFlags](https://github.com/Tonwalter888/YTFlags) - Tries to make your YouTube experience even better
 - [VolumeBoostYT](https://github.com/VasirakCalgux/VolumeBoostYT) - Control the sound volume through gestures
-- And much more...
 
 ## How to build a YTLitePlusEXTRA IPA using Github Actions
 > [!NOTE]
