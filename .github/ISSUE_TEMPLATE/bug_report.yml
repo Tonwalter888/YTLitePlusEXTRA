@@ -38,7 +38,7 @@ body:
         4. Select the desired log.
         5. Tap the Share icon, save it in the Files app, then zip saved file.
       placeholder: |
-        Drag and drop your Crashlog.zip here.
+        Drag and drop your Crashlog.zip or copy and paste your video error log here.
     validations:
       required: false
 
