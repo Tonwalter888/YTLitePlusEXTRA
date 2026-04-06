@@ -26,7 +26,7 @@ body:
 
   - type: textarea
     attributes:
-    label: Crashlog or video error popup log
+      label: Crashlog or video error popup log
       description: |
         **Do not put text from crashlog, include zipped Crashlog_File.ips instead.**
         **If it's a video error log from a popup, copy and paste it here.**
