@@ -151,6 +151,15 @@ jobs:
         
       - name: Clone YTFlags
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTFlags.git
+
+      - name: Clone IAmYouTube
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/IAmYouTube.git
+
+      - name: Clone YTVideoErrorAlert
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoErrorAlert.git
+
+      - name: Clone VolumeBoostYT
+        run: git clone --quiet --depth=1 https://github.com/VasirakCalgux/VolumeBoostYT.git
         
       - name: Build YTUHD
         run: |
@@ -253,6 +262,24 @@ jobs:
           cd YTFlags
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytflags.deb
+
+      - name: Build IAmYouTube
+        run: |
+          cd IAmYouTube
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          mv packages/*.deb ${{ github.workspace }}/imyt.deb
+
+      - name: Build YTVideoErrorAlert
+        run: |
+          cd YTVideoErrorAlert
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          mv packages/*.deb ${{ github.workspace }}/ytviderror.deb
+
+      - name: Build VolumeBoostYT
+        run: |
+          cd VolumeBoostYT
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless ARCHS=arm64
+          mv packages/*.deb ${{ github.workspace }}/volboostyt.deb
           
       - name: Inject Tweaks Into IPA
         run: |
