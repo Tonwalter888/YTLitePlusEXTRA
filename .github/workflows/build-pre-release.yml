@@ -33,7 +33,7 @@ on:
         type: boolean
 
       volboost:
-        description: "Integrate VolumeBoostYT (Requried iOS 16+)"
+        description: "Integrate VolumeBoostYT (Require iOS 16+)"
         default: true
         required: false
         type: boolean
