@@ -158,7 +158,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
 
       - name: Clone YouChooseQuality
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouChooseQuality.git
+        run: git clone --quiet https://github.com/PoomSmart/YouChooseQuality.git
 
       - name: Clone YTSilentVote
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTSilentVote.git
@@ -270,6 +270,7 @@ jobs:
       - name: Build YouChooseQuality
         run: |
           cd YouChooseQuality
+          git checkout 1585a3691b2ef0b59d42c40c31639fd8b79e2cd4
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youchoose.deb
 
