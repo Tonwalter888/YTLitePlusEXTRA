@@ -32,11 +32,11 @@ on:
         required: false
         type: boolean
 
-      volboost:
-        description: "Integrate VolumeBoostYT (Require iOS 16+)"
-        default: true
-        required: false
-        type: boolean
+      # volboost:
+      #   description: "Integrate VolumeBoostYT (Require iOS 16+)"
+      #   default: true
+      #   required: false
+      #   type: boolean
      
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -199,9 +199,9 @@ jobs:
       - name: Clone YTVideoErrorAlert
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoErrorAlert.git
 
-      - name: Clone VolumeBoostYT
-        if: ${{ inputs.volboost }}
-        run: git clone --quiet --depth=1 https://github.com/VasirakCalgux/VolumeBoostYT.git
+      # - name: Clone VolumeBoostYT
+      #   if: ${{ inputs.volboost }}
+      #   run: git clone --quiet --depth=1 https://github.com/VasirakCalgux/VolumeBoostYT.git
         
       - name: Build YouPiP
         run: |
@@ -337,12 +337,12 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytvideoerror.deb
 
-      - name: Build VolumeBoostYT
-        if: ${{ inputs.volboost }}
-        run: |
-          cd VolumeBoostYT
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless ARCHS=arm64
-          mv packages/*.deb ${{ github.workspace }}/volboostyt.deb
+      # - name: Build VolumeBoostYT
+      #   if: ${{ inputs.volboost }}
+      #   run: |
+      #     cd VolumeBoostYT
+      #     make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless ARCHS=arm64
+      #     mv packages/*.deb ${{ github.workspace }}/volboostyt.deb
   
       - name: Inject Tweaks Into IPA
         run: |
