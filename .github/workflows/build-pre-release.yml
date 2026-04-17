@@ -335,7 +335,7 @@ jobs:
         run: |
           cd YTVideoErrorAlert
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ytviderror.deb
+          mv packages/*.deb ${{ github.workspace }}/ytvideoerror.deb
 
       - name: Build VolumeBoostYT
         if: ${{ inputs.volboost }}
