@@ -53,7 +53,7 @@ jobs:
       - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
-          exclude_inputs: bundle_id,display_name,tweak_version,demc
+          exclude_inputs: bundle_id,display_name,demc
           
       - name: Download and Validate IPA
         run: |
@@ -164,7 +164,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
 
       - name: Clone YouLoop
-        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouLoop.git
+        run: git clone --quiet --depth=1 https://github.com/bhackel/YouLoop.git
 
       - name: Clone Alderis
         run: git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
