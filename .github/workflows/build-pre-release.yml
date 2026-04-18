@@ -94,7 +94,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
 
       - name: Clone YouLoop
-        run: git clone --quiet https://github.com/Tonwalter888/YouLoop.git
+        run: git clone --quiet --depth=1 https://github.com/bhackel/YouLoop.git
 
       - name: Clone Alderis
         run: git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
@@ -147,7 +147,6 @@ jobs:
       - name: Build YouGroupSettings
         run: |
           cd YouGroupSettings
-
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ygs.deb
 
@@ -184,7 +183,6 @@ jobs:
       - name: Build YouLoop
         run: |
           cd YouLoop
-          git switch prtomain
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youloop.deb
 
