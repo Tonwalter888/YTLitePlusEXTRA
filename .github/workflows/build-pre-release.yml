@@ -32,6 +32,12 @@ on:
         required: false
         type: boolean
 
+      ytvid:
+        description: "Integrate YTVideoErrorAlert"
+        default: true
+        required: false
+        type: boolean
+
       # volboost:
       #   description: "Integrate VolumeBoostYT (Require iOS 16+)"
       #   default: true
@@ -197,6 +203,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/IAmYouTube.git
 
       - name: Clone YTVideoErrorAlert
+        if: ${{ inputs.ytvid }}
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTVideoErrorAlert.git
 
       # - name: Clone VolumeBoostYT
@@ -332,6 +339,7 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/imyt.deb
 
       - name: Build YTVideoErrorAlert
+        if: ${{ inputs.ytvid }}
         run: |
           cd YTVideoErrorAlert
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
