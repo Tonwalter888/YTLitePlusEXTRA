@@ -16,12 +16,6 @@
 </details>
 <br>
 <details>
-  <summary>Cast stopped working on sideloaded YTLitePlusEXTRA. What should I do?</summary>
-    <p>Until this issue is resolved, it is recommended to use YouTube version 20.14.1 or below.</p>
-    <p>(This will be fix in YTLite 5.2b5.)</p>
-</details>
-<br>
-<details>
   <summary>When I try to play a video, I get "<strong>Something went wrong. Refresh and try again later.</strong>" error.</summary>
     <p>Before jumping to conclusions:</p>
       <p>This is <strong>NOT</strong> caused by ad blocking.</p>

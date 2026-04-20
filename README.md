@@ -2,12 +2,17 @@
 This is a fork repo from YTLite,but add more tweaks similar to YTLitePlus for who can't build IPA or The app is unusable.
 If you have any problems, feel free to open issues!
 
-**EDIT:** THANKS FOR 250 FORKS!🥳🎉🙏
+> [!WARNING]
+> In the latest YTLite version (5.2), you have to be a member in the developer patron [here](https://www.patreon.com/c/dayanch96/membership). 
+> Otherwise, you **CAN'T** use YTLite.
+> If you can't / don't want to be a member, temporary use YTLite version 5.2b4 for now.
+
+**EDIT:** THANKS FOR 270 FORKS!🥳🎉🙏
 
 **NOTE:** Before you open a new issue, please check in [FAQs](FAQs.md) first and make sure your issue doesn't have in it.
 
 ## Main features
-- [YTLite](https://github.com/dayanch96/YTLite) - eg. Download Videos,No ads,Background Playback
+- [YTLite](https://github.com/dayanch96/YTLite) - eg. Download Videos, No ads, Background Playback
 - [YouMute](https://github.com/PoomSmart/YouMute) - Mute the video sounds in video overlay
 - [YouSpeed](https://github.com/PoomSmart/YouSpeed) - Change video speeds in video overlay
 - [YTABConfig](https://github.com/PoomSmart/YTABConfig) - Configures A/B settings
@@ -58,9 +63,7 @@ If you have any problems, feel free to open issues!
 
 ## Supported YouTube version
 <ul>
-   <li><strong>Latest confirmed:</strong> 21.07.4</li>
-   <li><strong>Date tested:</strong> Feb 20, 2026</li>
-   <li><strong>YTLite:</strong> 5.2 beta 4</li>
+   <li><strong>Latest confirmed:</strong> 21.15.5</li>
+   <li><strong>Date tested:</strong> Apr 20, 2026</li>
+   <li><strong>YTLite:</strong> 5.2</li>
 </ul>
-
-Currently, I recommend YouTube version 20.50.10 or older. Since SponsorBlock is broken in YouTube version 21+.
