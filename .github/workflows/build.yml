@@ -10,7 +10,7 @@ on:
         
       ytlite_version:
         description: "YTLite Version"
-        default: "5.2b4"
+        default: "5.2"
         required: true
         type: string
 
