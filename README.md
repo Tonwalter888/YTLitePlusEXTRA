@@ -3,7 +3,7 @@ This is a fork repo from YTLite,but add more tweaks similar to YTLitePlus for wh
 If you have any problems, feel free to open issues!
 
 > [!WARNING]
-> In the latest YTLite version (5.2), you have to be a member in the developer patron [here](https://www.patreon.com/c/dayanch96/membership). 
+> In the latest YTLite version (5.2), you have to be a member in the developer's patron [here](https://www.patreon.com/c/dayanch96/membership). 
 > Otherwise, you **CAN'T** use YTLite.
 > If you can't / don't want to be a member, temporary use YTLite version 5.2b4 for now.
 
