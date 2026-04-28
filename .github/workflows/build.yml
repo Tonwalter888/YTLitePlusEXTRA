@@ -355,7 +355,7 @@ jobs:
           files: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa
           draft: true
 
-      - name: Job Summary - Build Conplete
+      - name: Job Summary - Build Complete
         run: |
           echo -e '### 🛠️ Build YTLitePlusEXTRA IPA Complete!' >> $GITHUB_STEP_SUMMARY
 
