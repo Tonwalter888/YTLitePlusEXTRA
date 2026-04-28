@@ -1,11 +1,11 @@
 # YTLitePlusEXTRA
-This is a fork repo from YTLite,but add more tweaks similar to YTLitePlus for who can't build IPA or The app is unusable.
+This is a fork repo from YTLite but adds more tweaks similar to YTLitePlus for those who can't build IPA or The app is unusable.
 If you have any problems, feel free to open issues!
 
 > [!WARNING]
 > In the latest YTLite version (5.2), you have to be a member in the developer's patron [here](https://www.patreon.com/c/dayanch96/membership). 
 > Otherwise, you **CAN'T** use YTLite.
-> If you can't / don't want to be a member, temporary use YTLite version 5.2b4 for now.
+> If you can't / don't want to be a member, temporarily use YTLite version 5.2b4 for now.
 
 **EDIT:** THANKS FOR 270 FORKS!🥳🎉🙏
 
@@ -21,16 +21,16 @@ If you have any problems, feel free to open issues!
 - [YouShare](https://github.com/Tonwalter888/YouShare) - Copy video URL faster from video overlay
 - [Gonerino](https://github.com/castdrian/Gonerino) - Filter videos/channels/keywords that you don't want them to show up on your feeds
 - [YouGetCaption](https://github.com/PoomSmart/YouGetCaption) - Copy video captions from video overlay
-- [YTweaks](https://github.com/fosterbarnes/YTweaks) - Hide AI summary,Fix casting and more
+- [YTweaks](https://github.com/fosterbarnes/YTweaks) - Hide AI summary, Fix casting and more
 - [YTFlags](https://github.com/Tonwalter888/YTFlags) - Tries to make your YouTube experience even better
 - [VolumeBoostYT](https://github.com/VasirakCalgux/VolumeBoostYT) - Control the sound volume through gestures **(TEMP-DISABLED)**
 
 ## How to build a YTLitePlusEXTRA IPA using Github Actions
 > [!NOTE]
-> If this your first time, complete following steps before starting:
+> If this is your first time, complete the following steps before starting:
 >
 > 1. Fork this repository using the fork button on the top right
-> 2. On your forked repository, go to **Settings** -> **Actions**, and enable **Read and Write** permissions.
+> 2. In your forked repository, go to **Settings** -> **Actions**, and enable **Read and Write** permissions.
 
 <details>
   <summary>How to build a YTLitePlusEXTRA IPA</summary>
